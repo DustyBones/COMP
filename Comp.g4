@@ -11,6 +11,8 @@ STATE : 'state';
 CITY : 'city';
 NAME : 'name';
 MAGVAR : 'magvar';
+TRAFFICSCALAR : 'trafficScalar';
+AIRPORTTESTRADIUS : 'airportTestRadius';
 IDENT : 'ident';
 /***Taxi***/
 TAXIWAYPOINT : 'taxiwaypoint' ;
@@ -37,7 +39,7 @@ DELETEAIRPORT : 'deleteairport' ;
 
 /****Generic****/
 OPENA : '<';
-CLOSEA : '>' ;
+CLOSEA : '>' {ignoreWord=true;} ;
 QUOTE : '"' ;
 EQUAL : '=' ;
 PLUS : '+';
@@ -46,23 +48,29 @@ DOT : '.' ;
 LATITUDE : 'lat';
 LONGITUDE : 'lon';
 ALTITUDE : 'alt';
-LAT_VAL : ('+'|'-')? (('1'..'8')?('0'..'9')('.' ('0'..'9')+)?
-                      | ('1'..'8')?('0'..'9')'-'('1'..'5')?('0'..'9')'-'('1'..'5')?('0'..'9')('.' ('0'..'9')+)?
-                      | '90'('-0-0')?)
-        ;
-LON_VAL : ('+'|'-')? ((('1' ('0'..'7'))|('1'..'9'))?('0'..'9')('.' ('0'..'9')+)?
-                     | ('1' ('0'..'7')|('1'..'9'))?('0'..'9')'-'('1'..'5')?('0'..'9')'-'('1'..'5')?('0'..'9')('.'
-                     ('0'..'9')+)?
-                     | '180'('-0-0')?)
-        ;
-INT  : ('0'..'9')+ ;
-DEC : ('0'..'9')+ '.' ('0'..'9')+;
-DIST : ('0'..'9')+ ('.' ('0'..'9')+)? ('M'|'F')?;
 STRING : ('a'..'z'|'A'..'Z')(('a'..'z'|'A'..'Z'|' ')*('a'..'z'|'A'..'Z'))? ;
+
+INT  : ('0'..'9')+ ;
+FLOAT : ('+'|'-')? ('0'..'9')+ '.' ('0'..'9')+;
+DIST : (INT | FLOAT) ('M'|'F')?;
+LAT_VAL : FLOAT;
+LON_VAL : FLOAT;
+MAG_VAL : FLOAT;
+/*LAT_VAL : (SIGNED FLOAT_RANGE_90)| (FLOAT_RANGE_90)
+        ;
+LON_VAL : (SIGNED FLOAT_RANGE_180)| (FLOAT_RANGE_180)
+        ;
+MAG_VAL : ('+'|'-')? ( '360'
+                     | ('3'('0'..'5')('0'..'9'))
+                     | (('1'..'2')?('0'..'9')('0'..'9'))
+                     | (('1'..'9')?('0'..'9')))
+        ;
 
 /****skip****/
 STUFF : (('<?'|'<!--'|'<FSD') .*? ('?>'|'-->'|'>')) -> skip ;
 WS: (' ' | '\t' | '\n' | '\r') -> skip ;
+
+
 //parser
 start
     : airport+ EOF
@@ -82,35 +90,44 @@ airportEnd
     ;
 airportDetails
     : airportRegion? airportCountry? airportState? airportCity? airportName? airportLat airportLong airportAlt
-    airportMagvar? airportIdent
+    airportMagvar? airportTrafficScalar? airportTestRadius? airportIdent
     ;
 airportRegion
-    : REGION EQUAL QUOTE STRING+ QUOTE
+    : REGION EQUAL QUOTE STRING QUOTE
     ;
 airportCountry
-    : COUNTRY EQUAL QUOTE STRING+ QUOTE
+    : COUNTRY EQUAL QUOTE STRING QUOTE
     ;
 airportState
-    : STATE EQUAL QUOTE STRING+ QUOTE
+    : STATE EQUAL QUOTE STRING QUOTE
     ;
 airportCity
-    : CITY EQUAL QUOTE STRING+ QUOTE
+    : CITY EQUAL QUOTE STRING QUOTE
     ;
 airportName
-    : NAME  EQUAL QUOTE STRING+ QUOTE
+    : NAME  EQUAL QUOTE STRING QUOTE
     ;
 airportLat
-    : LATITUDE  EQUAL QUOTE LAT_VAL QUOTE
+    : LATITUDE  EQUAL QUOTE FLOAT QUOTE
     ;
 airportLong
-    : LONGITUDE  EQUAL QUOTE LONG_VAL QUOTE
+    : LONGITUDE  EQUAL QUOTE LON_VAL QUOTE
     ;
 airportAlt
     : ALTITUDE  EQUAL QUOTE DIST QUOTE
     ;
 airportMagvar
-    : MAGVAR EQUAL QUOTE DEC QUOTE
+    : MAGVAR EQUAL QUOTE MAG_VAL QUOTE
+    ;
+airportTrafficScalar
+    : TRAFFICSCALAR EQUAL QUOTE FLOAT QUOTE
+    ;
+airportTestRadius
+    : AIRPORTTESTRADIUS EQUAL QUOTE DIST QUOTE
     ;
 airportIdent
     : IDENT EQUAL QUOTE STRING QUOTE
     ;
+
+
+//TODO lattitude/longitude/magvar
