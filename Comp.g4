@@ -83,7 +83,17 @@ airportBegin
     : AIRPORT_OPEN airportDetails CLOSEA
     ;
 airportStructures
-    :
+    : (taxywayPoint
+    | taxywayParking
+    | taxiName
+    | taxiPath
+    | tower
+    | services
+    | com
+    | runaway
+    | waypoint
+    | approach
+    | helipad)*
     ;
 airportEnd
     : AIRPORT_CLOSE
@@ -128,6 +138,51 @@ airportTestRadius
 airportIdent
     : IDENT EQUAL QUOTE STRING QUOTE
     ;
+
+taxywayPoint
+    :
+    ;
+
+taxywayParking
+    :
+    ;
+
+taxiName
+    :
+    ;
+
+taxiPath
+    :
+    ;
+
+tower
+    :
+    ;
+
+services
+    :
+    ;
+
+com
+    :
+    ;
+
+runaway
+    :
+    ;
+
+waypoint
+    :
+    ;
+
+approach
+    :
+    ;
+
+helipad
+    :
+    ;
+
 
 
 //TODO lattitude/longitude/magvar
