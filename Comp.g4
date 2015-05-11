@@ -9,9 +9,13 @@ grammar Comp;
 COMMENT : (('<?'|'<!--') .*? ('?>'|'-->')) -> skip ;
 FSD_OPEN : ('<FSD' .*? '>')->skip;
 FSD_CLOSE : ('</FSD' .*? '>')->skip;
+SCENERY : ('<Scenery' .*? '</Scenery' .*? '>')->skip;
 DELETE : ('<DeleteAirport' .*? '/>')->skip;
 START : ('<Start' .*? '/>')->skip;
 APRON : ('<Apron' .*? '</Apron' .*? '>')->skip;
+BOUND_FENCE : ('<Bound' .*? '</Bound' .*? '>')->skip;
+TAXYWAY_SIGN : ('<TaxiwaySign' .*? '/>')->skip;
+MARKER : ('<Marker' .*? '/>')->skip;
 WS: (' ' | '\t' | '\n' | '\r') -> skip ;
 
 /****Airport****/
@@ -59,7 +63,7 @@ SECONDARY_PATTERN : 'secondaryPattern';
 SURFACE_TYPE : 'ASPHALT' | 'BITUMINOUS' | 'BRICK' | 'CLAY' | 'CEMENT' | 'CONCRETE' | 'CORAL' | 'DIRT' | 'GRASS'
         | 'GRAVEL' | 'ICE' | 'MACADAM' | 'OIL_TREATED' | 'PLANKS' | 'SAND' | 'SHALE' | 'SNOW' | 'STEEL_MATS'
         | 'TARMAC' | 'UNKNOWN' | 'WATER';
-//DESIGNATOR_VAL : 'C'  | 'L' | 'R' | 'W' | 'WATER' | 'A' | 'B'; //TODO semantic?
+//DESIGNATOR_VAL : 'C'  | 'L' | 'R' | 'W' | 'WATER' | 'A' | 'B'; //TODO semantic
 MARKINGS_OPEN : '<Markings';
 ALTERNATE_THRESHOLD : 'alternateThreshold';
 ALTERNATE_TOUCHDOWN : 'alternateTouchdown';
@@ -82,6 +86,7 @@ PRIMARY_STOL : 'primaryStol';
 SECONDARY_STOL : 'secondaryStol';
 LIGHTS_OPEN : '<Lights';
 CENTER_RED : 'centerRed';
+
 
 /****Helipad****/
 HELIPAD_OPEN : '<Helipad';
@@ -182,7 +187,7 @@ STRING : ('a'..'z'|'A'..'Z'|'0'..'9')(('a'..'z'|'A'..'Z'|'0'..'9'|' '|'_')*('a'.
 **********************************************/
 
 start
-    : airport+ EOF
+    : airport* EOF
     ;
 
 /****Generic****/

@@ -9,14 +9,13 @@ public class XML2SDL {
     public static void main(String[] args) {
         try {
             Grammar g = Grammar.load("Comp.g4");
-            LexerInterpreter lexer = g.createLexerInterpreter(new ANTLRFileStream("input/invalid.xml"));
+            LexerInterpreter lexer = g.createLexerInterpreter(new ANTLRFileStream(args[0]));
             CommonTokenStream tokens = new CommonTokenStream(lexer);
             CompParser parser = new CompParser(tokens);
             ParseTree t = parser.start();
             ParseTreeWalker walker = new ParseTreeWalker();
             Listener listener = new Listener();
             walker.walk(listener, t);
-            //System.out.println("parse tree: "+t.toStringTree(parser));
         } catch (Exception e) {
             e.printStackTrace();
         }
