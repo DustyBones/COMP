@@ -7,6 +7,9 @@ import org.antlr.v4.tool.Grammar;
 
 public class XML2SDL {
     public static void main(String[] args) {
+        if(args.length!=1){
+            System.out.println("Wrong number of arguments. Expected XML2SDL <path to xml file>");
+        }
         try {
             Grammar g = Grammar.load("Comp.g4");
             LexerInterpreter lexer = g.createLexerInterpreter(new ANTLRFileStream(args[0]));

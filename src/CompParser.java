@@ -20,30 +20,25 @@ public class CompParser extends Parser {
 		BOUND_FENCE=8, TAXYWAY_SIGN=9, MARKER=10, WS=11, AIRPORT_OPEN=12, AIRPORT_CLOSE=13, 
 		REGION=14, COUNTRY=15, STATE=16, CITY=17, NAME=18, MAGVAR=19, TRAFFICSCALAR=20, 
 		AIRPORTTESTRADIUS=21, IDENT=22, TOWER_OPEN=23, TOWER_CLOSE=24, SERVICES_OPEN=25, 
-		SERVICES_CLOSE=26, FUEL_OPEN=27, FUEL_TYPE=28, RUNWAY_OPEN=29, RUNWAY_CLOSE=30, 
-		SURFACE=31, HEADING=32, LENGTH=33, WIDTH=34, NUMBER=35, DESIGNATOR=36, 
-		PATTERN_ALT=37, PRIMARY_TAKEOFF=38, PRIMARY_LANDING=39, PRIMARY_PATTERN=40, 
-		SECONDARY_TAKEOFF=41, SECONDARY_LANDING=42, SECONDARY_PATTERN=43, SURFACE_TYPE=44, 
-		MARKINGS_OPEN=45, ALTERNATE_THRESHOLD=46, ALTERNATE_TOUCHDOWN=47, ALTERNATE_FIXED_DISTANCE=48, 
-		ALTERNATE_PRECISION=49, LEADING_ZEROIDENT=50, NO_THRESHOLD_END_ARROWS=51, 
-		EDGES=52, EDGE=53, THRESHOLD=54, FIXED_DISTANCE=55, TOUCHDOWN=56, DASHES=57, 
-		PRECISION=58, EDGE_PAVEMENT=59, SINGLE_END=60, PRIMARY_CLOSED=61, SECONDARY_CLOSED=62, 
-		PRIMARY_STOL=63, SECONDARY_STOL=64, LIGHTS_OPEN=65, CENTER_RED=66, HELIPAD_OPEN=67, 
-		HELIPAD_TYPE=68, CLOSED=69, TRANSPARENT=70, COM_OPEN=71, FREQUENCY=72, 
-		COM_TYPE=73, TAXIWAY_POINT_OPEN=74, TAXYWAY_POINTER_TYPE=75, TAXIWAY_PARKING_OPEN=76, 
-		TAXYWAY_PARKING_TYPE=77, TAXIWAY_PARKING_NAME=78, PUSHBACK=79, PARKING=80, 
-		TAXI_NAME_OPEN=81, TAXI_PATH_OPEN=82, TAXI_PATH_TYPE=83, TAXI_PATH_START=84, 
-		TAXI_PATH_END=85, TAXI_PATH_WEIGHT_LIMIT=86, TAXI_PATH_SURFACE=87, TAXI_PATH_SURFACE_TYPE=88, 
-		TAXI_PATH_DRAW_SURFACE=89, TAXI_PATH_DRAW_DETAIL=90, TAXI_PATH_CENTER_LINE=91, 
-		TAXI_PATH_CENTER_LINE_LIGHTED=92, TAXI_PATH_EDGE_TYPE=93, TAXI_PATH_LEFT_EDGE=94, 
-		TAXI_PATH_LEFT_EDGE_LIGHTED=95, TAXI_PATH_RIGHT_EDGE=96, TAXI_PATH_RIGHT_EDGE_LIGHTED=97, 
-		OPENA=98, CLOSEA=99, CLOSEBARA=100, QUOTE=101, EQUAL=102, PLUS=103, MINUS=104, 
-		DOT=105, BOOLEAN1=106, BOOLEAN2=107, UNKNOWN=108, PRIOR_REQUEST=109, LATITUDE=110, 
-		LONGITUDE=111, ALTITUDE=112, TYPE=113, AVAILABILITY=114, INDEX=115, ORIENTATION=116, 
-		GEO_ORIENTATION=117, LEFT=118, RIGHT=119, CENTER=120, FORWARD=121, REVERSE=122, 
-		NONE=123, BOTH=124, HIGH=125, MEDIUM=126, LOW=127, RADIUS=128, BIASX=129, 
-		BIASZ=130, INT=131, SCALAR=132, ANGLE=133, TIME=134, FLOAT=135, DIST=136, 
-		STRING=137;
+		SERVICES_CLOSE=26, FUEL_OPEN=27, RUNWAY_OPEN=28, RUNWAY_CLOSE=29, SURFACE=30, 
+		HEADING=31, LENGTH=32, WIDTH=33, NUMBER=34, DESIGNATOR=35, PATTERN_ALT=36, 
+		PRIMARY_TAKEOFF=37, PRIMARY_LANDING=38, PRIMARY_PATTERN=39, SECONDARY_TAKEOFF=40, 
+		SECONDARY_LANDING=41, SECONDARY_PATTERN=42, MARKINGS_OPEN=43, ALTERNATE_THRESHOLD=44, 
+		ALTERNATE_TOUCHDOWN=45, ALTERNATE_FIXED_DISTANCE=46, ALTERNATE_PRECISION=47, 
+		LEADING_ZEROIDENT=48, NO_THRESHOLD_END_ARROWS=49, EDGES=50, EDGE=51, THRESHOLD=52, 
+		FIXED_DISTANCE=53, TOUCHDOWN=54, DASHES=55, PRECISION=56, EDGE_PAVEMENT=57, 
+		SINGLE_END=58, PRIMARY_CLOSED=59, SECONDARY_CLOSED=60, PRIMARY_STOL=61, 
+		SECONDARY_STOL=62, LIGHTS_OPEN=63, CENTER_RED=64, HELIPAD_OPEN=65, CLOSED=66, 
+		TRANSPARENT=67, COM_OPEN=68, FREQUENCY=69, TAXIWAY_POINT_OPEN=70, TAXIWAY_PARKING_OPEN=71, 
+		PUSHBACK=72, TAXI_NAME_OPEN=73, TAXI_PATH_OPEN=74, TAXI_PATH_START=75, 
+		TAXI_PATH_END=76, TAXI_PATH_WEIGHT_LIMIT=77, TAXI_PATH_SURFACE=78, TAXI_PATH_DRAW_SURFACE=79, 
+		TAXI_PATH_DRAW_DETAIL=80, TAXI_PATH_CENTER_LINE=81, TAXI_PATH_CENTER_LINE_LIGHTED=82, 
+		TAXI_PATH_LEFT_EDGE=83, TAXI_PATH_LEFT_EDGE_LIGHTED=84, TAXI_PATH_RIGHT_EDGE=85, 
+		TAXI_PATH_RIGHT_EDGE_LIGHTED=86, OPENA=87, CLOSEA=88, CLOSEBARA=89, QUOTE=90, 
+		EQUAL=91, PLUS=92, MINUS=93, DOT=94, BOOLEAN=95, LATITUDE=96, LONGITUDE=97, 
+		ALTITUDE=98, TYPE=99, AVAILABILITY=100, INDEX=101, ORIENTATION=102, CENTER=103, 
+		RADIUS=104, BIASX=105, BIASZ=106, INT=107, TIME=108, FLOAT=109, DIST=110, 
+		STRING=111;
 	public static final int
 		RULE_start = 0, RULE_latitude = 1, RULE_longitude = 2, RULE_altitude = 3, 
 		RULE_length = 4, RULE_width = 5, RULE_index = 6, RULE_biasX = 7, RULE_biasZ = 8, 
@@ -103,53 +98,45 @@ public class CompParser extends Parser {
 		"'<Airport'", "'</Airport>'", "'region'", "'country'", "'state'", "'city'", 
 		"'name'", "'magvar'", "'trafficScalar'", "'airportTestRadius'", "'ident'", 
 		"'<Tower'", "'</Tower>'", "'<Services>'", "'</Services>'", "'<Fuel'", 
-		null, "'<Runway'", "'</Runway>'", null, "'heading'", "'length'", "'width'", 
+		"'<Runway'", "'</Runway>'", null, "'heading'", "'length'", "'width'", 
 		"'number'", "'designator'", "'patternAltitude'", "'primaryTakeoff'", "'primaryLanding'", 
 		"'primaryPattern'", "'secondaryTakeoff'", "'secondaryLanding'", "'secondaryPattern'", 
-		null, "'<Markings'", "'alternateThreshold'", "'alternateTouchdown'", "'alternateFixedDistance'", 
+		"'<Markings'", "'alternateThreshold'", "'alternateTouchdown'", "'alternateFixedDistance'", 
 		"'alternatePrecision'", "'leadingZeroIdent'", "'noThresholdEndArrows'", 
 		"'edges'", "'edge'", "'threshold'", "'fixedDistance'", "'touchdown'", 
 		"'dashes'", "'precision'", "'edgePavement'", "'singleEnd'", "'primaryClosed'", 
 		"'secondaryClosed'", "'primaryStol'", "'secondaryStol'", "'<Lights'", 
-		"'centerRed'", "'<Helipad'", null, "'closed'", "'transparent'", "'<Com'", 
-		"'frequency'", null, "'<TaxiwayPoint'", null, "'<TaxiwayParking'", null, 
-		null, "'pushBack'", "'PARKING'", "'<TaxiName'", "'<TaxiwayPath'", null, 
-		"'start'", "'end'", "'weightLimit'", null, null, "'drawSurface'", "'drawDetail'", 
-		"'centerLine'", "'centerLineLighted'", null, "'leftEdge'", "'leftEdgeLighted'", 
+		"'centerRed'", "'<Helipad'", "'closed'", "'transparent'", "'<Com'", "'frequency'", 
+		"'<TaxiwayPoint'", "'<TaxiwayParking'", "'pushBack'", "'<TaxiName'", "'<TaxiwayPath'", 
+		"'start'", "'end'", "'weightLimit'", null, "'drawSurface'", "'drawDetail'", 
+		"'centerLine'", "'centerLineLighted'", "'leftEdge'", "'leftEdgeLighted'", 
 		"'rightEdge'", "'rightEdgeLighted'", "'<'", "'>'", "'/>'", "'\"'", "'='", 
-		"'+'", "'-'", "'.'", null, null, "'UNKNOWN'", "'PRIOR_REQUEST'", "'lat'", 
-		"'lon'", "'alt'", "'type'", "'availability'", "'index'", "'orientation'", 
-		null, "'LEFT'", "'RIGHT'", null, "'FORWARD'", "'REVERSE'", "'NONE'", "'BOTH'", 
-		"'HIGH'", "'MEDIUM'", "'LOW'", "'radius'", "'biasX'", "'biasZ'"
+		"'+'", "'-'", "'.'", null, "'lat'", "'lon'", "'alt'", "'type'", "'availability'", 
+		"'index'", "'orientation'", "'center'", "'radius'", "'biasX'", "'biasZ'"
 	};
 	private static final String[] _SYMBOLIC_NAMES = {
 		null, "COMMENT", "FSD_OPEN", "FSD_CLOSE", "SCENERY", "DELETE", "START", 
 		"APRON", "BOUND_FENCE", "TAXYWAY_SIGN", "MARKER", "WS", "AIRPORT_OPEN", 
 		"AIRPORT_CLOSE", "REGION", "COUNTRY", "STATE", "CITY", "NAME", "MAGVAR", 
 		"TRAFFICSCALAR", "AIRPORTTESTRADIUS", "IDENT", "TOWER_OPEN", "TOWER_CLOSE", 
-		"SERVICES_OPEN", "SERVICES_CLOSE", "FUEL_OPEN", "FUEL_TYPE", "RUNWAY_OPEN", 
-		"RUNWAY_CLOSE", "SURFACE", "HEADING", "LENGTH", "WIDTH", "NUMBER", "DESIGNATOR", 
-		"PATTERN_ALT", "PRIMARY_TAKEOFF", "PRIMARY_LANDING", "PRIMARY_PATTERN", 
-		"SECONDARY_TAKEOFF", "SECONDARY_LANDING", "SECONDARY_PATTERN", "SURFACE_TYPE", 
-		"MARKINGS_OPEN", "ALTERNATE_THRESHOLD", "ALTERNATE_TOUCHDOWN", "ALTERNATE_FIXED_DISTANCE", 
-		"ALTERNATE_PRECISION", "LEADING_ZEROIDENT", "NO_THRESHOLD_END_ARROWS", 
-		"EDGES", "EDGE", "THRESHOLD", "FIXED_DISTANCE", "TOUCHDOWN", "DASHES", 
-		"PRECISION", "EDGE_PAVEMENT", "SINGLE_END", "PRIMARY_CLOSED", "SECONDARY_CLOSED", 
-		"PRIMARY_STOL", "SECONDARY_STOL", "LIGHTS_OPEN", "CENTER_RED", "HELIPAD_OPEN", 
-		"HELIPAD_TYPE", "CLOSED", "TRANSPARENT", "COM_OPEN", "FREQUENCY", "COM_TYPE", 
-		"TAXIWAY_POINT_OPEN", "TAXYWAY_POINTER_TYPE", "TAXIWAY_PARKING_OPEN", 
-		"TAXYWAY_PARKING_TYPE", "TAXIWAY_PARKING_NAME", "PUSHBACK", "PARKING", 
-		"TAXI_NAME_OPEN", "TAXI_PATH_OPEN", "TAXI_PATH_TYPE", "TAXI_PATH_START", 
-		"TAXI_PATH_END", "TAXI_PATH_WEIGHT_LIMIT", "TAXI_PATH_SURFACE", "TAXI_PATH_SURFACE_TYPE", 
-		"TAXI_PATH_DRAW_SURFACE", "TAXI_PATH_DRAW_DETAIL", "TAXI_PATH_CENTER_LINE", 
-		"TAXI_PATH_CENTER_LINE_LIGHTED", "TAXI_PATH_EDGE_TYPE", "TAXI_PATH_LEFT_EDGE", 
-		"TAXI_PATH_LEFT_EDGE_LIGHTED", "TAXI_PATH_RIGHT_EDGE", "TAXI_PATH_RIGHT_EDGE_LIGHTED", 
-		"OPENA", "CLOSEA", "CLOSEBARA", "QUOTE", "EQUAL", "PLUS", "MINUS", "DOT", 
-		"BOOLEAN1", "BOOLEAN2", "UNKNOWN", "PRIOR_REQUEST", "LATITUDE", "LONGITUDE", 
-		"ALTITUDE", "TYPE", "AVAILABILITY", "INDEX", "ORIENTATION", "GEO_ORIENTATION", 
-		"LEFT", "RIGHT", "CENTER", "FORWARD", "REVERSE", "NONE", "BOTH", "HIGH", 
-		"MEDIUM", "LOW", "RADIUS", "BIASX", "BIASZ", "INT", "SCALAR", "ANGLE", 
-		"TIME", "FLOAT", "DIST", "STRING"
+		"SERVICES_OPEN", "SERVICES_CLOSE", "FUEL_OPEN", "RUNWAY_OPEN", "RUNWAY_CLOSE", 
+		"SURFACE", "HEADING", "LENGTH", "WIDTH", "NUMBER", "DESIGNATOR", "PATTERN_ALT", 
+		"PRIMARY_TAKEOFF", "PRIMARY_LANDING", "PRIMARY_PATTERN", "SECONDARY_TAKEOFF", 
+		"SECONDARY_LANDING", "SECONDARY_PATTERN", "MARKINGS_OPEN", "ALTERNATE_THRESHOLD", 
+		"ALTERNATE_TOUCHDOWN", "ALTERNATE_FIXED_DISTANCE", "ALTERNATE_PRECISION", 
+		"LEADING_ZEROIDENT", "NO_THRESHOLD_END_ARROWS", "EDGES", "EDGE", "THRESHOLD", 
+		"FIXED_DISTANCE", "TOUCHDOWN", "DASHES", "PRECISION", "EDGE_PAVEMENT", 
+		"SINGLE_END", "PRIMARY_CLOSED", "SECONDARY_CLOSED", "PRIMARY_STOL", "SECONDARY_STOL", 
+		"LIGHTS_OPEN", "CENTER_RED", "HELIPAD_OPEN", "CLOSED", "TRANSPARENT", 
+		"COM_OPEN", "FREQUENCY", "TAXIWAY_POINT_OPEN", "TAXIWAY_PARKING_OPEN", 
+		"PUSHBACK", "TAXI_NAME_OPEN", "TAXI_PATH_OPEN", "TAXI_PATH_START", "TAXI_PATH_END", 
+		"TAXI_PATH_WEIGHT_LIMIT", "TAXI_PATH_SURFACE", "TAXI_PATH_DRAW_SURFACE", 
+		"TAXI_PATH_DRAW_DETAIL", "TAXI_PATH_CENTER_LINE", "TAXI_PATH_CENTER_LINE_LIGHTED", 
+		"TAXI_PATH_LEFT_EDGE", "TAXI_PATH_LEFT_EDGE_LIGHTED", "TAXI_PATH_RIGHT_EDGE", 
+		"TAXI_PATH_RIGHT_EDGE_LIGHTED", "OPENA", "CLOSEA", "CLOSEBARA", "QUOTE", 
+		"EQUAL", "PLUS", "MINUS", "DOT", "BOOLEAN", "LATITUDE", "LONGITUDE", "ALTITUDE", 
+		"TYPE", "AVAILABILITY", "INDEX", "ORIENTATION", "CENTER", "RADIUS", "BIASX", 
+		"BIASZ", "INT", "TIME", "FLOAT", "DIST", "STRING"
 	};
 	public static final Vocabulary VOCABULARY = new VocabularyImpl(_LITERAL_NAMES, _SYMBOLIC_NAMES);
 
@@ -220,11 +207,6 @@ public class CompParser extends Parser {
 		public void exitRule(ParseTreeListener listener) {
 			if ( listener instanceof CompListener ) ((CompListener)listener).exitStart(this);
 		}
-		@Override
-		public <T> T accept(ParseTreeVisitor<? extends T> visitor) {
-			if ( visitor instanceof CompVisitor ) return ((CompVisitor<? extends T>)visitor).visitStart(this);
-			else return visitor.visitChildren(this);
-		}
 	}
 
 	public final StartContext start() throws RecognitionException {
@@ -270,7 +252,7 @@ public class CompParser extends Parser {
 		public TerminalNode QUOTE(int i) {
 			return getToken(CompParser.QUOTE, i);
 		}
-		public TerminalNode ANGLE() { return getToken(CompParser.ANGLE, 0); }
+		public TerminalNode FLOAT() { return getToken(CompParser.FLOAT, 0); }
 		public TerminalNode TIME() { return getToken(CompParser.TIME, 0); }
 		public LatitudeContext(ParserRuleContext parent, int invokingState) {
 			super(parent, invokingState);
@@ -283,11 +265,6 @@ public class CompParser extends Parser {
 		@Override
 		public void exitRule(ParseTreeListener listener) {
 			if ( listener instanceof CompListener ) ((CompListener)listener).exitLatitude(this);
-		}
-		@Override
-		public <T> T accept(ParseTreeVisitor<? extends T> visitor) {
-			if ( visitor instanceof CompVisitor ) return ((CompVisitor<? extends T>)visitor).visitLatitude(this);
-			else return visitor.visitChildren(this);
 		}
 	}
 
@@ -306,7 +283,7 @@ public class CompParser extends Parser {
 			match(QUOTE);
 			setState(213);
 			_la = _input.LA(1);
-			if ( !(_la==ANGLE || _la==TIME) ) {
+			if ( !(_la==TIME || _la==FLOAT) ) {
 			_errHandler.recoverInline(this);
 			}
 			consume();
@@ -332,7 +309,7 @@ public class CompParser extends Parser {
 		public TerminalNode QUOTE(int i) {
 			return getToken(CompParser.QUOTE, i);
 		}
-		public TerminalNode ANGLE() { return getToken(CompParser.ANGLE, 0); }
+		public TerminalNode FLOAT() { return getToken(CompParser.FLOAT, 0); }
 		public TerminalNode TIME() { return getToken(CompParser.TIME, 0); }
 		public LongitudeContext(ParserRuleContext parent, int invokingState) {
 			super(parent, invokingState);
@@ -345,11 +322,6 @@ public class CompParser extends Parser {
 		@Override
 		public void exitRule(ParseTreeListener listener) {
 			if ( listener instanceof CompListener ) ((CompListener)listener).exitLongitude(this);
-		}
-		@Override
-		public <T> T accept(ParseTreeVisitor<? extends T> visitor) {
-			if ( visitor instanceof CompVisitor ) return ((CompVisitor<? extends T>)visitor).visitLongitude(this);
-			else return visitor.visitChildren(this);
 		}
 	}
 
@@ -368,7 +340,7 @@ public class CompParser extends Parser {
 			match(QUOTE);
 			setState(219);
 			_la = _input.LA(1);
-			if ( !(_la==ANGLE || _la==TIME) ) {
+			if ( !(_la==TIME || _la==FLOAT) ) {
 			_errHandler.recoverInline(this);
 			}
 			consume();
@@ -406,11 +378,6 @@ public class CompParser extends Parser {
 		@Override
 		public void exitRule(ParseTreeListener listener) {
 			if ( listener instanceof CompListener ) ((CompListener)listener).exitAltitude(this);
-		}
-		@Override
-		public <T> T accept(ParseTreeVisitor<? extends T> visitor) {
-			if ( visitor instanceof CompVisitor ) return ((CompVisitor<? extends T>)visitor).visitAltitude(this);
-			else return visitor.visitChildren(this);
 		}
 	}
 
@@ -463,11 +430,6 @@ public class CompParser extends Parser {
 		public void exitRule(ParseTreeListener listener) {
 			if ( listener instanceof CompListener ) ((CompListener)listener).exitLength(this);
 		}
-		@Override
-		public <T> T accept(ParseTreeVisitor<? extends T> visitor) {
-			if ( visitor instanceof CompVisitor ) return ((CompVisitor<? extends T>)visitor).visitLength(this);
-			else return visitor.visitChildren(this);
-		}
 	}
 
 	public final LengthContext length() throws RecognitionException {
@@ -518,11 +480,6 @@ public class CompParser extends Parser {
 		@Override
 		public void exitRule(ParseTreeListener listener) {
 			if ( listener instanceof CompListener ) ((CompListener)listener).exitWidth(this);
-		}
-		@Override
-		public <T> T accept(ParseTreeVisitor<? extends T> visitor) {
-			if ( visitor instanceof CompVisitor ) return ((CompVisitor<? extends T>)visitor).visitWidth(this);
-			else return visitor.visitChildren(this);
 		}
 	}
 
@@ -575,11 +532,6 @@ public class CompParser extends Parser {
 		public void exitRule(ParseTreeListener listener) {
 			if ( listener instanceof CompListener ) ((CompListener)listener).exitIndex(this);
 		}
-		@Override
-		public <T> T accept(ParseTreeVisitor<? extends T> visitor) {
-			if ( visitor instanceof CompVisitor ) return ((CompVisitor<? extends T>)visitor).visitIndex(this);
-			else return visitor.visitChildren(this);
-		}
 	}
 
 	public final IndexContext index() throws RecognitionException {
@@ -631,11 +583,6 @@ public class CompParser extends Parser {
 		public void exitRule(ParseTreeListener listener) {
 			if ( listener instanceof CompListener ) ((CompListener)listener).exitBiasX(this);
 		}
-		@Override
-		public <T> T accept(ParseTreeVisitor<? extends T> visitor) {
-			if ( visitor instanceof CompVisitor ) return ((CompVisitor<? extends T>)visitor).visitBiasX(this);
-			else return visitor.visitChildren(this);
-		}
 	}
 
 	public final BiasXContext biasX() throws RecognitionException {
@@ -686,11 +633,6 @@ public class CompParser extends Parser {
 		@Override
 		public void exitRule(ParseTreeListener listener) {
 			if ( listener instanceof CompListener ) ((CompListener)listener).exitBiasZ(this);
-		}
-		@Override
-		public <T> T accept(ParseTreeVisitor<? extends T> visitor) {
-			if ( visitor instanceof CompVisitor ) return ((CompVisitor<? extends T>)visitor).visitBiasZ(this);
-			else return visitor.visitChildren(this);
 		}
 	}
 
@@ -744,11 +686,6 @@ public class CompParser extends Parser {
 		@Override
 		public void exitRule(ParseTreeListener listener) {
 			if ( listener instanceof CompListener ) ((CompListener)listener).exitAirport(this);
-		}
-		@Override
-		public <T> T accept(ParseTreeVisitor<? extends T> visitor) {
-			if ( visitor instanceof CompVisitor ) return ((CompVisitor<? extends T>)visitor).visitAirport(this);
-			else return visitor.visitChildren(this);
 		}
 	}
 
@@ -827,11 +764,6 @@ public class CompParser extends Parser {
 		@Override
 		public void exitRule(ParseTreeListener listener) {
 			if ( listener instanceof CompListener ) ((CompListener)listener).exitAirportBegin(this);
-		}
-		@Override
-		public <T> T accept(ParseTreeVisitor<? extends T> visitor) {
-			if ( visitor instanceof CompVisitor ) return ((CompVisitor<? extends T>)visitor).visitAirportBegin(this);
-			else return visitor.visitChildren(this);
 		}
 	}
 
@@ -1000,11 +932,6 @@ public class CompParser extends Parser {
 		public void exitRule(ParseTreeListener listener) {
 			if ( listener instanceof CompListener ) ((CompListener)listener).exitAirportChildren(this);
 		}
-		@Override
-		public <T> T accept(ParseTreeVisitor<? extends T> visitor) {
-			if ( visitor instanceof CompVisitor ) return ((CompVisitor<? extends T>)visitor).visitAirportChildren(this);
-			else return visitor.visitChildren(this);
-		}
 	}
 
 	public final AirportChildrenContext airportChildren() throws RecognitionException {
@@ -1143,11 +1070,6 @@ public class CompParser extends Parser {
 		public void exitRule(ParseTreeListener listener) {
 			if ( listener instanceof CompListener ) ((CompListener)listener).exitAirportEnd(this);
 		}
-		@Override
-		public <T> T accept(ParseTreeVisitor<? extends T> visitor) {
-			if ( visitor instanceof CompVisitor ) return ((CompVisitor<? extends T>)visitor).visitAirportEnd(this);
-			else return visitor.visitChildren(this);
-		}
 	}
 
 	public final AirportEndContext airportEnd() throws RecognitionException {
@@ -1190,11 +1112,6 @@ public class CompParser extends Parser {
 		@Override
 		public void exitRule(ParseTreeListener listener) {
 			if ( listener instanceof CompListener ) ((CompListener)listener).exitAirportRegion(this);
-		}
-		@Override
-		public <T> T accept(ParseTreeVisitor<? extends T> visitor) {
-			if ( visitor instanceof CompVisitor ) return ((CompVisitor<? extends T>)visitor).visitAirportRegion(this);
-			else return visitor.visitChildren(this);
 		}
 	}
 
@@ -1247,11 +1164,6 @@ public class CompParser extends Parser {
 		public void exitRule(ParseTreeListener listener) {
 			if ( listener instanceof CompListener ) ((CompListener)listener).exitAirportCountry(this);
 		}
-		@Override
-		public <T> T accept(ParseTreeVisitor<? extends T> visitor) {
-			if ( visitor instanceof CompVisitor ) return ((CompVisitor<? extends T>)visitor).visitAirportCountry(this);
-			else return visitor.visitChildren(this);
-		}
 	}
 
 	public final AirportCountryContext airportCountry() throws RecognitionException {
@@ -1302,11 +1214,6 @@ public class CompParser extends Parser {
 		@Override
 		public void exitRule(ParseTreeListener listener) {
 			if ( listener instanceof CompListener ) ((CompListener)listener).exitAirportState(this);
-		}
-		@Override
-		public <T> T accept(ParseTreeVisitor<? extends T> visitor) {
-			if ( visitor instanceof CompVisitor ) return ((CompVisitor<? extends T>)visitor).visitAirportState(this);
-			else return visitor.visitChildren(this);
 		}
 	}
 
@@ -1359,11 +1266,6 @@ public class CompParser extends Parser {
 		public void exitRule(ParseTreeListener listener) {
 			if ( listener instanceof CompListener ) ((CompListener)listener).exitAirportCity(this);
 		}
-		@Override
-		public <T> T accept(ParseTreeVisitor<? extends T> visitor) {
-			if ( visitor instanceof CompVisitor ) return ((CompVisitor<? extends T>)visitor).visitAirportCity(this);
-			else return visitor.visitChildren(this);
-		}
 	}
 
 	public final AirportCityContext airportCity() throws RecognitionException {
@@ -1415,11 +1317,6 @@ public class CompParser extends Parser {
 		public void exitRule(ParseTreeListener listener) {
 			if ( listener instanceof CompListener ) ((CompListener)listener).exitAirportName(this);
 		}
-		@Override
-		public <T> T accept(ParseTreeVisitor<? extends T> visitor) {
-			if ( visitor instanceof CompVisitor ) return ((CompVisitor<? extends T>)visitor).visitAirportName(this);
-			else return visitor.visitChildren(this);
-		}
 	}
 
 	public final AirportNameContext airportName() throws RecognitionException {
@@ -1458,7 +1355,7 @@ public class CompParser extends Parser {
 		public TerminalNode QUOTE(int i) {
 			return getToken(CompParser.QUOTE, i);
 		}
-		public TerminalNode ANGLE() { return getToken(CompParser.ANGLE, 0); }
+		public TerminalNode FLOAT() { return getToken(CompParser.FLOAT, 0); }
 		public AirportMagvarContext(ParserRuleContext parent, int invokingState) {
 			super(parent, invokingState);
 		}
@@ -1470,11 +1367,6 @@ public class CompParser extends Parser {
 		@Override
 		public void exitRule(ParseTreeListener listener) {
 			if ( listener instanceof CompListener ) ((CompListener)listener).exitAirportMagvar(this);
-		}
-		@Override
-		public <T> T accept(ParseTreeVisitor<? extends T> visitor) {
-			if ( visitor instanceof CompVisitor ) return ((CompVisitor<? extends T>)visitor).visitAirportMagvar(this);
-			else return visitor.visitChildren(this);
 		}
 	}
 
@@ -1491,7 +1383,7 @@ public class CompParser extends Parser {
 			setState(370); 
 			match(QUOTE);
 			setState(371); 
-			match(ANGLE);
+			match(FLOAT);
 			setState(372); 
 			match(QUOTE);
 			}
@@ -1514,7 +1406,7 @@ public class CompParser extends Parser {
 		public TerminalNode QUOTE(int i) {
 			return getToken(CompParser.QUOTE, i);
 		}
-		public TerminalNode SCALAR() { return getToken(CompParser.SCALAR, 0); }
+		public TerminalNode FLOAT() { return getToken(CompParser.FLOAT, 0); }
 		public AirportTrafficScalarContext(ParserRuleContext parent, int invokingState) {
 			super(parent, invokingState);
 		}
@@ -1526,11 +1418,6 @@ public class CompParser extends Parser {
 		@Override
 		public void exitRule(ParseTreeListener listener) {
 			if ( listener instanceof CompListener ) ((CompListener)listener).exitAirportTrafficScalar(this);
-		}
-		@Override
-		public <T> T accept(ParseTreeVisitor<? extends T> visitor) {
-			if ( visitor instanceof CompVisitor ) return ((CompVisitor<? extends T>)visitor).visitAirportTrafficScalar(this);
-			else return visitor.visitChildren(this);
 		}
 	}
 
@@ -1547,7 +1434,7 @@ public class CompParser extends Parser {
 			setState(376); 
 			match(QUOTE);
 			setState(377); 
-			match(SCALAR);
+			match(FLOAT);
 			setState(378); 
 			match(QUOTE);
 			}
@@ -1582,11 +1469,6 @@ public class CompParser extends Parser {
 		@Override
 		public void exitRule(ParseTreeListener listener) {
 			if ( listener instanceof CompListener ) ((CompListener)listener).exitAirportTestRadius(this);
-		}
-		@Override
-		public <T> T accept(ParseTreeVisitor<? extends T> visitor) {
-			if ( visitor instanceof CompVisitor ) return ((CompVisitor<? extends T>)visitor).visitAirportTestRadius(this);
-			else return visitor.visitChildren(this);
 		}
 	}
 
@@ -1639,11 +1521,6 @@ public class CompParser extends Parser {
 		public void exitRule(ParseTreeListener listener) {
 			if ( listener instanceof CompListener ) ((CompListener)listener).exitAirportIdent(this);
 		}
-		@Override
-		public <T> T accept(ParseTreeVisitor<? extends T> visitor) {
-			if ( visitor instanceof CompVisitor ) return ((CompVisitor<? extends T>)visitor).visitAirportIdent(this);
-			else return visitor.visitChildren(this);
-		}
 	}
 
 	public final AirportIdentContext airportIdent() throws RecognitionException {
@@ -1694,11 +1571,6 @@ public class CompParser extends Parser {
 		public void exitRule(ParseTreeListener listener) {
 			if ( listener instanceof CompListener ) ((CompListener)listener).exitTower(this);
 		}
-		@Override
-		public <T> T accept(ParseTreeVisitor<? extends T> visitor) {
-			if ( visitor instanceof CompVisitor ) return ((CompVisitor<? extends T>)visitor).visitTower(this);
-			else return visitor.visitChildren(this);
-		}
 	}
 
 	public final TowerContext tower() throws RecognitionException {
@@ -1748,11 +1620,6 @@ public class CompParser extends Parser {
 		public void exitRule(ParseTreeListener listener) {
 			if ( listener instanceof CompListener ) ((CompListener)listener).exitTowerBegin(this);
 		}
-		@Override
-		public <T> T accept(ParseTreeVisitor<? extends T> visitor) {
-			if ( visitor instanceof CompVisitor ) return ((CompVisitor<? extends T>)visitor).visitTowerBegin(this);
-			else return visitor.visitChildren(this);
-		}
 	}
 
 	public final TowerBeginContext towerBegin() throws RecognitionException {
@@ -1798,11 +1665,6 @@ public class CompParser extends Parser {
 		public void exitRule(ParseTreeListener listener) {
 			if ( listener instanceof CompListener ) ((CompListener)listener).exitTowerEnd(this);
 		}
-		@Override
-		public <T> T accept(ParseTreeVisitor<? extends T> visitor) {
-			if ( visitor instanceof CompVisitor ) return ((CompVisitor<? extends T>)visitor).visitTowerEnd(this);
-			else return visitor.visitChildren(this);
-		}
 	}
 
 	public final TowerEndContext towerEnd() throws RecognitionException {
@@ -1846,11 +1708,6 @@ public class CompParser extends Parser {
 		@Override
 		public void exitRule(ParseTreeListener listener) {
 			if ( listener instanceof CompListener ) ((CompListener)listener).exitServices(this);
-		}
-		@Override
-		public <T> T accept(ParseTreeVisitor<? extends T> visitor) {
-			if ( visitor instanceof CompVisitor ) return ((CompVisitor<? extends T>)visitor).visitServices(this);
-			else return visitor.visitChildren(this);
 		}
 	}
 
@@ -1913,11 +1770,6 @@ public class CompParser extends Parser {
 		public void exitRule(ParseTreeListener listener) {
 			if ( listener instanceof CompListener ) ((CompListener)listener).exitFuel(this);
 		}
-		@Override
-		public <T> T accept(ParseTreeVisitor<? extends T> visitor) {
-			if ( visitor instanceof CompVisitor ) return ((CompVisitor<? extends T>)visitor).visitFuel(this);
-			else return visitor.visitChildren(this);
-		}
 	}
 
 	public final FuelContext fuel() throws RecognitionException {
@@ -1954,7 +1806,8 @@ public class CompParser extends Parser {
 		public TerminalNode QUOTE(int i) {
 			return getToken(CompParser.QUOTE, i);
 		}
-		public TerminalNode FUEL_TYPE() { return getToken(CompParser.FUEL_TYPE, 0); }
+		public TerminalNode INT() { return getToken(CompParser.INT, 0); }
+		public TerminalNode STRING() { return getToken(CompParser.STRING, 0); }
 		public FuelTypeContext(ParserRuleContext parent, int invokingState) {
 			super(parent, invokingState);
 		}
@@ -1967,16 +1820,12 @@ public class CompParser extends Parser {
 		public void exitRule(ParseTreeListener listener) {
 			if ( listener instanceof CompListener ) ((CompListener)listener).exitFuelType(this);
 		}
-		@Override
-		public <T> T accept(ParseTreeVisitor<? extends T> visitor) {
-			if ( visitor instanceof CompVisitor ) return ((CompVisitor<? extends T>)visitor).visitFuelType(this);
-			else return visitor.visitChildren(this);
-		}
 	}
 
 	public final FuelTypeContext fuelType() throws RecognitionException {
 		FuelTypeContext _localctx = new FuelTypeContext(_ctx, getState());
 		enterRule(_localctx, 54, RULE_fuelType);
+		int _la;
 		try {
 			enterOuterAlt(_localctx, 1);
 			{
@@ -1986,8 +1835,12 @@ public class CompParser extends Parser {
 			match(EQUAL);
 			setState(419); 
 			match(QUOTE);
-			setState(420); 
-			match(FUEL_TYPE);
+			setState(420);
+			_la = _input.LA(1);
+			if ( !(_la==INT || _la==STRING) ) {
+			_errHandler.recoverInline(this);
+			}
+			consume();
 			setState(421); 
 			match(QUOTE);
 			}
@@ -2010,9 +1863,8 @@ public class CompParser extends Parser {
 		public TerminalNode QUOTE(int i) {
 			return getToken(CompParser.QUOTE, i);
 		}
-		public TerminalNode BOOLEAN2() { return getToken(CompParser.BOOLEAN2, 0); }
-		public TerminalNode UNKNOWN() { return getToken(CompParser.UNKNOWN, 0); }
-		public TerminalNode PRIOR_REQUEST() { return getToken(CompParser.PRIOR_REQUEST, 0); }
+		public TerminalNode BOOLEAN() { return getToken(CompParser.BOOLEAN, 0); }
+		public TerminalNode STRING() { return getToken(CompParser.STRING, 0); }
 		public FuelAvailabilityContext(ParserRuleContext parent, int invokingState) {
 			super(parent, invokingState);
 		}
@@ -2024,11 +1876,6 @@ public class CompParser extends Parser {
 		@Override
 		public void exitRule(ParseTreeListener listener) {
 			if ( listener instanceof CompListener ) ((CompListener)listener).exitFuelAvailability(this);
-		}
-		@Override
-		public <T> T accept(ParseTreeVisitor<? extends T> visitor) {
-			if ( visitor instanceof CompVisitor ) return ((CompVisitor<? extends T>)visitor).visitFuelAvailability(this);
-			else return visitor.visitChildren(this);
 		}
 	}
 
@@ -2047,7 +1894,7 @@ public class CompParser extends Parser {
 			match(QUOTE);
 			setState(426);
 			_la = _input.LA(1);
-			if ( !(((((_la - 107)) & ~0x3f) == 0 && ((1L << (_la - 107)) & ((1L << (BOOLEAN2 - 107)) | (1L << (UNKNOWN - 107)) | (1L << (PRIOR_REQUEST - 107)))) != 0)) ) {
+			if ( !(_la==BOOLEAN || _la==STRING) ) {
 			_errHandler.recoverInline(this);
 			}
 			consume();
@@ -2087,11 +1934,6 @@ public class CompParser extends Parser {
 		@Override
 		public void exitRule(ParseTreeListener listener) {
 			if ( listener instanceof CompListener ) ((CompListener)listener).exitRunway(this);
-		}
-		@Override
-		public <T> T accept(ParseTreeVisitor<? extends T> visitor) {
-			if ( visitor instanceof CompVisitor ) return ((CompVisitor<? extends T>)visitor).visitRunway(this);
-			else return visitor.visitChildren(this);
 		}
 	}
 
@@ -2183,11 +2025,6 @@ public class CompParser extends Parser {
 		public void exitRule(ParseTreeListener listener) {
 			if ( listener instanceof CompListener ) ((CompListener)listener).exitRunwayBegin(this);
 		}
-		@Override
-		public <T> T accept(ParseTreeVisitor<? extends T> visitor) {
-			if ( visitor instanceof CompVisitor ) return ((CompVisitor<? extends T>)visitor).visitRunwayBegin(this);
-			else return visitor.visitChildren(this);
-		}
 	}
 
 	public final RunwayBeginContext runwayBegin() throws RecognitionException {
@@ -2264,11 +2101,6 @@ public class CompParser extends Parser {
 		public void exitRule(ParseTreeListener listener) {
 			if ( listener instanceof CompListener ) ((CompListener)listener).exitRunwayChildren(this);
 		}
-		@Override
-		public <T> T accept(ParseTreeVisitor<? extends T> visitor) {
-			if ( visitor instanceof CompVisitor ) return ((CompVisitor<? extends T>)visitor).visitRunwayChildren(this);
-			else return visitor.visitChildren(this);
-		}
 	}
 
 	public final RunwayChildrenContext runwayChildren() throws RecognitionException {
@@ -2308,11 +2140,6 @@ public class CompParser extends Parser {
 		public void exitRule(ParseTreeListener listener) {
 			if ( listener instanceof CompListener ) ((CompListener)listener).exitRunwayEnd(this);
 		}
-		@Override
-		public <T> T accept(ParseTreeVisitor<? extends T> visitor) {
-			if ( visitor instanceof CompVisitor ) return ((CompVisitor<? extends T>)visitor).visitRunwayEnd(this);
-			else return visitor.visitChildren(this);
-		}
 	}
 
 	public final RunwayEndContext runwayEnd() throws RecognitionException {
@@ -2343,7 +2170,7 @@ public class CompParser extends Parser {
 		public TerminalNode QUOTE(int i) {
 			return getToken(CompParser.QUOTE, i);
 		}
-		public TerminalNode SURFACE_TYPE() { return getToken(CompParser.SURFACE_TYPE, 0); }
+		public TerminalNode STRING() { return getToken(CompParser.STRING, 0); }
 		public SurfaceContext(ParserRuleContext parent, int invokingState) {
 			super(parent, invokingState);
 		}
@@ -2355,11 +2182,6 @@ public class CompParser extends Parser {
 		@Override
 		public void exitRule(ParseTreeListener listener) {
 			if ( listener instanceof CompListener ) ((CompListener)listener).exitSurface(this);
-		}
-		@Override
-		public <T> T accept(ParseTreeVisitor<? extends T> visitor) {
-			if ( visitor instanceof CompVisitor ) return ((CompVisitor<? extends T>)visitor).visitSurface(this);
-			else return visitor.visitChildren(this);
 		}
 	}
 
@@ -2376,7 +2198,7 @@ public class CompParser extends Parser {
 			setState(459); 
 			match(QUOTE);
 			setState(460); 
-			match(SURFACE_TYPE);
+			match(STRING);
 			setState(461); 
 			match(QUOTE);
 			}
@@ -2399,8 +2221,8 @@ public class CompParser extends Parser {
 		public TerminalNode QUOTE(int i) {
 			return getToken(CompParser.QUOTE, i);
 		}
-		public TerminalNode ANGLE() { return getToken(CompParser.ANGLE, 0); }
 		public TerminalNode INT() { return getToken(CompParser.INT, 0); }
+		public TerminalNode FLOAT() { return getToken(CompParser.FLOAT, 0); }
 		public HeadingContext(ParserRuleContext parent, int invokingState) {
 			super(parent, invokingState);
 		}
@@ -2412,11 +2234,6 @@ public class CompParser extends Parser {
 		@Override
 		public void exitRule(ParseTreeListener listener) {
 			if ( listener instanceof CompListener ) ((CompListener)listener).exitHeading(this);
-		}
-		@Override
-		public <T> T accept(ParseTreeVisitor<? extends T> visitor) {
-			if ( visitor instanceof CompVisitor ) return ((CompVisitor<? extends T>)visitor).visitHeading(this);
-			else return visitor.visitChildren(this);
 		}
 	}
 
@@ -2435,7 +2252,7 @@ public class CompParser extends Parser {
 			match(QUOTE);
 			setState(466);
 			_la = _input.LA(1);
-			if ( !(_la==INT || _la==ANGLE) ) {
+			if ( !(_la==INT || _la==FLOAT) ) {
 			_errHandler.recoverInline(this);
 			}
 			consume();
@@ -2462,7 +2279,7 @@ public class CompParser extends Parser {
 			return getToken(CompParser.QUOTE, i);
 		}
 		public TerminalNode INT() { return getToken(CompParser.INT, 0); }
-		public TerminalNode GEO_ORIENTATION() { return getToken(CompParser.GEO_ORIENTATION, 0); }
+		public TerminalNode STRING() { return getToken(CompParser.STRING, 0); }
 		public NumberContext(ParserRuleContext parent, int invokingState) {
 			super(parent, invokingState);
 		}
@@ -2474,11 +2291,6 @@ public class CompParser extends Parser {
 		@Override
 		public void exitRule(ParseTreeListener listener) {
 			if ( listener instanceof CompListener ) ((CompListener)listener).exitNumber(this);
-		}
-		@Override
-		public <T> T accept(ParseTreeVisitor<? extends T> visitor) {
-			if ( visitor instanceof CompVisitor ) return ((CompVisitor<? extends T>)visitor).visitNumber(this);
-			else return visitor.visitChildren(this);
 		}
 	}
 
@@ -2497,7 +2309,7 @@ public class CompParser extends Parser {
 			match(QUOTE);
 			setState(472);
 			_la = _input.LA(1);
-			if ( !(_la==GEO_ORIENTATION || _la==INT) ) {
+			if ( !(_la==INT || _la==STRING) ) {
 			_errHandler.recoverInline(this);
 			}
 			consume();
@@ -2524,10 +2336,6 @@ public class CompParser extends Parser {
 			return getToken(CompParser.QUOTE, i);
 		}
 		public TerminalNode STRING() { return getToken(CompParser.STRING, 0); }
-		public TerminalNode LEFT() { return getToken(CompParser.LEFT, 0); }
-		public TerminalNode RIGHT() { return getToken(CompParser.RIGHT, 0); }
-		public TerminalNode CENTER() { return getToken(CompParser.CENTER, 0); }
-		public TerminalNode NONE() { return getToken(CompParser.NONE, 0); }
 		public DesignatorContext(ParserRuleContext parent, int invokingState) {
 			super(parent, invokingState);
 		}
@@ -2540,17 +2348,11 @@ public class CompParser extends Parser {
 		public void exitRule(ParseTreeListener listener) {
 			if ( listener instanceof CompListener ) ((CompListener)listener).exitDesignator(this);
 		}
-		@Override
-		public <T> T accept(ParseTreeVisitor<? extends T> visitor) {
-			if ( visitor instanceof CompVisitor ) return ((CompVisitor<? extends T>)visitor).visitDesignator(this);
-			else return visitor.visitChildren(this);
-		}
 	}
 
 	public final DesignatorContext designator() throws RecognitionException {
 		DesignatorContext _localctx = new DesignatorContext(_ctx, getState());
 		enterRule(_localctx, 72, RULE_designator);
-		int _la;
 		try {
 			enterOuterAlt(_localctx, 1);
 			{
@@ -2560,12 +2362,8 @@ public class CompParser extends Parser {
 			match(EQUAL);
 			setState(477); 
 			match(QUOTE);
-			setState(478);
-			_la = _input.LA(1);
-			if ( !(((((_la - 118)) & ~0x3f) == 0 && ((1L << (_la - 118)) & ((1L << (LEFT - 118)) | (1L << (RIGHT - 118)) | (1L << (CENTER - 118)) | (1L << (NONE - 118)) | (1L << (STRING - 118)))) != 0)) ) {
-			_errHandler.recoverInline(this);
-			}
-			consume();
+			setState(478); 
+			match(STRING);
 			setState(479); 
 			match(QUOTE);
 			}
@@ -2600,11 +2398,6 @@ public class CompParser extends Parser {
 		@Override
 		public void exitRule(ParseTreeListener listener) {
 			if ( listener instanceof CompListener ) ((CompListener)listener).exitPatternAlt(this);
-		}
-		@Override
-		public <T> T accept(ParseTreeVisitor<? extends T> visitor) {
-			if ( visitor instanceof CompVisitor ) return ((CompVisitor<? extends T>)visitor).visitPatternAlt(this);
-			else return visitor.visitChildren(this);
 		}
 	}
 
@@ -2644,8 +2437,7 @@ public class CompParser extends Parser {
 		public TerminalNode QUOTE(int i) {
 			return getToken(CompParser.QUOTE, i);
 		}
-		public TerminalNode BOOLEAN1() { return getToken(CompParser.BOOLEAN1, 0); }
-		public TerminalNode BOOLEAN2() { return getToken(CompParser.BOOLEAN2, 0); }
+		public TerminalNode BOOLEAN() { return getToken(CompParser.BOOLEAN, 0); }
 		public PrimaryTakeoffContext(ParserRuleContext parent, int invokingState) {
 			super(parent, invokingState);
 		}
@@ -2658,17 +2450,11 @@ public class CompParser extends Parser {
 		public void exitRule(ParseTreeListener listener) {
 			if ( listener instanceof CompListener ) ((CompListener)listener).exitPrimaryTakeoff(this);
 		}
-		@Override
-		public <T> T accept(ParseTreeVisitor<? extends T> visitor) {
-			if ( visitor instanceof CompVisitor ) return ((CompVisitor<? extends T>)visitor).visitPrimaryTakeoff(this);
-			else return visitor.visitChildren(this);
-		}
 	}
 
 	public final PrimaryTakeoffContext primaryTakeoff() throws RecognitionException {
 		PrimaryTakeoffContext _localctx = new PrimaryTakeoffContext(_ctx, getState());
 		enterRule(_localctx, 76, RULE_primaryTakeoff);
-		int _la;
 		try {
 			enterOuterAlt(_localctx, 1);
 			{
@@ -2678,12 +2464,8 @@ public class CompParser extends Parser {
 			match(EQUAL);
 			setState(489); 
 			match(QUOTE);
-			setState(490);
-			_la = _input.LA(1);
-			if ( !(_la==BOOLEAN1 || _la==BOOLEAN2) ) {
-			_errHandler.recoverInline(this);
-			}
-			consume();
+			setState(490); 
+			match(BOOLEAN);
 			setState(491); 
 			match(QUOTE);
 			}
@@ -2706,8 +2488,7 @@ public class CompParser extends Parser {
 		public TerminalNode QUOTE(int i) {
 			return getToken(CompParser.QUOTE, i);
 		}
-		public TerminalNode BOOLEAN1() { return getToken(CompParser.BOOLEAN1, 0); }
-		public TerminalNode BOOLEAN2() { return getToken(CompParser.BOOLEAN2, 0); }
+		public TerminalNode BOOLEAN() { return getToken(CompParser.BOOLEAN, 0); }
 		public PrimaryLandingContext(ParserRuleContext parent, int invokingState) {
 			super(parent, invokingState);
 		}
@@ -2720,17 +2501,11 @@ public class CompParser extends Parser {
 		public void exitRule(ParseTreeListener listener) {
 			if ( listener instanceof CompListener ) ((CompListener)listener).exitPrimaryLanding(this);
 		}
-		@Override
-		public <T> T accept(ParseTreeVisitor<? extends T> visitor) {
-			if ( visitor instanceof CompVisitor ) return ((CompVisitor<? extends T>)visitor).visitPrimaryLanding(this);
-			else return visitor.visitChildren(this);
-		}
 	}
 
 	public final PrimaryLandingContext primaryLanding() throws RecognitionException {
 		PrimaryLandingContext _localctx = new PrimaryLandingContext(_ctx, getState());
 		enterRule(_localctx, 78, RULE_primaryLanding);
-		int _la;
 		try {
 			enterOuterAlt(_localctx, 1);
 			{
@@ -2740,12 +2515,8 @@ public class CompParser extends Parser {
 			match(EQUAL);
 			setState(495); 
 			match(QUOTE);
-			setState(496);
-			_la = _input.LA(1);
-			if ( !(_la==BOOLEAN1 || _la==BOOLEAN2) ) {
-			_errHandler.recoverInline(this);
-			}
-			consume();
+			setState(496); 
+			match(BOOLEAN);
 			setState(497); 
 			match(QUOTE);
 			}
@@ -2768,8 +2539,7 @@ public class CompParser extends Parser {
 		public TerminalNode QUOTE(int i) {
 			return getToken(CompParser.QUOTE, i);
 		}
-		public TerminalNode LEFT() { return getToken(CompParser.LEFT, 0); }
-		public TerminalNode RIGHT() { return getToken(CompParser.RIGHT, 0); }
+		public TerminalNode STRING() { return getToken(CompParser.STRING, 0); }
 		public PrimaryPatternContext(ParserRuleContext parent, int invokingState) {
 			super(parent, invokingState);
 		}
@@ -2782,17 +2552,11 @@ public class CompParser extends Parser {
 		public void exitRule(ParseTreeListener listener) {
 			if ( listener instanceof CompListener ) ((CompListener)listener).exitPrimaryPattern(this);
 		}
-		@Override
-		public <T> T accept(ParseTreeVisitor<? extends T> visitor) {
-			if ( visitor instanceof CompVisitor ) return ((CompVisitor<? extends T>)visitor).visitPrimaryPattern(this);
-			else return visitor.visitChildren(this);
-		}
 	}
 
 	public final PrimaryPatternContext primaryPattern() throws RecognitionException {
 		PrimaryPatternContext _localctx = new PrimaryPatternContext(_ctx, getState());
 		enterRule(_localctx, 80, RULE_primaryPattern);
-		int _la;
 		try {
 			enterOuterAlt(_localctx, 1);
 			{
@@ -2802,12 +2566,8 @@ public class CompParser extends Parser {
 			match(EQUAL);
 			setState(501); 
 			match(QUOTE);
-			setState(502);
-			_la = _input.LA(1);
-			if ( !(_la==LEFT || _la==RIGHT) ) {
-			_errHandler.recoverInline(this);
-			}
-			consume();
+			setState(502); 
+			match(STRING);
 			setState(503); 
 			match(QUOTE);
 			}
@@ -2830,8 +2590,7 @@ public class CompParser extends Parser {
 		public TerminalNode QUOTE(int i) {
 			return getToken(CompParser.QUOTE, i);
 		}
-		public TerminalNode BOOLEAN1() { return getToken(CompParser.BOOLEAN1, 0); }
-		public TerminalNode BOOLEAN2() { return getToken(CompParser.BOOLEAN2, 0); }
+		public TerminalNode BOOLEAN() { return getToken(CompParser.BOOLEAN, 0); }
 		public SecondaryTakeoffContext(ParserRuleContext parent, int invokingState) {
 			super(parent, invokingState);
 		}
@@ -2844,17 +2603,11 @@ public class CompParser extends Parser {
 		public void exitRule(ParseTreeListener listener) {
 			if ( listener instanceof CompListener ) ((CompListener)listener).exitSecondaryTakeoff(this);
 		}
-		@Override
-		public <T> T accept(ParseTreeVisitor<? extends T> visitor) {
-			if ( visitor instanceof CompVisitor ) return ((CompVisitor<? extends T>)visitor).visitSecondaryTakeoff(this);
-			else return visitor.visitChildren(this);
-		}
 	}
 
 	public final SecondaryTakeoffContext secondaryTakeoff() throws RecognitionException {
 		SecondaryTakeoffContext _localctx = new SecondaryTakeoffContext(_ctx, getState());
 		enterRule(_localctx, 82, RULE_secondaryTakeoff);
-		int _la;
 		try {
 			enterOuterAlt(_localctx, 1);
 			{
@@ -2864,12 +2617,8 @@ public class CompParser extends Parser {
 			match(EQUAL);
 			setState(507); 
 			match(QUOTE);
-			setState(508);
-			_la = _input.LA(1);
-			if ( !(_la==BOOLEAN1 || _la==BOOLEAN2) ) {
-			_errHandler.recoverInline(this);
-			}
-			consume();
+			setState(508); 
+			match(BOOLEAN);
 			setState(509); 
 			match(QUOTE);
 			}
@@ -2892,8 +2641,7 @@ public class CompParser extends Parser {
 		public TerminalNode QUOTE(int i) {
 			return getToken(CompParser.QUOTE, i);
 		}
-		public TerminalNode BOOLEAN1() { return getToken(CompParser.BOOLEAN1, 0); }
-		public TerminalNode BOOLEAN2() { return getToken(CompParser.BOOLEAN2, 0); }
+		public TerminalNode BOOLEAN() { return getToken(CompParser.BOOLEAN, 0); }
 		public SecondaryLandingContext(ParserRuleContext parent, int invokingState) {
 			super(parent, invokingState);
 		}
@@ -2906,17 +2654,11 @@ public class CompParser extends Parser {
 		public void exitRule(ParseTreeListener listener) {
 			if ( listener instanceof CompListener ) ((CompListener)listener).exitSecondaryLanding(this);
 		}
-		@Override
-		public <T> T accept(ParseTreeVisitor<? extends T> visitor) {
-			if ( visitor instanceof CompVisitor ) return ((CompVisitor<? extends T>)visitor).visitSecondaryLanding(this);
-			else return visitor.visitChildren(this);
-		}
 	}
 
 	public final SecondaryLandingContext secondaryLanding() throws RecognitionException {
 		SecondaryLandingContext _localctx = new SecondaryLandingContext(_ctx, getState());
 		enterRule(_localctx, 84, RULE_secondaryLanding);
-		int _la;
 		try {
 			enterOuterAlt(_localctx, 1);
 			{
@@ -2926,12 +2668,8 @@ public class CompParser extends Parser {
 			match(EQUAL);
 			setState(513); 
 			match(QUOTE);
-			setState(514);
-			_la = _input.LA(1);
-			if ( !(_la==BOOLEAN1 || _la==BOOLEAN2) ) {
-			_errHandler.recoverInline(this);
-			}
-			consume();
+			setState(514); 
+			match(BOOLEAN);
 			setState(515); 
 			match(QUOTE);
 			}
@@ -2954,8 +2692,7 @@ public class CompParser extends Parser {
 		public TerminalNode QUOTE(int i) {
 			return getToken(CompParser.QUOTE, i);
 		}
-		public TerminalNode LEFT() { return getToken(CompParser.LEFT, 0); }
-		public TerminalNode RIGHT() { return getToken(CompParser.RIGHT, 0); }
+		public TerminalNode STRING() { return getToken(CompParser.STRING, 0); }
 		public SecondaryPatternContext(ParserRuleContext parent, int invokingState) {
 			super(parent, invokingState);
 		}
@@ -2968,17 +2705,11 @@ public class CompParser extends Parser {
 		public void exitRule(ParseTreeListener listener) {
 			if ( listener instanceof CompListener ) ((CompListener)listener).exitSecondaryPattern(this);
 		}
-		@Override
-		public <T> T accept(ParseTreeVisitor<? extends T> visitor) {
-			if ( visitor instanceof CompVisitor ) return ((CompVisitor<? extends T>)visitor).visitSecondaryPattern(this);
-			else return visitor.visitChildren(this);
-		}
 	}
 
 	public final SecondaryPatternContext secondaryPattern() throws RecognitionException {
 		SecondaryPatternContext _localctx = new SecondaryPatternContext(_ctx, getState());
 		enterRule(_localctx, 86, RULE_secondaryPattern);
-		int _la;
 		try {
 			enterOuterAlt(_localctx, 1);
 			{
@@ -2988,12 +2719,8 @@ public class CompParser extends Parser {
 			match(EQUAL);
 			setState(519); 
 			match(QUOTE);
-			setState(520);
-			_la = _input.LA(1);
-			if ( !(_la==LEFT || _la==RIGHT) ) {
-			_errHandler.recoverInline(this);
-			}
-			consume();
+			setState(520); 
+			match(STRING);
 			setState(521); 
 			match(QUOTE);
 			}
@@ -3081,11 +2808,6 @@ public class CompParser extends Parser {
 		public void exitRule(ParseTreeListener listener) {
 			if ( listener instanceof CompListener ) ((CompListener)listener).exitMarkings(this);
 		}
-		@Override
-		public <T> T accept(ParseTreeVisitor<? extends T> visitor) {
-			if ( visitor instanceof CompVisitor ) return ((CompVisitor<? extends T>)visitor).visitMarkings(this);
-			else return visitor.visitChildren(this);
-		}
 	}
 
 	public final MarkingsContext markings() throws RecognitionException {
@@ -3156,7 +2878,7 @@ public class CompParser extends Parser {
 		public TerminalNode QUOTE(int i) {
 			return getToken(CompParser.QUOTE, i);
 		}
-		public TerminalNode BOOLEAN1() { return getToken(CompParser.BOOLEAN1, 0); }
+		public TerminalNode BOOLEAN() { return getToken(CompParser.BOOLEAN, 0); }
 		public AlternateThresholdContext(ParserRuleContext parent, int invokingState) {
 			super(parent, invokingState);
 		}
@@ -3168,11 +2890,6 @@ public class CompParser extends Parser {
 		@Override
 		public void exitRule(ParseTreeListener listener) {
 			if ( listener instanceof CompListener ) ((CompListener)listener).exitAlternateThreshold(this);
-		}
-		@Override
-		public <T> T accept(ParseTreeVisitor<? extends T> visitor) {
-			if ( visitor instanceof CompVisitor ) return ((CompVisitor<? extends T>)visitor).visitAlternateThreshold(this);
-			else return visitor.visitChildren(this);
 		}
 	}
 
@@ -3189,7 +2906,7 @@ public class CompParser extends Parser {
 			setState(547); 
 			match(QUOTE);
 			setState(548); 
-			match(BOOLEAN1);
+			match(BOOLEAN);
 			setState(549); 
 			match(QUOTE);
 			}
@@ -3212,7 +2929,7 @@ public class CompParser extends Parser {
 		public TerminalNode QUOTE(int i) {
 			return getToken(CompParser.QUOTE, i);
 		}
-		public TerminalNode BOOLEAN1() { return getToken(CompParser.BOOLEAN1, 0); }
+		public TerminalNode BOOLEAN() { return getToken(CompParser.BOOLEAN, 0); }
 		public AlternateTouchdownContext(ParserRuleContext parent, int invokingState) {
 			super(parent, invokingState);
 		}
@@ -3224,11 +2941,6 @@ public class CompParser extends Parser {
 		@Override
 		public void exitRule(ParseTreeListener listener) {
 			if ( listener instanceof CompListener ) ((CompListener)listener).exitAlternateTouchdown(this);
-		}
-		@Override
-		public <T> T accept(ParseTreeVisitor<? extends T> visitor) {
-			if ( visitor instanceof CompVisitor ) return ((CompVisitor<? extends T>)visitor).visitAlternateTouchdown(this);
-			else return visitor.visitChildren(this);
 		}
 	}
 
@@ -3245,7 +2957,7 @@ public class CompParser extends Parser {
 			setState(553); 
 			match(QUOTE);
 			setState(554); 
-			match(BOOLEAN1);
+			match(BOOLEAN);
 			setState(555); 
 			match(QUOTE);
 			}
@@ -3268,7 +2980,7 @@ public class CompParser extends Parser {
 		public TerminalNode QUOTE(int i) {
 			return getToken(CompParser.QUOTE, i);
 		}
-		public TerminalNode BOOLEAN1() { return getToken(CompParser.BOOLEAN1, 0); }
+		public TerminalNode BOOLEAN() { return getToken(CompParser.BOOLEAN, 0); }
 		public AlternateFixedDistanceContext(ParserRuleContext parent, int invokingState) {
 			super(parent, invokingState);
 		}
@@ -3280,11 +2992,6 @@ public class CompParser extends Parser {
 		@Override
 		public void exitRule(ParseTreeListener listener) {
 			if ( listener instanceof CompListener ) ((CompListener)listener).exitAlternateFixedDistance(this);
-		}
-		@Override
-		public <T> T accept(ParseTreeVisitor<? extends T> visitor) {
-			if ( visitor instanceof CompVisitor ) return ((CompVisitor<? extends T>)visitor).visitAlternateFixedDistance(this);
-			else return visitor.visitChildren(this);
 		}
 	}
 
@@ -3301,7 +3008,7 @@ public class CompParser extends Parser {
 			setState(559); 
 			match(QUOTE);
 			setState(560); 
-			match(BOOLEAN1);
+			match(BOOLEAN);
 			setState(561); 
 			match(QUOTE);
 			}
@@ -3324,7 +3031,7 @@ public class CompParser extends Parser {
 		public TerminalNode QUOTE(int i) {
 			return getToken(CompParser.QUOTE, i);
 		}
-		public TerminalNode BOOLEAN1() { return getToken(CompParser.BOOLEAN1, 0); }
+		public TerminalNode BOOLEAN() { return getToken(CompParser.BOOLEAN, 0); }
 		public AlternatePrecisionContext(ParserRuleContext parent, int invokingState) {
 			super(parent, invokingState);
 		}
@@ -3336,11 +3043,6 @@ public class CompParser extends Parser {
 		@Override
 		public void exitRule(ParseTreeListener listener) {
 			if ( listener instanceof CompListener ) ((CompListener)listener).exitAlternatePrecision(this);
-		}
-		@Override
-		public <T> T accept(ParseTreeVisitor<? extends T> visitor) {
-			if ( visitor instanceof CompVisitor ) return ((CompVisitor<? extends T>)visitor).visitAlternatePrecision(this);
-			else return visitor.visitChildren(this);
 		}
 	}
 
@@ -3357,7 +3059,7 @@ public class CompParser extends Parser {
 			setState(565); 
 			match(QUOTE);
 			setState(566); 
-			match(BOOLEAN1);
+			match(BOOLEAN);
 			setState(567); 
 			match(QUOTE);
 			}
@@ -3380,7 +3082,7 @@ public class CompParser extends Parser {
 		public TerminalNode QUOTE(int i) {
 			return getToken(CompParser.QUOTE, i);
 		}
-		public TerminalNode BOOLEAN1() { return getToken(CompParser.BOOLEAN1, 0); }
+		public TerminalNode BOOLEAN() { return getToken(CompParser.BOOLEAN, 0); }
 		public LeadingZeroIdentContext(ParserRuleContext parent, int invokingState) {
 			super(parent, invokingState);
 		}
@@ -3392,11 +3094,6 @@ public class CompParser extends Parser {
 		@Override
 		public void exitRule(ParseTreeListener listener) {
 			if ( listener instanceof CompListener ) ((CompListener)listener).exitLeadingZeroIdent(this);
-		}
-		@Override
-		public <T> T accept(ParseTreeVisitor<? extends T> visitor) {
-			if ( visitor instanceof CompVisitor ) return ((CompVisitor<? extends T>)visitor).visitLeadingZeroIdent(this);
-			else return visitor.visitChildren(this);
 		}
 	}
 
@@ -3413,7 +3110,7 @@ public class CompParser extends Parser {
 			setState(571); 
 			match(QUOTE);
 			setState(572); 
-			match(BOOLEAN1);
+			match(BOOLEAN);
 			setState(573); 
 			match(QUOTE);
 			}
@@ -3436,7 +3133,7 @@ public class CompParser extends Parser {
 		public TerminalNode QUOTE(int i) {
 			return getToken(CompParser.QUOTE, i);
 		}
-		public TerminalNode BOOLEAN1() { return getToken(CompParser.BOOLEAN1, 0); }
+		public TerminalNode BOOLEAN() { return getToken(CompParser.BOOLEAN, 0); }
 		public NoThresholdEndArrowsContext(ParserRuleContext parent, int invokingState) {
 			super(parent, invokingState);
 		}
@@ -3448,11 +3145,6 @@ public class CompParser extends Parser {
 		@Override
 		public void exitRule(ParseTreeListener listener) {
 			if ( listener instanceof CompListener ) ((CompListener)listener).exitNoThresholdEndArrows(this);
-		}
-		@Override
-		public <T> T accept(ParseTreeVisitor<? extends T> visitor) {
-			if ( visitor instanceof CompVisitor ) return ((CompVisitor<? extends T>)visitor).visitNoThresholdEndArrows(this);
-			else return visitor.visitChildren(this);
 		}
 	}
 
@@ -3469,7 +3161,7 @@ public class CompParser extends Parser {
 			setState(577); 
 			match(QUOTE);
 			setState(578); 
-			match(BOOLEAN1);
+			match(BOOLEAN);
 			setState(579); 
 			match(QUOTE);
 			}
@@ -3492,7 +3184,7 @@ public class CompParser extends Parser {
 		public TerminalNode QUOTE(int i) {
 			return getToken(CompParser.QUOTE, i);
 		}
-		public TerminalNode BOOLEAN1() { return getToken(CompParser.BOOLEAN1, 0); }
+		public TerminalNode BOOLEAN() { return getToken(CompParser.BOOLEAN, 0); }
 		public EdgesContext(ParserRuleContext parent, int invokingState) {
 			super(parent, invokingState);
 		}
@@ -3504,11 +3196,6 @@ public class CompParser extends Parser {
 		@Override
 		public void exitRule(ParseTreeListener listener) {
 			if ( listener instanceof CompListener ) ((CompListener)listener).exitEdges(this);
-		}
-		@Override
-		public <T> T accept(ParseTreeVisitor<? extends T> visitor) {
-			if ( visitor instanceof CompVisitor ) return ((CompVisitor<? extends T>)visitor).visitEdges(this);
-			else return visitor.visitChildren(this);
 		}
 	}
 
@@ -3525,7 +3212,7 @@ public class CompParser extends Parser {
 			setState(583); 
 			match(QUOTE);
 			setState(584); 
-			match(BOOLEAN1);
+			match(BOOLEAN);
 			setState(585); 
 			match(QUOTE);
 			}
@@ -3548,7 +3235,7 @@ public class CompParser extends Parser {
 		public TerminalNode QUOTE(int i) {
 			return getToken(CompParser.QUOTE, i);
 		}
-		public TerminalNode BOOLEAN1() { return getToken(CompParser.BOOLEAN1, 0); }
+		public TerminalNode BOOLEAN() { return getToken(CompParser.BOOLEAN, 0); }
 		public ThresholdContext(ParserRuleContext parent, int invokingState) {
 			super(parent, invokingState);
 		}
@@ -3560,11 +3247,6 @@ public class CompParser extends Parser {
 		@Override
 		public void exitRule(ParseTreeListener listener) {
 			if ( listener instanceof CompListener ) ((CompListener)listener).exitThreshold(this);
-		}
-		@Override
-		public <T> T accept(ParseTreeVisitor<? extends T> visitor) {
-			if ( visitor instanceof CompVisitor ) return ((CompVisitor<? extends T>)visitor).visitThreshold(this);
-			else return visitor.visitChildren(this);
 		}
 	}
 
@@ -3581,7 +3263,7 @@ public class CompParser extends Parser {
 			setState(589); 
 			match(QUOTE);
 			setState(590); 
-			match(BOOLEAN1);
+			match(BOOLEAN);
 			setState(591); 
 			match(QUOTE);
 			}
@@ -3604,7 +3286,7 @@ public class CompParser extends Parser {
 		public TerminalNode QUOTE(int i) {
 			return getToken(CompParser.QUOTE, i);
 		}
-		public TerminalNode BOOLEAN1() { return getToken(CompParser.BOOLEAN1, 0); }
+		public TerminalNode BOOLEAN() { return getToken(CompParser.BOOLEAN, 0); }
 		public FixedDistanceContext(ParserRuleContext parent, int invokingState) {
 			super(parent, invokingState);
 		}
@@ -3616,11 +3298,6 @@ public class CompParser extends Parser {
 		@Override
 		public void exitRule(ParseTreeListener listener) {
 			if ( listener instanceof CompListener ) ((CompListener)listener).exitFixedDistance(this);
-		}
-		@Override
-		public <T> T accept(ParseTreeVisitor<? extends T> visitor) {
-			if ( visitor instanceof CompVisitor ) return ((CompVisitor<? extends T>)visitor).visitFixedDistance(this);
-			else return visitor.visitChildren(this);
 		}
 	}
 
@@ -3637,7 +3314,7 @@ public class CompParser extends Parser {
 			setState(595); 
 			match(QUOTE);
 			setState(596); 
-			match(BOOLEAN1);
+			match(BOOLEAN);
 			setState(597); 
 			match(QUOTE);
 			}
@@ -3660,7 +3337,7 @@ public class CompParser extends Parser {
 		public TerminalNode QUOTE(int i) {
 			return getToken(CompParser.QUOTE, i);
 		}
-		public TerminalNode BOOLEAN1() { return getToken(CompParser.BOOLEAN1, 0); }
+		public TerminalNode BOOLEAN() { return getToken(CompParser.BOOLEAN, 0); }
 		public TouchdownContext(ParserRuleContext parent, int invokingState) {
 			super(parent, invokingState);
 		}
@@ -3672,11 +3349,6 @@ public class CompParser extends Parser {
 		@Override
 		public void exitRule(ParseTreeListener listener) {
 			if ( listener instanceof CompListener ) ((CompListener)listener).exitTouchdown(this);
-		}
-		@Override
-		public <T> T accept(ParseTreeVisitor<? extends T> visitor) {
-			if ( visitor instanceof CompVisitor ) return ((CompVisitor<? extends T>)visitor).visitTouchdown(this);
-			else return visitor.visitChildren(this);
 		}
 	}
 
@@ -3693,7 +3365,7 @@ public class CompParser extends Parser {
 			setState(601); 
 			match(QUOTE);
 			setState(602); 
-			match(BOOLEAN1);
+			match(BOOLEAN);
 			setState(603); 
 			match(QUOTE);
 			}
@@ -3716,7 +3388,7 @@ public class CompParser extends Parser {
 		public TerminalNode QUOTE(int i) {
 			return getToken(CompParser.QUOTE, i);
 		}
-		public TerminalNode BOOLEAN1() { return getToken(CompParser.BOOLEAN1, 0); }
+		public TerminalNode BOOLEAN() { return getToken(CompParser.BOOLEAN, 0); }
 		public DashesContext(ParserRuleContext parent, int invokingState) {
 			super(parent, invokingState);
 		}
@@ -3728,11 +3400,6 @@ public class CompParser extends Parser {
 		@Override
 		public void exitRule(ParseTreeListener listener) {
 			if ( listener instanceof CompListener ) ((CompListener)listener).exitDashes(this);
-		}
-		@Override
-		public <T> T accept(ParseTreeVisitor<? extends T> visitor) {
-			if ( visitor instanceof CompVisitor ) return ((CompVisitor<? extends T>)visitor).visitDashes(this);
-			else return visitor.visitChildren(this);
 		}
 	}
 
@@ -3749,7 +3416,7 @@ public class CompParser extends Parser {
 			setState(607); 
 			match(QUOTE);
 			setState(608); 
-			match(BOOLEAN1);
+			match(BOOLEAN);
 			setState(609); 
 			match(QUOTE);
 			}
@@ -3772,7 +3439,7 @@ public class CompParser extends Parser {
 		public TerminalNode QUOTE(int i) {
 			return getToken(CompParser.QUOTE, i);
 		}
-		public TerminalNode BOOLEAN1() { return getToken(CompParser.BOOLEAN1, 0); }
+		public TerminalNode BOOLEAN() { return getToken(CompParser.BOOLEAN, 0); }
 		public IdentContext(ParserRuleContext parent, int invokingState) {
 			super(parent, invokingState);
 		}
@@ -3784,11 +3451,6 @@ public class CompParser extends Parser {
 		@Override
 		public void exitRule(ParseTreeListener listener) {
 			if ( listener instanceof CompListener ) ((CompListener)listener).exitIdent(this);
-		}
-		@Override
-		public <T> T accept(ParseTreeVisitor<? extends T> visitor) {
-			if ( visitor instanceof CompVisitor ) return ((CompVisitor<? extends T>)visitor).visitIdent(this);
-			else return visitor.visitChildren(this);
 		}
 	}
 
@@ -3805,7 +3467,7 @@ public class CompParser extends Parser {
 			setState(613); 
 			match(QUOTE);
 			setState(614); 
-			match(BOOLEAN1);
+			match(BOOLEAN);
 			setState(615); 
 			match(QUOTE);
 			}
@@ -3828,7 +3490,7 @@ public class CompParser extends Parser {
 		public TerminalNode QUOTE(int i) {
 			return getToken(CompParser.QUOTE, i);
 		}
-		public TerminalNode BOOLEAN1() { return getToken(CompParser.BOOLEAN1, 0); }
+		public TerminalNode BOOLEAN() { return getToken(CompParser.BOOLEAN, 0); }
 		public PrecisionContext(ParserRuleContext parent, int invokingState) {
 			super(parent, invokingState);
 		}
@@ -3840,11 +3502,6 @@ public class CompParser extends Parser {
 		@Override
 		public void exitRule(ParseTreeListener listener) {
 			if ( listener instanceof CompListener ) ((CompListener)listener).exitPrecision(this);
-		}
-		@Override
-		public <T> T accept(ParseTreeVisitor<? extends T> visitor) {
-			if ( visitor instanceof CompVisitor ) return ((CompVisitor<? extends T>)visitor).visitPrecision(this);
-			else return visitor.visitChildren(this);
 		}
 	}
 
@@ -3861,7 +3518,7 @@ public class CompParser extends Parser {
 			setState(619); 
 			match(QUOTE);
 			setState(620); 
-			match(BOOLEAN1);
+			match(BOOLEAN);
 			setState(621); 
 			match(QUOTE);
 			}
@@ -3884,7 +3541,7 @@ public class CompParser extends Parser {
 		public TerminalNode QUOTE(int i) {
 			return getToken(CompParser.QUOTE, i);
 		}
-		public TerminalNode BOOLEAN1() { return getToken(CompParser.BOOLEAN1, 0); }
+		public TerminalNode BOOLEAN() { return getToken(CompParser.BOOLEAN, 0); }
 		public EdgePavementContext(ParserRuleContext parent, int invokingState) {
 			super(parent, invokingState);
 		}
@@ -3896,11 +3553,6 @@ public class CompParser extends Parser {
 		@Override
 		public void exitRule(ParseTreeListener listener) {
 			if ( listener instanceof CompListener ) ((CompListener)listener).exitEdgePavement(this);
-		}
-		@Override
-		public <T> T accept(ParseTreeVisitor<? extends T> visitor) {
-			if ( visitor instanceof CompVisitor ) return ((CompVisitor<? extends T>)visitor).visitEdgePavement(this);
-			else return visitor.visitChildren(this);
 		}
 	}
 
@@ -3917,7 +3569,7 @@ public class CompParser extends Parser {
 			setState(625); 
 			match(QUOTE);
 			setState(626); 
-			match(BOOLEAN1);
+			match(BOOLEAN);
 			setState(627); 
 			match(QUOTE);
 			}
@@ -3940,7 +3592,7 @@ public class CompParser extends Parser {
 		public TerminalNode QUOTE(int i) {
 			return getToken(CompParser.QUOTE, i);
 		}
-		public TerminalNode BOOLEAN1() { return getToken(CompParser.BOOLEAN1, 0); }
+		public TerminalNode BOOLEAN() { return getToken(CompParser.BOOLEAN, 0); }
 		public SingleEndContext(ParserRuleContext parent, int invokingState) {
 			super(parent, invokingState);
 		}
@@ -3952,11 +3604,6 @@ public class CompParser extends Parser {
 		@Override
 		public void exitRule(ParseTreeListener listener) {
 			if ( listener instanceof CompListener ) ((CompListener)listener).exitSingleEnd(this);
-		}
-		@Override
-		public <T> T accept(ParseTreeVisitor<? extends T> visitor) {
-			if ( visitor instanceof CompVisitor ) return ((CompVisitor<? extends T>)visitor).visitSingleEnd(this);
-			else return visitor.visitChildren(this);
 		}
 	}
 
@@ -3973,7 +3620,7 @@ public class CompParser extends Parser {
 			setState(631); 
 			match(QUOTE);
 			setState(632); 
-			match(BOOLEAN1);
+			match(BOOLEAN);
 			setState(633); 
 			match(QUOTE);
 			}
@@ -3996,7 +3643,7 @@ public class CompParser extends Parser {
 		public TerminalNode QUOTE(int i) {
 			return getToken(CompParser.QUOTE, i);
 		}
-		public TerminalNode BOOLEAN1() { return getToken(CompParser.BOOLEAN1, 0); }
+		public TerminalNode BOOLEAN() { return getToken(CompParser.BOOLEAN, 0); }
 		public PrimaryClosedContext(ParserRuleContext parent, int invokingState) {
 			super(parent, invokingState);
 		}
@@ -4008,11 +3655,6 @@ public class CompParser extends Parser {
 		@Override
 		public void exitRule(ParseTreeListener listener) {
 			if ( listener instanceof CompListener ) ((CompListener)listener).exitPrimaryClosed(this);
-		}
-		@Override
-		public <T> T accept(ParseTreeVisitor<? extends T> visitor) {
-			if ( visitor instanceof CompVisitor ) return ((CompVisitor<? extends T>)visitor).visitPrimaryClosed(this);
-			else return visitor.visitChildren(this);
 		}
 	}
 
@@ -4029,7 +3671,7 @@ public class CompParser extends Parser {
 			setState(637); 
 			match(QUOTE);
 			setState(638); 
-			match(BOOLEAN1);
+			match(BOOLEAN);
 			setState(639); 
 			match(QUOTE);
 			}
@@ -4052,7 +3694,7 @@ public class CompParser extends Parser {
 		public TerminalNode QUOTE(int i) {
 			return getToken(CompParser.QUOTE, i);
 		}
-		public TerminalNode BOOLEAN1() { return getToken(CompParser.BOOLEAN1, 0); }
+		public TerminalNode BOOLEAN() { return getToken(CompParser.BOOLEAN, 0); }
 		public SecondaryClosedContext(ParserRuleContext parent, int invokingState) {
 			super(parent, invokingState);
 		}
@@ -4064,11 +3706,6 @@ public class CompParser extends Parser {
 		@Override
 		public void exitRule(ParseTreeListener listener) {
 			if ( listener instanceof CompListener ) ((CompListener)listener).exitSecondaryClosed(this);
-		}
-		@Override
-		public <T> T accept(ParseTreeVisitor<? extends T> visitor) {
-			if ( visitor instanceof CompVisitor ) return ((CompVisitor<? extends T>)visitor).visitSecondaryClosed(this);
-			else return visitor.visitChildren(this);
 		}
 	}
 
@@ -4085,7 +3722,7 @@ public class CompParser extends Parser {
 			setState(643); 
 			match(QUOTE);
 			setState(644); 
-			match(BOOLEAN1);
+			match(BOOLEAN);
 			setState(645); 
 			match(QUOTE);
 			}
@@ -4108,7 +3745,7 @@ public class CompParser extends Parser {
 		public TerminalNode QUOTE(int i) {
 			return getToken(CompParser.QUOTE, i);
 		}
-		public TerminalNode BOOLEAN1() { return getToken(CompParser.BOOLEAN1, 0); }
+		public TerminalNode BOOLEAN() { return getToken(CompParser.BOOLEAN, 0); }
 		public PrimaryStolContext(ParserRuleContext parent, int invokingState) {
 			super(parent, invokingState);
 		}
@@ -4120,11 +3757,6 @@ public class CompParser extends Parser {
 		@Override
 		public void exitRule(ParseTreeListener listener) {
 			if ( listener instanceof CompListener ) ((CompListener)listener).exitPrimaryStol(this);
-		}
-		@Override
-		public <T> T accept(ParseTreeVisitor<? extends T> visitor) {
-			if ( visitor instanceof CompVisitor ) return ((CompVisitor<? extends T>)visitor).visitPrimaryStol(this);
-			else return visitor.visitChildren(this);
 		}
 	}
 
@@ -4141,7 +3773,7 @@ public class CompParser extends Parser {
 			setState(649); 
 			match(QUOTE);
 			setState(650); 
-			match(BOOLEAN1);
+			match(BOOLEAN);
 			setState(651); 
 			match(QUOTE);
 			}
@@ -4164,7 +3796,7 @@ public class CompParser extends Parser {
 		public TerminalNode QUOTE(int i) {
 			return getToken(CompParser.QUOTE, i);
 		}
-		public TerminalNode BOOLEAN1() { return getToken(CompParser.BOOLEAN1, 0); }
+		public TerminalNode BOOLEAN() { return getToken(CompParser.BOOLEAN, 0); }
 		public SecondaryStolContext(ParserRuleContext parent, int invokingState) {
 			super(parent, invokingState);
 		}
@@ -4176,11 +3808,6 @@ public class CompParser extends Parser {
 		@Override
 		public void exitRule(ParseTreeListener listener) {
 			if ( listener instanceof CompListener ) ((CompListener)listener).exitSecondaryStol(this);
-		}
-		@Override
-		public <T> T accept(ParseTreeVisitor<? extends T> visitor) {
-			if ( visitor instanceof CompVisitor ) return ((CompVisitor<? extends T>)visitor).visitSecondaryStol(this);
-			else return visitor.visitChildren(this);
 		}
 	}
 
@@ -4197,7 +3824,7 @@ public class CompParser extends Parser {
 			setState(655); 
 			match(QUOTE);
 			setState(656); 
-			match(BOOLEAN1);
+			match(BOOLEAN);
 			setState(657); 
 			match(QUOTE);
 			}
@@ -4237,11 +3864,6 @@ public class CompParser extends Parser {
 		public void exitRule(ParseTreeListener listener) {
 			if ( listener instanceof CompListener ) ((CompListener)listener).exitLights(this);
 		}
-		@Override
-		public <T> T accept(ParseTreeVisitor<? extends T> visitor) {
-			if ( visitor instanceof CompVisitor ) return ((CompVisitor<? extends T>)visitor).visitLights(this);
-			else return visitor.visitChildren(this);
-		}
 	}
 
 	public final LightsContext lights() throws RecognitionException {
@@ -4280,10 +3902,7 @@ public class CompParser extends Parser {
 		public TerminalNode QUOTE(int i) {
 			return getToken(CompParser.QUOTE, i);
 		}
-		public TerminalNode NONE() { return getToken(CompParser.NONE, 0); }
-		public TerminalNode HIGH() { return getToken(CompParser.HIGH, 0); }
-		public TerminalNode MEDIUM() { return getToken(CompParser.MEDIUM, 0); }
-		public TerminalNode LOW() { return getToken(CompParser.LOW, 0); }
+		public TerminalNode STRING() { return getToken(CompParser.STRING, 0); }
 		public LightsCenterContext(ParserRuleContext parent, int invokingState) {
 			super(parent, invokingState);
 		}
@@ -4296,17 +3915,11 @@ public class CompParser extends Parser {
 		public void exitRule(ParseTreeListener listener) {
 			if ( listener instanceof CompListener ) ((CompListener)listener).exitLightsCenter(this);
 		}
-		@Override
-		public <T> T accept(ParseTreeVisitor<? extends T> visitor) {
-			if ( visitor instanceof CompVisitor ) return ((CompVisitor<? extends T>)visitor).visitLightsCenter(this);
-			else return visitor.visitChildren(this);
-		}
 	}
 
 	public final LightsCenterContext lightsCenter() throws RecognitionException {
 		LightsCenterContext _localctx = new LightsCenterContext(_ctx, getState());
 		enterRule(_localctx, 130, RULE_lightsCenter);
-		int _la;
 		try {
 			enterOuterAlt(_localctx, 1);
 			{
@@ -4316,12 +3929,8 @@ public class CompParser extends Parser {
 			match(EQUAL);
 			setState(667); 
 			match(QUOTE);
-			setState(668);
-			_la = _input.LA(1);
-			if ( !(((((_la - 123)) & ~0x3f) == 0 && ((1L << (_la - 123)) & ((1L << (NONE - 123)) | (1L << (HIGH - 123)) | (1L << (MEDIUM - 123)) | (1L << (LOW - 123)))) != 0)) ) {
-			_errHandler.recoverInline(this);
-			}
-			consume();
+			setState(668); 
+			match(STRING);
 			setState(669); 
 			match(QUOTE);
 			}
@@ -4344,10 +3953,7 @@ public class CompParser extends Parser {
 		public TerminalNode QUOTE(int i) {
 			return getToken(CompParser.QUOTE, i);
 		}
-		public TerminalNode NONE() { return getToken(CompParser.NONE, 0); }
-		public TerminalNode HIGH() { return getToken(CompParser.HIGH, 0); }
-		public TerminalNode MEDIUM() { return getToken(CompParser.MEDIUM, 0); }
-		public TerminalNode LOW() { return getToken(CompParser.LOW, 0); }
+		public TerminalNode STRING() { return getToken(CompParser.STRING, 0); }
 		public LightsEdgeContext(ParserRuleContext parent, int invokingState) {
 			super(parent, invokingState);
 		}
@@ -4360,17 +3966,11 @@ public class CompParser extends Parser {
 		public void exitRule(ParseTreeListener listener) {
 			if ( listener instanceof CompListener ) ((CompListener)listener).exitLightsEdge(this);
 		}
-		@Override
-		public <T> T accept(ParseTreeVisitor<? extends T> visitor) {
-			if ( visitor instanceof CompVisitor ) return ((CompVisitor<? extends T>)visitor).visitLightsEdge(this);
-			else return visitor.visitChildren(this);
-		}
 	}
 
 	public final LightsEdgeContext lightsEdge() throws RecognitionException {
 		LightsEdgeContext _localctx = new LightsEdgeContext(_ctx, getState());
 		enterRule(_localctx, 132, RULE_lightsEdge);
-		int _la;
 		try {
 			enterOuterAlt(_localctx, 1);
 			{
@@ -4380,12 +3980,8 @@ public class CompParser extends Parser {
 			match(EQUAL);
 			setState(673); 
 			match(QUOTE);
-			setState(674);
-			_la = _input.LA(1);
-			if ( !(((((_la - 123)) & ~0x3f) == 0 && ((1L << (_la - 123)) & ((1L << (NONE - 123)) | (1L << (HIGH - 123)) | (1L << (MEDIUM - 123)) | (1L << (LOW - 123)))) != 0)) ) {
-			_errHandler.recoverInline(this);
-			}
-			consume();
+			setState(674); 
+			match(STRING);
 			setState(675); 
 			match(QUOTE);
 			}
@@ -4408,7 +4004,7 @@ public class CompParser extends Parser {
 		public TerminalNode QUOTE(int i) {
 			return getToken(CompParser.QUOTE, i);
 		}
-		public TerminalNode BOOLEAN1() { return getToken(CompParser.BOOLEAN1, 0); }
+		public TerminalNode BOOLEAN() { return getToken(CompParser.BOOLEAN, 0); }
 		public LightsRedContext(ParserRuleContext parent, int invokingState) {
 			super(parent, invokingState);
 		}
@@ -4420,11 +4016,6 @@ public class CompParser extends Parser {
 		@Override
 		public void exitRule(ParseTreeListener listener) {
 			if ( listener instanceof CompListener ) ((CompListener)listener).exitLightsRed(this);
-		}
-		@Override
-		public <T> T accept(ParseTreeVisitor<? extends T> visitor) {
-			if ( visitor instanceof CompVisitor ) return ((CompVisitor<? extends T>)visitor).visitLightsRed(this);
-			else return visitor.visitChildren(this);
 		}
 	}
 
@@ -4441,7 +4032,7 @@ public class CompParser extends Parser {
 			setState(679); 
 			match(QUOTE);
 			setState(680); 
-			match(BOOLEAN1);
+			match(BOOLEAN);
 			setState(681); 
 			match(QUOTE);
 			}
@@ -4501,11 +4092,6 @@ public class CompParser extends Parser {
 		@Override
 		public void exitRule(ParseTreeListener listener) {
 			if ( listener instanceof CompListener ) ((CompListener)listener).exitHelipad(this);
-		}
-		@Override
-		public <T> T accept(ParseTreeVisitor<? extends T> visitor) {
-			if ( visitor instanceof CompVisitor ) return ((CompVisitor<? extends T>)visitor).visitHelipad(this);
-			else return visitor.visitChildren(this);
 		}
 	}
 
@@ -4574,7 +4160,7 @@ public class CompParser extends Parser {
 		public TerminalNode QUOTE(int i) {
 			return getToken(CompParser.QUOTE, i);
 		}
-		public TerminalNode HELIPAD_TYPE() { return getToken(CompParser.HELIPAD_TYPE, 0); }
+		public TerminalNode STRING() { return getToken(CompParser.STRING, 0); }
 		public HelipadTypeContext(ParserRuleContext parent, int invokingState) {
 			super(parent, invokingState);
 		}
@@ -4586,11 +4172,6 @@ public class CompParser extends Parser {
 		@Override
 		public void exitRule(ParseTreeListener listener) {
 			if ( listener instanceof CompListener ) ((CompListener)listener).exitHelipadType(this);
-		}
-		@Override
-		public <T> T accept(ParseTreeVisitor<? extends T> visitor) {
-			if ( visitor instanceof CompVisitor ) return ((CompVisitor<? extends T>)visitor).visitHelipadType(this);
-			else return visitor.visitChildren(this);
 		}
 	}
 
@@ -4607,7 +4188,7 @@ public class CompParser extends Parser {
 			setState(702); 
 			match(QUOTE);
 			setState(703); 
-			match(HELIPAD_TYPE);
+			match(STRING);
 			setState(704); 
 			match(QUOTE);
 			}
@@ -4630,7 +4211,7 @@ public class CompParser extends Parser {
 		public TerminalNode QUOTE(int i) {
 			return getToken(CompParser.QUOTE, i);
 		}
-		public TerminalNode BOOLEAN1() { return getToken(CompParser.BOOLEAN1, 0); }
+		public TerminalNode BOOLEAN() { return getToken(CompParser.BOOLEAN, 0); }
 		public ClosedContext(ParserRuleContext parent, int invokingState) {
 			super(parent, invokingState);
 		}
@@ -4642,11 +4223,6 @@ public class CompParser extends Parser {
 		@Override
 		public void exitRule(ParseTreeListener listener) {
 			if ( listener instanceof CompListener ) ((CompListener)listener).exitClosed(this);
-		}
-		@Override
-		public <T> T accept(ParseTreeVisitor<? extends T> visitor) {
-			if ( visitor instanceof CompVisitor ) return ((CompVisitor<? extends T>)visitor).visitClosed(this);
-			else return visitor.visitChildren(this);
 		}
 	}
 
@@ -4663,7 +4239,7 @@ public class CompParser extends Parser {
 			setState(708); 
 			match(QUOTE);
 			setState(709); 
-			match(BOOLEAN1);
+			match(BOOLEAN);
 			setState(710); 
 			match(QUOTE);
 			}
@@ -4686,7 +4262,7 @@ public class CompParser extends Parser {
 		public TerminalNode QUOTE(int i) {
 			return getToken(CompParser.QUOTE, i);
 		}
-		public TerminalNode BOOLEAN1() { return getToken(CompParser.BOOLEAN1, 0); }
+		public TerminalNode BOOLEAN() { return getToken(CompParser.BOOLEAN, 0); }
 		public TransparentContext(ParserRuleContext parent, int invokingState) {
 			super(parent, invokingState);
 		}
@@ -4698,11 +4274,6 @@ public class CompParser extends Parser {
 		@Override
 		public void exitRule(ParseTreeListener listener) {
 			if ( listener instanceof CompListener ) ((CompListener)listener).exitTransparent(this);
-		}
-		@Override
-		public <T> T accept(ParseTreeVisitor<? extends T> visitor) {
-			if ( visitor instanceof CompVisitor ) return ((CompVisitor<? extends T>)visitor).visitTransparent(this);
-			else return visitor.visitChildren(this);
 		}
 	}
 
@@ -4719,7 +4290,7 @@ public class CompParser extends Parser {
 			setState(714); 
 			match(QUOTE);
 			setState(715); 
-			match(BOOLEAN1);
+			match(BOOLEAN);
 			setState(716); 
 			match(QUOTE);
 			}
@@ -4759,11 +4330,6 @@ public class CompParser extends Parser {
 		public void exitRule(ParseTreeListener listener) {
 			if ( listener instanceof CompListener ) ((CompListener)listener).exitCom(this);
 		}
-		@Override
-		public <T> T accept(ParseTreeVisitor<? extends T> visitor) {
-			if ( visitor instanceof CompVisitor ) return ((CompVisitor<? extends T>)visitor).visitCom(this);
-			else return visitor.visitChildren(this);
-		}
 	}
 
 	public final ComContext com() throws RecognitionException {
@@ -4802,7 +4368,7 @@ public class CompParser extends Parser {
 		public TerminalNode QUOTE(int i) {
 			return getToken(CompParser.QUOTE, i);
 		}
-		public TerminalNode ANGLE() { return getToken(CompParser.ANGLE, 0); }
+		public TerminalNode FLOAT() { return getToken(CompParser.FLOAT, 0); }
 		public ComFrequencyContext(ParserRuleContext parent, int invokingState) {
 			super(parent, invokingState);
 		}
@@ -4814,11 +4380,6 @@ public class CompParser extends Parser {
 		@Override
 		public void exitRule(ParseTreeListener listener) {
 			if ( listener instanceof CompListener ) ((CompListener)listener).exitComFrequency(this);
-		}
-		@Override
-		public <T> T accept(ParseTreeVisitor<? extends T> visitor) {
-			if ( visitor instanceof CompVisitor ) return ((CompVisitor<? extends T>)visitor).visitComFrequency(this);
-			else return visitor.visitChildren(this);
 		}
 	}
 
@@ -4835,7 +4396,7 @@ public class CompParser extends Parser {
 			setState(726); 
 			match(QUOTE);
 			setState(727); 
-			match(ANGLE);
+			match(FLOAT);
 			setState(728); 
 			match(QUOTE);
 			}
@@ -4858,7 +4419,7 @@ public class CompParser extends Parser {
 		public TerminalNode QUOTE(int i) {
 			return getToken(CompParser.QUOTE, i);
 		}
-		public TerminalNode COM_TYPE() { return getToken(CompParser.COM_TYPE, 0); }
+		public TerminalNode STRING() { return getToken(CompParser.STRING, 0); }
 		public ComTypeContext(ParserRuleContext parent, int invokingState) {
 			super(parent, invokingState);
 		}
@@ -4870,11 +4431,6 @@ public class CompParser extends Parser {
 		@Override
 		public void exitRule(ParseTreeListener listener) {
 			if ( listener instanceof CompListener ) ((CompListener)listener).exitComType(this);
-		}
-		@Override
-		public <T> T accept(ParseTreeVisitor<? extends T> visitor) {
-			if ( visitor instanceof CompVisitor ) return ((CompVisitor<? extends T>)visitor).visitComType(this);
-			else return visitor.visitChildren(this);
 		}
 	}
 
@@ -4891,7 +4447,7 @@ public class CompParser extends Parser {
 			setState(732); 
 			match(QUOTE);
 			setState(733); 
-			match(COM_TYPE);
+			match(STRING);
 			setState(734); 
 			match(QUOTE);
 			}
@@ -4926,11 +4482,6 @@ public class CompParser extends Parser {
 		@Override
 		public void exitRule(ParseTreeListener listener) {
 			if ( listener instanceof CompListener ) ((CompListener)listener).exitComName(this);
-		}
-		@Override
-		public <T> T accept(ParseTreeVisitor<? extends T> visitor) {
-			if ( visitor instanceof CompVisitor ) return ((CompVisitor<? extends T>)visitor).visitComName(this);
-			else return visitor.visitChildren(this);
 		}
 	}
 
@@ -4998,11 +4549,6 @@ public class CompParser extends Parser {
 		@Override
 		public void exitRule(ParseTreeListener listener) {
 			if ( listener instanceof CompListener ) ((CompListener)listener).exitTaxiwayPoint(this);
-		}
-		@Override
-		public <T> T accept(ParseTreeVisitor<? extends T> visitor) {
-			if ( visitor instanceof CompVisitor ) return ((CompVisitor<? extends T>)visitor).visitTaxiwayPoint(this);
-			else return visitor.visitChildren(this);
 		}
 	}
 
@@ -5076,7 +4622,7 @@ public class CompParser extends Parser {
 		public TerminalNode QUOTE(int i) {
 			return getToken(CompParser.QUOTE, i);
 		}
-		public TerminalNode TAXYWAY_POINTER_TYPE() { return getToken(CompParser.TAXYWAY_POINTER_TYPE, 0); }
+		public TerminalNode STRING() { return getToken(CompParser.STRING, 0); }
 		public TaxiwayPointerTypeContext(ParserRuleContext parent, int invokingState) {
 			super(parent, invokingState);
 		}
@@ -5088,11 +4634,6 @@ public class CompParser extends Parser {
 		@Override
 		public void exitRule(ParseTreeListener listener) {
 			if ( listener instanceof CompListener ) ((CompListener)listener).exitTaxiwayPointerType(this);
-		}
-		@Override
-		public <T> T accept(ParseTreeVisitor<? extends T> visitor) {
-			if ( visitor instanceof CompVisitor ) return ((CompVisitor<? extends T>)visitor).visitTaxiwayPointerType(this);
-			else return visitor.visitChildren(this);
 		}
 	}
 
@@ -5109,7 +4650,7 @@ public class CompParser extends Parser {
 			setState(758); 
 			match(QUOTE);
 			setState(759); 
-			match(TAXYWAY_POINTER_TYPE);
+			match(STRING);
 			setState(760); 
 			match(QUOTE);
 			}
@@ -5132,8 +4673,7 @@ public class CompParser extends Parser {
 		public TerminalNode QUOTE(int i) {
 			return getToken(CompParser.QUOTE, i);
 		}
-		public TerminalNode FORWARD() { return getToken(CompParser.FORWARD, 0); }
-		public TerminalNode REVERSE() { return getToken(CompParser.REVERSE, 0); }
+		public TerminalNode STRING() { return getToken(CompParser.STRING, 0); }
 		public OrientationContext(ParserRuleContext parent, int invokingState) {
 			super(parent, invokingState);
 		}
@@ -5146,17 +4686,11 @@ public class CompParser extends Parser {
 		public void exitRule(ParseTreeListener listener) {
 			if ( listener instanceof CompListener ) ((CompListener)listener).exitOrientation(this);
 		}
-		@Override
-		public <T> T accept(ParseTreeVisitor<? extends T> visitor) {
-			if ( visitor instanceof CompVisitor ) return ((CompVisitor<? extends T>)visitor).visitOrientation(this);
-			else return visitor.visitChildren(this);
-		}
 	}
 
 	public final OrientationContext orientation() throws RecognitionException {
 		OrientationContext _localctx = new OrientationContext(_ctx, getState());
 		enterRule(_localctx, 156, RULE_orientation);
-		int _la;
 		try {
 			enterOuterAlt(_localctx, 1);
 			{
@@ -5166,12 +4700,8 @@ public class CompParser extends Parser {
 			match(EQUAL);
 			setState(764); 
 			match(QUOTE);
-			setState(765);
-			_la = _input.LA(1);
-			if ( !(_la==FORWARD || _la==REVERSE) ) {
-			_errHandler.recoverInline(this);
-			}
-			consume();
+			setState(765); 
+			match(STRING);
 			setState(766); 
 			match(QUOTE);
 			}
@@ -5234,11 +4764,6 @@ public class CompParser extends Parser {
 		@Override
 		public void exitRule(ParseTreeListener listener) {
 			if ( listener instanceof CompListener ) ((CompListener)listener).exitTaxiwayParking(this);
-		}
-		@Override
-		public <T> T accept(ParseTreeVisitor<? extends T> visitor) {
-			if ( visitor instanceof CompVisitor ) return ((CompVisitor<? extends T>)visitor).visitTaxiwayParking(this);
-			else return visitor.visitChildren(this);
 		}
 	}
 
@@ -5333,11 +4858,6 @@ public class CompParser extends Parser {
 		public void exitRule(ParseTreeListener listener) {
 			if ( listener instanceof CompListener ) ((CompListener)listener).exitRadius(this);
 		}
-		@Override
-		public <T> T accept(ParseTreeVisitor<? extends T> visitor) {
-			if ( visitor instanceof CompVisitor ) return ((CompVisitor<? extends T>)visitor).visitRadius(this);
-			else return visitor.visitChildren(this);
-		}
 	}
 
 	public final RadiusContext radius() throws RecognitionException {
@@ -5376,8 +4896,7 @@ public class CompParser extends Parser {
 		public TerminalNode QUOTE(int i) {
 			return getToken(CompParser.QUOTE, i);
 		}
-		public TerminalNode TAXYWAY_PARKING_TYPE() { return getToken(CompParser.TAXYWAY_PARKING_TYPE, 0); }
-		public TerminalNode NONE() { return getToken(CompParser.NONE, 0); }
+		public TerminalNode STRING() { return getToken(CompParser.STRING, 0); }
 		public TaxiwayParkingTypeContext(ParserRuleContext parent, int invokingState) {
 			super(parent, invokingState);
 		}
@@ -5390,17 +4909,11 @@ public class CompParser extends Parser {
 		public void exitRule(ParseTreeListener listener) {
 			if ( listener instanceof CompListener ) ((CompListener)listener).exitTaxiwayParkingType(this);
 		}
-		@Override
-		public <T> T accept(ParseTreeVisitor<? extends T> visitor) {
-			if ( visitor instanceof CompVisitor ) return ((CompVisitor<? extends T>)visitor).visitTaxiwayParkingType(this);
-			else return visitor.visitChildren(this);
-		}
 	}
 
 	public final TaxiwayParkingTypeContext taxiwayParkingType() throws RecognitionException {
 		TaxiwayParkingTypeContext _localctx = new TaxiwayParkingTypeContext(_ctx, getState());
 		enterRule(_localctx, 162, RULE_taxiwayParkingType);
-		int _la;
 		try {
 			enterOuterAlt(_localctx, 1);
 			{
@@ -5410,12 +4923,8 @@ public class CompParser extends Parser {
 			match(EQUAL);
 			setState(794); 
 			match(QUOTE);
-			setState(795);
-			_la = _input.LA(1);
-			if ( !(_la==TAXYWAY_PARKING_TYPE || _la==NONE) ) {
-			_errHandler.recoverInline(this);
-			}
-			consume();
+			setState(795); 
+			match(STRING);
 			setState(796); 
 			match(QUOTE);
 			}
@@ -5438,9 +4947,7 @@ public class CompParser extends Parser {
 		public TerminalNode QUOTE(int i) {
 			return getToken(CompParser.QUOTE, i);
 		}
-		public TerminalNode TAXIWAY_PARKING_NAME() { return getToken(CompParser.TAXIWAY_PARKING_NAME, 0); }
-		public TerminalNode PARKING() { return getToken(CompParser.PARKING, 0); }
-		public TerminalNode NONE() { return getToken(CompParser.NONE, 0); }
+		public TerminalNode STRING() { return getToken(CompParser.STRING, 0); }
 		public NameContext(ParserRuleContext parent, int invokingState) {
 			super(parent, invokingState);
 		}
@@ -5453,17 +4960,11 @@ public class CompParser extends Parser {
 		public void exitRule(ParseTreeListener listener) {
 			if ( listener instanceof CompListener ) ((CompListener)listener).exitName(this);
 		}
-		@Override
-		public <T> T accept(ParseTreeVisitor<? extends T> visitor) {
-			if ( visitor instanceof CompVisitor ) return ((CompVisitor<? extends T>)visitor).visitName(this);
-			else return visitor.visitChildren(this);
-		}
 	}
 
 	public final NameContext name() throws RecognitionException {
 		NameContext _localctx = new NameContext(_ctx, getState());
 		enterRule(_localctx, 164, RULE_name);
-		int _la;
 		try {
 			enterOuterAlt(_localctx, 1);
 			{
@@ -5473,12 +4974,8 @@ public class CompParser extends Parser {
 			match(EQUAL);
 			setState(800); 
 			match(QUOTE);
-			setState(801);
-			_la = _input.LA(1);
-			if ( !(((((_la - 78)) & ~0x3f) == 0 && ((1L << (_la - 78)) & ((1L << (TAXIWAY_PARKING_NAME - 78)) | (1L << (PARKING - 78)) | (1L << (NONE - 78)))) != 0)) ) {
-			_errHandler.recoverInline(this);
-			}
-			consume();
+			setState(801); 
+			match(STRING);
 			setState(802); 
 			match(QUOTE);
 			}
@@ -5501,10 +4998,7 @@ public class CompParser extends Parser {
 		public TerminalNode QUOTE(int i) {
 			return getToken(CompParser.QUOTE, i);
 		}
-		public TerminalNode NONE() { return getToken(CompParser.NONE, 0); }
-		public TerminalNode BOTH() { return getToken(CompParser.BOTH, 0); }
-		public TerminalNode LEFT() { return getToken(CompParser.LEFT, 0); }
-		public TerminalNode RIGHT() { return getToken(CompParser.RIGHT, 0); }
+		public TerminalNode STRING() { return getToken(CompParser.STRING, 0); }
 		public PushBackContext(ParserRuleContext parent, int invokingState) {
 			super(parent, invokingState);
 		}
@@ -5517,17 +5011,11 @@ public class CompParser extends Parser {
 		public void exitRule(ParseTreeListener listener) {
 			if ( listener instanceof CompListener ) ((CompListener)listener).exitPushBack(this);
 		}
-		@Override
-		public <T> T accept(ParseTreeVisitor<? extends T> visitor) {
-			if ( visitor instanceof CompVisitor ) return ((CompVisitor<? extends T>)visitor).visitPushBack(this);
-			else return visitor.visitChildren(this);
-		}
 	}
 
 	public final PushBackContext pushBack() throws RecognitionException {
 		PushBackContext _localctx = new PushBackContext(_ctx, getState());
 		enterRule(_localctx, 166, RULE_pushBack);
-		int _la;
 		try {
 			enterOuterAlt(_localctx, 1);
 			{
@@ -5537,12 +5025,8 @@ public class CompParser extends Parser {
 			match(EQUAL);
 			setState(806); 
 			match(QUOTE);
-			setState(807);
-			_la = _input.LA(1);
-			if ( !(((((_la - 118)) & ~0x3f) == 0 && ((1L << (_la - 118)) & ((1L << (LEFT - 118)) | (1L << (RIGHT - 118)) | (1L << (NONE - 118)) | (1L << (BOTH - 118)))) != 0)) ) {
-			_errHandler.recoverInline(this);
-			}
-			consume();
+			setState(807); 
+			match(STRING);
 			setState(808); 
 			match(QUOTE);
 			}
@@ -5578,11 +5062,6 @@ public class CompParser extends Parser {
 		@Override
 		public void exitRule(ParseTreeListener listener) {
 			if ( listener instanceof CompListener ) ((CompListener)listener).exitTaxiName(this);
-		}
-		@Override
-		public <T> T accept(ParseTreeVisitor<? extends T> visitor) {
-			if ( visitor instanceof CompVisitor ) return ((CompVisitor<? extends T>)visitor).visitTaxiName(this);
-			else return visitor.visitChildren(this);
 		}
 	}
 
@@ -5633,11 +5112,6 @@ public class CompParser extends Parser {
 		@Override
 		public void exitRule(ParseTreeListener listener) {
 			if ( listener instanceof CompListener ) ((CompListener)listener).exitTaxiNameName(this);
-		}
-		@Override
-		public <T> T accept(ParseTreeVisitor<? extends T> visitor) {
-			if ( visitor instanceof CompVisitor ) return ((CompVisitor<? extends T>)visitor).visitTaxiNameName(this);
-			else return visitor.visitChildren(this);
 		}
 	}
 
@@ -5747,11 +5221,6 @@ public class CompParser extends Parser {
 		@Override
 		public void exitRule(ParseTreeListener listener) {
 			if ( listener instanceof CompListener ) ((CompListener)listener).exitTaxiPath(this);
-		}
-		@Override
-		public <T> T accept(ParseTreeVisitor<? extends T> visitor) {
-			if ( visitor instanceof CompVisitor ) return ((CompVisitor<? extends T>)visitor).visitTaxiPath(this);
-			else return visitor.visitChildren(this);
 		}
 	}
 
@@ -5890,8 +5359,7 @@ public class CompParser extends Parser {
 		public TerminalNode QUOTE(int i) {
 			return getToken(CompParser.QUOTE, i);
 		}
-		public TerminalNode TAXI_PATH_TYPE() { return getToken(CompParser.TAXI_PATH_TYPE, 0); }
-		public TerminalNode PARKING() { return getToken(CompParser.PARKING, 0); }
+		public TerminalNode STRING() { return getToken(CompParser.STRING, 0); }
 		public TaxiPathTypeContext(ParserRuleContext parent, int invokingState) {
 			super(parent, invokingState);
 		}
@@ -5904,17 +5372,11 @@ public class CompParser extends Parser {
 		public void exitRule(ParseTreeListener listener) {
 			if ( listener instanceof CompListener ) ((CompListener)listener).exitTaxiPathType(this);
 		}
-		@Override
-		public <T> T accept(ParseTreeVisitor<? extends T> visitor) {
-			if ( visitor instanceof CompVisitor ) return ((CompVisitor<? extends T>)visitor).visitTaxiPathType(this);
-			else return visitor.visitChildren(this);
-		}
 	}
 
 	public final TaxiPathTypeContext taxiPathType() throws RecognitionException {
 		TaxiPathTypeContext _localctx = new TaxiPathTypeContext(_ctx, getState());
 		enterRule(_localctx, 174, RULE_taxiPathType);
-		int _la;
 		try {
 			enterOuterAlt(_localctx, 1);
 			{
@@ -5924,12 +5386,8 @@ public class CompParser extends Parser {
 			match(EQUAL);
 			setState(865); 
 			match(QUOTE);
-			setState(866);
-			_la = _input.LA(1);
-			if ( !(_la==PARKING || _la==TAXI_PATH_TYPE) ) {
-			_errHandler.recoverInline(this);
-			}
-			consume();
+			setState(866); 
+			match(STRING);
 			setState(867); 
 			match(QUOTE);
 			}
@@ -5964,11 +5422,6 @@ public class CompParser extends Parser {
 		@Override
 		public void exitRule(ParseTreeListener listener) {
 			if ( listener instanceof CompListener ) ((CompListener)listener).exitTaxiPathStart(this);
-		}
-		@Override
-		public <T> T accept(ParseTreeVisitor<? extends T> visitor) {
-			if ( visitor instanceof CompVisitor ) return ((CompVisitor<? extends T>)visitor).visitTaxiPathStart(this);
-			else return visitor.visitChildren(this);
 		}
 	}
 
@@ -6020,11 +5473,6 @@ public class CompParser extends Parser {
 		@Override
 		public void exitRule(ParseTreeListener listener) {
 			if ( listener instanceof CompListener ) ((CompListener)listener).exitTaxiPathEnd(this);
-		}
-		@Override
-		public <T> T accept(ParseTreeVisitor<? extends T> visitor) {
-			if ( visitor instanceof CompVisitor ) return ((CompVisitor<? extends T>)visitor).visitTaxiPathEnd(this);
-			else return visitor.visitChildren(this);
 		}
 	}
 
@@ -6078,11 +5526,6 @@ public class CompParser extends Parser {
 		public void exitRule(ParseTreeListener listener) {
 			if ( listener instanceof CompListener ) ((CompListener)listener).exitTaxiPathWeightLimit(this);
 		}
-		@Override
-		public <T> T accept(ParseTreeVisitor<? extends T> visitor) {
-			if ( visitor instanceof CompVisitor ) return ((CompVisitor<? extends T>)visitor).visitTaxiPathWeightLimit(this);
-			else return visitor.visitChildren(this);
-		}
 	}
 
 	public final TaxiPathWeightLimitContext taxiPathWeightLimit() throws RecognitionException {
@@ -6126,7 +5569,7 @@ public class CompParser extends Parser {
 		public TerminalNode QUOTE(int i) {
 			return getToken(CompParser.QUOTE, i);
 		}
-		public TerminalNode BOOLEAN1() { return getToken(CompParser.BOOLEAN1, 0); }
+		public TerminalNode BOOLEAN() { return getToken(CompParser.BOOLEAN, 0); }
 		public TaxiPathDrawSurfaceContext(ParserRuleContext parent, int invokingState) {
 			super(parent, invokingState);
 		}
@@ -6138,11 +5581,6 @@ public class CompParser extends Parser {
 		@Override
 		public void exitRule(ParseTreeListener listener) {
 			if ( listener instanceof CompListener ) ((CompListener)listener).exitTaxiPathDrawSurface(this);
-		}
-		@Override
-		public <T> T accept(ParseTreeVisitor<? extends T> visitor) {
-			if ( visitor instanceof CompVisitor ) return ((CompVisitor<? extends T>)visitor).visitTaxiPathDrawSurface(this);
-			else return visitor.visitChildren(this);
 		}
 	}
 
@@ -6159,7 +5597,7 @@ public class CompParser extends Parser {
 			setState(889); 
 			match(QUOTE);
 			setState(890); 
-			match(BOOLEAN1);
+			match(BOOLEAN);
 			setState(891); 
 			match(QUOTE);
 			}
@@ -6182,7 +5620,7 @@ public class CompParser extends Parser {
 		public TerminalNode QUOTE(int i) {
 			return getToken(CompParser.QUOTE, i);
 		}
-		public TerminalNode BOOLEAN1() { return getToken(CompParser.BOOLEAN1, 0); }
+		public TerminalNode BOOLEAN() { return getToken(CompParser.BOOLEAN, 0); }
 		public TaxiPathDrawDetailContext(ParserRuleContext parent, int invokingState) {
 			super(parent, invokingState);
 		}
@@ -6194,11 +5632,6 @@ public class CompParser extends Parser {
 		@Override
 		public void exitRule(ParseTreeListener listener) {
 			if ( listener instanceof CompListener ) ((CompListener)listener).exitTaxiPathDrawDetail(this);
-		}
-		@Override
-		public <T> T accept(ParseTreeVisitor<? extends T> visitor) {
-			if ( visitor instanceof CompVisitor ) return ((CompVisitor<? extends T>)visitor).visitTaxiPathDrawDetail(this);
-			else return visitor.visitChildren(this);
 		}
 	}
 
@@ -6215,7 +5648,7 @@ public class CompParser extends Parser {
 			setState(895); 
 			match(QUOTE);
 			setState(896); 
-			match(BOOLEAN1);
+			match(BOOLEAN);
 			setState(897); 
 			match(QUOTE);
 			}
@@ -6238,7 +5671,7 @@ public class CompParser extends Parser {
 		public TerminalNode QUOTE(int i) {
 			return getToken(CompParser.QUOTE, i);
 		}
-		public TerminalNode BOOLEAN1() { return getToken(CompParser.BOOLEAN1, 0); }
+		public TerminalNode BOOLEAN() { return getToken(CompParser.BOOLEAN, 0); }
 		public TaxiPathCenterLineContext(ParserRuleContext parent, int invokingState) {
 			super(parent, invokingState);
 		}
@@ -6250,11 +5683,6 @@ public class CompParser extends Parser {
 		@Override
 		public void exitRule(ParseTreeListener listener) {
 			if ( listener instanceof CompListener ) ((CompListener)listener).exitTaxiPathCenterLine(this);
-		}
-		@Override
-		public <T> T accept(ParseTreeVisitor<? extends T> visitor) {
-			if ( visitor instanceof CompVisitor ) return ((CompVisitor<? extends T>)visitor).visitTaxiPathCenterLine(this);
-			else return visitor.visitChildren(this);
 		}
 	}
 
@@ -6271,7 +5699,7 @@ public class CompParser extends Parser {
 			setState(901); 
 			match(QUOTE);
 			setState(902); 
-			match(BOOLEAN1);
+			match(BOOLEAN);
 			setState(903); 
 			match(QUOTE);
 			}
@@ -6294,7 +5722,7 @@ public class CompParser extends Parser {
 		public TerminalNode QUOTE(int i) {
 			return getToken(CompParser.QUOTE, i);
 		}
-		public TerminalNode BOOLEAN1() { return getToken(CompParser.BOOLEAN1, 0); }
+		public TerminalNode BOOLEAN() { return getToken(CompParser.BOOLEAN, 0); }
 		public TaxiPathCenterLineLightedContext(ParserRuleContext parent, int invokingState) {
 			super(parent, invokingState);
 		}
@@ -6306,11 +5734,6 @@ public class CompParser extends Parser {
 		@Override
 		public void exitRule(ParseTreeListener listener) {
 			if ( listener instanceof CompListener ) ((CompListener)listener).exitTaxiPathCenterLineLighted(this);
-		}
-		@Override
-		public <T> T accept(ParseTreeVisitor<? extends T> visitor) {
-			if ( visitor instanceof CompVisitor ) return ((CompVisitor<? extends T>)visitor).visitTaxiPathCenterLineLighted(this);
-			else return visitor.visitChildren(this);
 		}
 	}
 
@@ -6327,7 +5750,7 @@ public class CompParser extends Parser {
 			setState(907); 
 			match(QUOTE);
 			setState(908); 
-			match(BOOLEAN1);
+			match(BOOLEAN);
 			setState(909); 
 			match(QUOTE);
 			}
@@ -6350,8 +5773,7 @@ public class CompParser extends Parser {
 		public TerminalNode QUOTE(int i) {
 			return getToken(CompParser.QUOTE, i);
 		}
-		public TerminalNode TAXI_PATH_EDGE_TYPE() { return getToken(CompParser.TAXI_PATH_EDGE_TYPE, 0); }
-		public TerminalNode NONE() { return getToken(CompParser.NONE, 0); }
+		public TerminalNode STRING() { return getToken(CompParser.STRING, 0); }
 		public TaxiPathLeftEdgeContext(ParserRuleContext parent, int invokingState) {
 			super(parent, invokingState);
 		}
@@ -6364,17 +5786,11 @@ public class CompParser extends Parser {
 		public void exitRule(ParseTreeListener listener) {
 			if ( listener instanceof CompListener ) ((CompListener)listener).exitTaxiPathLeftEdge(this);
 		}
-		@Override
-		public <T> T accept(ParseTreeVisitor<? extends T> visitor) {
-			if ( visitor instanceof CompVisitor ) return ((CompVisitor<? extends T>)visitor).visitTaxiPathLeftEdge(this);
-			else return visitor.visitChildren(this);
-		}
 	}
 
 	public final TaxiPathLeftEdgeContext taxiPathLeftEdge() throws RecognitionException {
 		TaxiPathLeftEdgeContext _localctx = new TaxiPathLeftEdgeContext(_ctx, getState());
 		enterRule(_localctx, 190, RULE_taxiPathLeftEdge);
-		int _la;
 		try {
 			enterOuterAlt(_localctx, 1);
 			{
@@ -6384,12 +5800,8 @@ public class CompParser extends Parser {
 			match(EQUAL);
 			setState(913); 
 			match(QUOTE);
-			setState(914);
-			_la = _input.LA(1);
-			if ( !(_la==TAXI_PATH_EDGE_TYPE || _la==NONE) ) {
-			_errHandler.recoverInline(this);
-			}
-			consume();
+			setState(914); 
+			match(STRING);
 			setState(915); 
 			match(QUOTE);
 			}
@@ -6412,7 +5824,7 @@ public class CompParser extends Parser {
 		public TerminalNode QUOTE(int i) {
 			return getToken(CompParser.QUOTE, i);
 		}
-		public TerminalNode BOOLEAN1() { return getToken(CompParser.BOOLEAN1, 0); }
+		public TerminalNode BOOLEAN() { return getToken(CompParser.BOOLEAN, 0); }
 		public TaxiPathLeftEdgeLigthedContext(ParserRuleContext parent, int invokingState) {
 			super(parent, invokingState);
 		}
@@ -6424,11 +5836,6 @@ public class CompParser extends Parser {
 		@Override
 		public void exitRule(ParseTreeListener listener) {
 			if ( listener instanceof CompListener ) ((CompListener)listener).exitTaxiPathLeftEdgeLigthed(this);
-		}
-		@Override
-		public <T> T accept(ParseTreeVisitor<? extends T> visitor) {
-			if ( visitor instanceof CompVisitor ) return ((CompVisitor<? extends T>)visitor).visitTaxiPathLeftEdgeLigthed(this);
-			else return visitor.visitChildren(this);
 		}
 	}
 
@@ -6445,7 +5852,7 @@ public class CompParser extends Parser {
 			setState(919); 
 			match(QUOTE);
 			setState(920); 
-			match(BOOLEAN1);
+			match(BOOLEAN);
 			setState(921); 
 			match(QUOTE);
 			}
@@ -6468,8 +5875,7 @@ public class CompParser extends Parser {
 		public TerminalNode QUOTE(int i) {
 			return getToken(CompParser.QUOTE, i);
 		}
-		public TerminalNode TAXI_PATH_EDGE_TYPE() { return getToken(CompParser.TAXI_PATH_EDGE_TYPE, 0); }
-		public TerminalNode NONE() { return getToken(CompParser.NONE, 0); }
+		public TerminalNode STRING() { return getToken(CompParser.STRING, 0); }
 		public TaxiPathRightEdgeContext(ParserRuleContext parent, int invokingState) {
 			super(parent, invokingState);
 		}
@@ -6482,17 +5888,11 @@ public class CompParser extends Parser {
 		public void exitRule(ParseTreeListener listener) {
 			if ( listener instanceof CompListener ) ((CompListener)listener).exitTaxiPathRightEdge(this);
 		}
-		@Override
-		public <T> T accept(ParseTreeVisitor<? extends T> visitor) {
-			if ( visitor instanceof CompVisitor ) return ((CompVisitor<? extends T>)visitor).visitTaxiPathRightEdge(this);
-			else return visitor.visitChildren(this);
-		}
 	}
 
 	public final TaxiPathRightEdgeContext taxiPathRightEdge() throws RecognitionException {
 		TaxiPathRightEdgeContext _localctx = new TaxiPathRightEdgeContext(_ctx, getState());
 		enterRule(_localctx, 194, RULE_taxiPathRightEdge);
-		int _la;
 		try {
 			enterOuterAlt(_localctx, 1);
 			{
@@ -6502,12 +5902,8 @@ public class CompParser extends Parser {
 			match(EQUAL);
 			setState(925); 
 			match(QUOTE);
-			setState(926);
-			_la = _input.LA(1);
-			if ( !(_la==TAXI_PATH_EDGE_TYPE || _la==NONE) ) {
-			_errHandler.recoverInline(this);
-			}
-			consume();
+			setState(926); 
+			match(STRING);
 			setState(927); 
 			match(QUOTE);
 			}
@@ -6530,7 +5926,7 @@ public class CompParser extends Parser {
 		public TerminalNode QUOTE(int i) {
 			return getToken(CompParser.QUOTE, i);
 		}
-		public TerminalNode BOOLEAN1() { return getToken(CompParser.BOOLEAN1, 0); }
+		public TerminalNode BOOLEAN() { return getToken(CompParser.BOOLEAN, 0); }
 		public TaxiPathRightEdgeLightedContext(ParserRuleContext parent, int invokingState) {
 			super(parent, invokingState);
 		}
@@ -6542,11 +5938,6 @@ public class CompParser extends Parser {
 		@Override
 		public void exitRule(ParseTreeListener listener) {
 			if ( listener instanceof CompListener ) ((CompListener)listener).exitTaxiPathRightEdgeLighted(this);
-		}
-		@Override
-		public <T> T accept(ParseTreeVisitor<? extends T> visitor) {
-			if ( visitor instanceof CompVisitor ) return ((CompVisitor<? extends T>)visitor).visitTaxiPathRightEdgeLighted(this);
-			else return visitor.visitChildren(this);
 		}
 	}
 
@@ -6563,7 +5954,7 @@ public class CompParser extends Parser {
 			setState(931); 
 			match(QUOTE);
 			setState(932); 
-			match(BOOLEAN1);
+			match(BOOLEAN);
 			setState(933); 
 			match(QUOTE);
 			}
@@ -6587,7 +5978,7 @@ public class CompParser extends Parser {
 			return getToken(CompParser.QUOTE, i);
 		}
 		public TerminalNode INT() { return getToken(CompParser.INT, 0); }
-		public TerminalNode GEO_ORIENTATION() { return getToken(CompParser.GEO_ORIENTATION, 0); }
+		public TerminalNode STRING() { return getToken(CompParser.STRING, 0); }
 		public TaxiPathNumberContext(ParserRuleContext parent, int invokingState) {
 			super(parent, invokingState);
 		}
@@ -6599,11 +5990,6 @@ public class CompParser extends Parser {
 		@Override
 		public void exitRule(ParseTreeListener listener) {
 			if ( listener instanceof CompListener ) ((CompListener)listener).exitTaxiPathNumber(this);
-		}
-		@Override
-		public <T> T accept(ParseTreeVisitor<? extends T> visitor) {
-			if ( visitor instanceof CompVisitor ) return ((CompVisitor<? extends T>)visitor).visitTaxiPathNumber(this);
-			else return visitor.visitChildren(this);
 		}
 	}
 
@@ -6622,7 +6008,7 @@ public class CompParser extends Parser {
 			match(QUOTE);
 			setState(938);
 			_la = _input.LA(1);
-			if ( !(_la==GEO_ORIENTATION || _la==INT) ) {
+			if ( !(_la==INT || _la==STRING) ) {
 			_errHandler.recoverInline(this);
 			}
 			consume();
@@ -6661,11 +6047,6 @@ public class CompParser extends Parser {
 		public void exitRule(ParseTreeListener listener) {
 			if ( listener instanceof CompListener ) ((CompListener)listener).exitTaxiPathName(this);
 		}
-		@Override
-		public <T> T accept(ParseTreeVisitor<? extends T> visitor) {
-			if ( visitor instanceof CompVisitor ) return ((CompVisitor<? extends T>)visitor).visitTaxiPathName(this);
-			else return visitor.visitChildren(this);
-		}
 	}
 
 	public final TaxiPathNameContext taxiPathName() throws RecognitionException {
@@ -6698,9 +6079,9 @@ public class CompParser extends Parser {
 	}
 
 	public static final String _serializedATN =
-		"\3\u0430\ud6d1\u8206\uad2d\u4417\uaef1\u8d80\uaadd\3\u008b\u03b6\4\2\t"+
-		"\2\4\3\t\3\4\4\t\4\4\5\t\5\4\6\t\6\4\7\t\7\4\b\t\b\4\t\t\t\4\n\t\n\4\13"+
-		"\t\13\4\f\t\f\4\r\t\r\4\16\t\16\4\17\t\17\4\20\t\20\4\21\t\21\4\22\t\22"+
+		"\3\u0430\ud6d1\u8206\uad2d\u4417\uaef1\u8d80\uaadd\3q\u03b6\4\2\t\2\4"+
+		"\3\t\3\4\4\t\4\4\5\t\5\4\6\t\6\4\7\t\7\4\b\t\b\4\t\t\t\4\n\t\n\4\13\t"+
+		"\13\4\f\t\f\4\r\t\r\4\16\t\16\4\17\t\17\4\20\t\20\4\21\t\21\4\22\t\22"+
 		"\4\23\t\23\4\24\t\24\4\25\t\25\4\26\t\26\4\27\t\27\4\30\t\30\4\31\t\31"+
 		"\4\32\t\32\4\33\t\33\4\34\t\34\4\35\t\35\4\36\t\36\4\37\t\37\4 \t \4!"+
 		"\t!\4\"\t\"\4#\t#\4$\t$\4%\t%\4&\t&\4\'\t\'\4(\t(\4)\t)\4*\t*\4+\t+\4"+
@@ -6756,63 +6137,60 @@ public class CompParser extends Parser {
 		"NPRTVXZ\\^`bdfhjlnprtvxz|~\u0080\u0082\u0084\u0086\u0088\u008a\u008c\u008e"+
 		"\u0090\u0092\u0094\u0096\u0098\u009a\u009c\u009e\u00a0\u00a2\u00a4\u00a6"+
 		"\u00a8\u00aa\u00ac\u00ae\u00b0\u00b2\u00b4\u00b6\u00b8\u00ba\u00bc\u00be"+
-		"\u00c0\u00c2\u00c4\u00c6\u00c8\u00ca\2\22\3\2\u0087\u0088\3\2mo\4\2\u0085"+
-		"\u0085\u0087\u0087\4\2ww\u0085\u0085\5\2xz}}\u008b\u008b\3\2lm\3\2xy\4"+
-		"\2}}\177\u0081\3\2{|\4\2OO}}\5\2PPRR}}\4\2xy}~\4\2\u0085\u0085\u008b\u008b"+
-		"\4\2RRUU\4\2\u0085\u0085\u0089\u0089\4\2__}}\u0372\2\u00cf\3\2\2\2\4\u00d4"+
-		"\3\2\2\2\6\u00da\3\2\2\2\b\u00e0\3\2\2\2\n\u00e6\3\2\2\2\f\u00ec\3\2\2"+
-		"\2\16\u00f2\3\2\2\2\20\u00f8\3\2\2\2\22\u00fe\3\2\2\2\24\u0104\3\2\2\2"+
-		"\26\u0108\3\2\2\2\30\u0127\3\2\2\2\32\u0152\3\2\2\2\34\u0154\3\2\2\2\36"+
-		"\u015a\3\2\2\2 \u0160\3\2\2\2\"\u0166\3\2\2\2$\u016c\3\2\2\2&\u0172\3"+
-		"\2\2\2(\u0178\3\2\2\2*\u017e\3\2\2\2,\u0184\3\2\2\2.\u018a\3\2\2\2\60"+
-		"\u018d\3\2\2\2\62\u0193\3\2\2\2\64\u0195\3\2\2\2\66\u019e\3\2\2\28\u01a3"+
-		"\3\2\2\2:\u01a9\3\2\2\2<\u01af\3\2\2\2>\u01b3\3\2\2\2@\u01c6\3\2\2\2B"+
-		"\u01c9\3\2\2\2D\u01cb\3\2\2\2F\u01d1\3\2\2\2H\u01d7\3\2\2\2J\u01dd\3\2"+
-		"\2\2L\u01e3\3\2\2\2N\u01e9\3\2\2\2P\u01ef\3\2\2\2R\u01f5\3\2\2\2T\u01fb"+
-		"\3\2\2\2V\u0201\3\2\2\2X\u0207\3\2\2\2Z\u020d\3\2\2\2\\\u0223\3\2\2\2"+
-		"^\u0229\3\2\2\2`\u022f\3\2\2\2b\u0235\3\2\2\2d\u023b\3\2\2\2f\u0241\3"+
-		"\2\2\2h\u0247\3\2\2\2j\u024d\3\2\2\2l\u0253\3\2\2\2n\u0259\3\2\2\2p\u025f"+
-		"\3\2\2\2r\u0265\3\2\2\2t\u026b\3\2\2\2v\u0271\3\2\2\2x\u0277\3\2\2\2z"+
-		"\u027d\3\2\2\2|\u0283\3\2\2\2~\u0289\3\2\2\2\u0080\u028f\3\2\2\2\u0082"+
-		"\u0295\3\2\2\2\u0084\u029b\3\2\2\2\u0086\u02a1\3\2\2\2\u0088\u02a7\3\2"+
-		"\2\2\u008a\u02ad\3\2\2\2\u008c\u02be\3\2\2\2\u008e\u02c4\3\2\2\2\u0090"+
-		"\u02ca\3\2\2\2\u0092\u02d0\3\2\2\2\u0094\u02d6\3\2\2\2\u0096\u02dc\3\2"+
-		"\2\2\u0098\u02e2\3\2\2\2\u009a\u02e8\3\2\2\2\u009c\u02f6\3\2\2\2\u009e"+
-		"\u02fc\3\2\2\2\u00a0\u0302\3\2\2\2\u00a2\u0314\3\2\2\2\u00a4\u031a\3\2"+
-		"\2\2\u00a6\u0320\3\2\2\2\u00a8\u0326\3\2\2\2\u00aa\u032c\3\2\2\2\u00ac"+
-		"\u0331\3\2\2\2\u00ae\u0339\3\2\2\2\u00b0\u0361\3\2\2\2\u00b2\u0367\3\2"+
-		"\2\2\u00b4\u036d\3\2\2\2\u00b6\u0373\3\2\2\2\u00b8\u0379\3\2\2\2\u00ba"+
-		"\u037f\3\2\2\2\u00bc\u0385\3\2\2\2\u00be\u038b\3\2\2\2\u00c0\u0391\3\2"+
-		"\2\2\u00c2\u0397\3\2\2\2\u00c4\u039d\3\2\2\2\u00c6\u03a3\3\2\2\2\u00c8"+
-		"\u03a9\3\2\2\2\u00ca\u03af\3\2\2\2\u00cc\u00ce\5\24\13\2\u00cd\u00cc\3"+
-		"\2\2\2\u00ce\u00d1\3\2\2\2\u00cf\u00cd\3\2\2\2\u00cf\u00d0\3\2\2\2\u00d0"+
-		"\u00d2\3\2\2\2\u00d1\u00cf\3\2\2\2\u00d2\u00d3\7\2\2\3\u00d3\3\3\2\2\2"+
-		"\u00d4\u00d5\7p\2\2\u00d5\u00d6\7h\2\2\u00d6\u00d7\7g\2\2\u00d7\u00d8"+
-		"\t\2\2\2\u00d8\u00d9\7g\2\2\u00d9\5\3\2\2\2\u00da\u00db\7q\2\2\u00db\u00dc"+
-		"\7h\2\2\u00dc\u00dd\7g\2\2\u00dd\u00de\t\2\2\2\u00de\u00df\7g\2\2\u00df"+
-		"\7\3\2\2\2\u00e0\u00e1\7r\2\2\u00e1\u00e2\7h\2\2\u00e2\u00e3\7g\2\2\u00e3"+
-		"\u00e4\7\u008a\2\2\u00e4\u00e5\7g\2\2\u00e5\t\3\2\2\2\u00e6\u00e7\7#\2"+
-		"\2\u00e7\u00e8\7h\2\2\u00e8\u00e9\7g\2\2\u00e9\u00ea\7\u008a\2\2\u00ea"+
-		"\u00eb\7g\2\2\u00eb\13\3\2\2\2\u00ec\u00ed\7$\2\2\u00ed\u00ee\7h\2\2\u00ee"+
-		"\u00ef\7g\2\2\u00ef\u00f0\7\u008a\2\2\u00f0\u00f1\7g\2\2\u00f1\r\3\2\2"+
-		"\2\u00f2\u00f3\7u\2\2\u00f3\u00f4\7h\2\2\u00f4\u00f5\7g\2\2\u00f5\u00f6"+
-		"\7\u0085\2\2\u00f6\u00f7\7g\2\2\u00f7\17\3\2\2\2\u00f8\u00f9\7\u0083\2"+
-		"\2\u00f9\u00fa\7h\2\2\u00fa\u00fb\7g\2\2\u00fb\u00fc\7\u0089\2\2\u00fc"+
-		"\u00fd\7g\2\2\u00fd\21\3\2\2\2\u00fe\u00ff\7\u0084\2\2\u00ff\u0100\7h"+
-		"\2\2\u0100\u0101\7g\2\2\u0101\u0102\7\u0089\2\2\u0102\u0103\7g\2\2\u0103"+
-		"\23\3\2\2\2\u0104\u0105\5\26\f\2\u0105\u0106\5\30\r\2\u0106\u0107\5\32"+
-		"\16\2\u0107\25\3\2\2\2\u0108\u010a\7\16\2\2\u0109\u010b\5\34\17\2\u010a"+
-		"\u0109\3\2\2\2\u010a\u010b\3\2\2\2\u010b\u010d\3\2\2\2\u010c\u010e\5\36"+
-		"\20\2\u010d\u010c\3\2\2\2\u010d\u010e\3\2\2\2\u010e\u0110\3\2\2\2\u010f"+
-		"\u0111\5 \21\2\u0110\u010f\3\2\2\2\u0110\u0111\3\2\2\2\u0111\u0113\3\2"+
-		"\2\2\u0112\u0114\5\"\22\2\u0113\u0112\3\2\2\2\u0113\u0114\3\2\2\2\u0114"+
-		"\u0116\3\2\2\2\u0115\u0117\5$\23\2\u0116\u0115\3\2\2\2\u0116\u0117\3\2"+
-		"\2\2\u0117\u0118\3\2\2\2\u0118\u0119\5\4\3\2\u0119\u011a\5\6\4\2\u011a"+
+		"\u00c0\u00c2\u00c4\u00c6\u00c8\u00ca\2\6\3\2no\4\2mmqq\4\2aaqq\4\2mmo"+
+		"o\u0372\2\u00cf\3\2\2\2\4\u00d4\3\2\2\2\6\u00da\3\2\2\2\b\u00e0\3\2\2"+
+		"\2\n\u00e6\3\2\2\2\f\u00ec\3\2\2\2\16\u00f2\3\2\2\2\20\u00f8\3\2\2\2\22"+
+		"\u00fe\3\2\2\2\24\u0104\3\2\2\2\26\u0108\3\2\2\2\30\u0127\3\2\2\2\32\u0152"+
+		"\3\2\2\2\34\u0154\3\2\2\2\36\u015a\3\2\2\2 \u0160\3\2\2\2\"\u0166\3\2"+
+		"\2\2$\u016c\3\2\2\2&\u0172\3\2\2\2(\u0178\3\2\2\2*\u017e\3\2\2\2,\u0184"+
+		"\3\2\2\2.\u018a\3\2\2\2\60\u018d\3\2\2\2\62\u0193\3\2\2\2\64\u0195\3\2"+
+		"\2\2\66\u019e\3\2\2\28\u01a3\3\2\2\2:\u01a9\3\2\2\2<\u01af\3\2\2\2>\u01b3"+
+		"\3\2\2\2@\u01c6\3\2\2\2B\u01c9\3\2\2\2D\u01cb\3\2\2\2F\u01d1\3\2\2\2H"+
+		"\u01d7\3\2\2\2J\u01dd\3\2\2\2L\u01e3\3\2\2\2N\u01e9\3\2\2\2P\u01ef\3\2"+
+		"\2\2R\u01f5\3\2\2\2T\u01fb\3\2\2\2V\u0201\3\2\2\2X\u0207\3\2\2\2Z\u020d"+
+		"\3\2\2\2\\\u0223\3\2\2\2^\u0229\3\2\2\2`\u022f\3\2\2\2b\u0235\3\2\2\2"+
+		"d\u023b\3\2\2\2f\u0241\3\2\2\2h\u0247\3\2\2\2j\u024d\3\2\2\2l\u0253\3"+
+		"\2\2\2n\u0259\3\2\2\2p\u025f\3\2\2\2r\u0265\3\2\2\2t\u026b\3\2\2\2v\u0271"+
+		"\3\2\2\2x\u0277\3\2\2\2z\u027d\3\2\2\2|\u0283\3\2\2\2~\u0289\3\2\2\2\u0080"+
+		"\u028f\3\2\2\2\u0082\u0295\3\2\2\2\u0084\u029b\3\2\2\2\u0086\u02a1\3\2"+
+		"\2\2\u0088\u02a7\3\2\2\2\u008a\u02ad\3\2\2\2\u008c\u02be\3\2\2\2\u008e"+
+		"\u02c4\3\2\2\2\u0090\u02ca\3\2\2\2\u0092\u02d0\3\2\2\2\u0094\u02d6\3\2"+
+		"\2\2\u0096\u02dc\3\2\2\2\u0098\u02e2\3\2\2\2\u009a\u02e8\3\2\2\2\u009c"+
+		"\u02f6\3\2\2\2\u009e\u02fc\3\2\2\2\u00a0\u0302\3\2\2\2\u00a2\u0314\3\2"+
+		"\2\2\u00a4\u031a\3\2\2\2\u00a6\u0320\3\2\2\2\u00a8\u0326\3\2\2\2\u00aa"+
+		"\u032c\3\2\2\2\u00ac\u0331\3\2\2\2\u00ae\u0339\3\2\2\2\u00b0\u0361\3\2"+
+		"\2\2\u00b2\u0367\3\2\2\2\u00b4\u036d\3\2\2\2\u00b6\u0373\3\2\2\2\u00b8"+
+		"\u0379\3\2\2\2\u00ba\u037f\3\2\2\2\u00bc\u0385\3\2\2\2\u00be\u038b\3\2"+
+		"\2\2\u00c0\u0391\3\2\2\2\u00c2\u0397\3\2\2\2\u00c4\u039d\3\2\2\2\u00c6"+
+		"\u03a3\3\2\2\2\u00c8\u03a9\3\2\2\2\u00ca\u03af\3\2\2\2\u00cc\u00ce\5\24"+
+		"\13\2\u00cd\u00cc\3\2\2\2\u00ce\u00d1\3\2\2\2\u00cf\u00cd\3\2\2\2\u00cf"+
+		"\u00d0\3\2\2\2\u00d0\u00d2\3\2\2\2\u00d1\u00cf\3\2\2\2\u00d2\u00d3\7\2"+
+		"\2\3\u00d3\3\3\2\2\2\u00d4\u00d5\7b\2\2\u00d5\u00d6\7]\2\2\u00d6\u00d7"+
+		"\7\\\2\2\u00d7\u00d8\t\2\2\2\u00d8\u00d9\7\\\2\2\u00d9\5\3\2\2\2\u00da"+
+		"\u00db\7c\2\2\u00db\u00dc\7]\2\2\u00dc\u00dd\7\\\2\2\u00dd\u00de\t\2\2"+
+		"\2\u00de\u00df\7\\\2\2\u00df\7\3\2\2\2\u00e0\u00e1\7d\2\2\u00e1\u00e2"+
+		"\7]\2\2\u00e2\u00e3\7\\\2\2\u00e3\u00e4\7p\2\2\u00e4\u00e5\7\\\2\2\u00e5"+
+		"\t\3\2\2\2\u00e6\u00e7\7\"\2\2\u00e7\u00e8\7]\2\2\u00e8\u00e9\7\\\2\2"+
+		"\u00e9\u00ea\7p\2\2\u00ea\u00eb\7\\\2\2\u00eb\13\3\2\2\2\u00ec\u00ed\7"+
+		"#\2\2\u00ed\u00ee\7]\2\2\u00ee\u00ef\7\\\2\2\u00ef\u00f0\7p\2\2\u00f0"+
+		"\u00f1\7\\\2\2\u00f1\r\3\2\2\2\u00f2\u00f3\7g\2\2\u00f3\u00f4\7]\2\2\u00f4"+
+		"\u00f5\7\\\2\2\u00f5\u00f6\7m\2\2\u00f6\u00f7\7\\\2\2\u00f7\17\3\2\2\2"+
+		"\u00f8\u00f9\7k\2\2\u00f9\u00fa\7]\2\2\u00fa\u00fb\7\\\2\2\u00fb\u00fc"+
+		"\7o\2\2\u00fc\u00fd\7\\\2\2\u00fd\21\3\2\2\2\u00fe\u00ff\7l\2\2\u00ff"+
+		"\u0100\7]\2\2\u0100\u0101\7\\\2\2\u0101\u0102\7o\2\2\u0102\u0103\7\\\2"+
+		"\2\u0103\23\3\2\2\2\u0104\u0105\5\26\f\2\u0105\u0106\5\30\r\2\u0106\u0107"+
+		"\5\32\16\2\u0107\25\3\2\2\2\u0108\u010a\7\16\2\2\u0109\u010b\5\34\17\2"+
+		"\u010a\u0109\3\2\2\2\u010a\u010b\3\2\2\2\u010b\u010d\3\2\2\2\u010c\u010e"+
+		"\5\36\20\2\u010d\u010c\3\2\2\2\u010d\u010e\3\2\2\2\u010e\u0110\3\2\2\2"+
+		"\u010f\u0111\5 \21\2\u0110\u010f\3\2\2\2\u0110\u0111\3\2\2\2\u0111\u0113"+
+		"\3\2\2\2\u0112\u0114\5\"\22\2\u0113\u0112\3\2\2\2\u0113\u0114\3\2\2\2"+
+		"\u0114\u0116\3\2\2\2\u0115\u0117\5$\23\2\u0116\u0115\3\2\2\2\u0116\u0117"+
+		"\3\2\2\2\u0117\u0118\3\2\2\2\u0118\u0119\5\4\3\2\u0119\u011a\5\6\4\2\u011a"+
 		"\u011c\5\b\5\2\u011b\u011d\5&\24\2\u011c\u011b\3\2\2\2\u011c\u011d\3\2"+
 		"\2\2\u011d\u011f\3\2\2\2\u011e\u0120\5(\25\2\u011f\u011e\3\2\2\2\u011f"+
 		"\u0120\3\2\2\2\u0120\u0122\3\2\2\2\u0121\u0123\5*\26\2\u0122\u0121\3\2"+
 		"\2\2\u0122\u0123\3\2\2\2\u0123\u0124\3\2\2\2\u0124\u0125\5,\27\2\u0125"+
-		"\u0126\7e\2\2\u0126\27\3\2\2\2\u0127\u0128\5.\30\2\u0128\u012a\5\64\33"+
+		"\u0126\7Z\2\2\u0126\27\3\2\2\2\u0127\u0128\5.\30\2\u0128\u012a\5\64\33"+
 		"\2\u0129\u012b\5<\37\2\u012a\u0129\3\2\2\2\u012b\u012c\3\2\2\2\u012c\u012a"+
 		"\3\2\2\2\u012c\u012d\3\2\2\2\u012d\u0131\3\2\2\2\u012e\u0130\5\u008aF"+
 		"\2\u012f\u012e\3\2\2\2\u0130\u0133\3\2\2\2\u0131\u012f\3\2\2\2\u0131\u0132"+
@@ -6827,181 +6205,181 @@ public class CompParser extends Parser {
 		"\3\2\2\2\u014a\u014f\3\2\2\2\u014b\u0149\3\2\2\2\u014c\u014e\5\u00aeX"+
 		"\2\u014d\u014c\3\2\2\2\u014e\u0151\3\2\2\2\u014f\u014d\3\2\2\2\u014f\u0150"+
 		"\3\2\2\2\u0150\31\3\2\2\2\u0151\u014f\3\2\2\2\u0152\u0153\7\17\2\2\u0153"+
-		"\33\3\2\2\2\u0154\u0155\7\20\2\2\u0155\u0156\7h\2\2\u0156\u0157\7g\2\2"+
-		"\u0157\u0158\7\u008b\2\2\u0158\u0159\7g\2\2\u0159\35\3\2\2\2\u015a\u015b"+
-		"\7\21\2\2\u015b\u015c\7h\2\2\u015c\u015d\7g\2\2\u015d\u015e\7\u008b\2"+
-		"\2\u015e\u015f\7g\2\2\u015f\37\3\2\2\2\u0160\u0161\7\22\2\2\u0161\u0162"+
-		"\7h\2\2\u0162\u0163\7g\2\2\u0163\u0164\7\u008b\2\2\u0164\u0165\7g\2\2"+
-		"\u0165!\3\2\2\2\u0166\u0167\7\23\2\2\u0167\u0168\7h\2\2\u0168\u0169\7"+
-		"g\2\2\u0169\u016a\7\u008b\2\2\u016a\u016b\7g\2\2\u016b#\3\2\2\2\u016c"+
-		"\u016d\7\24\2\2\u016d\u016e\7h\2\2\u016e\u016f\7g\2\2\u016f\u0170\7\u008b"+
-		"\2\2\u0170\u0171\7g\2\2\u0171%\3\2\2\2\u0172\u0173\7\25\2\2\u0173\u0174"+
-		"\7h\2\2\u0174\u0175\7g\2\2\u0175\u0176\7\u0087\2\2\u0176\u0177\7g\2\2"+
-		"\u0177\'\3\2\2\2\u0178\u0179\7\26\2\2\u0179\u017a\7h\2\2\u017a\u017b\7"+
-		"g\2\2\u017b\u017c\7\u0086\2\2\u017c\u017d\7g\2\2\u017d)\3\2\2\2\u017e"+
-		"\u017f\7\27\2\2\u017f\u0180\7h\2\2\u0180\u0181\7g\2\2\u0181\u0182\7\u008a"+
-		"\2\2\u0182\u0183\7g\2\2\u0183+\3\2\2\2\u0184\u0185\7\30\2\2\u0185\u0186"+
-		"\7h\2\2\u0186\u0187\7g\2\2\u0187\u0188\7\u008b\2\2\u0188\u0189\7g\2\2"+
-		"\u0189-\3\2\2\2\u018a\u018b\5\60\31\2\u018b\u018c\5\62\32\2\u018c/\3\2"+
-		"\2\2\u018d\u018e\7\31\2\2\u018e\u018f\5\4\3\2\u018f\u0190\5\6\4\2\u0190"+
-		"\u0191\5\b\5\2\u0191\u0192\7e\2\2\u0192\61\3\2\2\2\u0193\u0194\7\32\2"+
-		"\2\u0194\63\3\2\2\2\u0195\u0199\7\33\2\2\u0196\u0198\5\66\34\2\u0197\u0196"+
-		"\3\2\2\2\u0198\u019b\3\2\2\2\u0199\u0197\3\2\2\2\u0199\u019a\3\2\2\2\u019a"+
-		"\u019c\3\2\2\2\u019b\u0199\3\2\2\2\u019c\u019d\7\34\2\2\u019d\65\3\2\2"+
-		"\2\u019e\u019f\7\35\2\2\u019f\u01a0\58\35\2\u01a0\u01a1\5:\36\2\u01a1"+
-		"\u01a2\7f\2\2\u01a2\67\3\2\2\2\u01a3\u01a4\7s\2\2\u01a4\u01a5\7h\2\2\u01a5"+
-		"\u01a6\7g\2\2\u01a6\u01a7\7\36\2\2\u01a7\u01a8\7g\2\2\u01a89\3\2\2\2\u01a9"+
-		"\u01aa\7t\2\2\u01aa\u01ab\7h\2\2\u01ab\u01ac\7g\2\2\u01ac\u01ad\t\3\2"+
-		"\2\u01ad\u01ae\7g\2\2\u01ae;\3\2\2\2\u01af\u01b0\5> \2\u01b0\u01b1\5@"+
-		"!\2\u01b1\u01b2\5B\"\2\u01b2=\3\2\2\2\u01b3\u01b4\7\37\2\2\u01b4\u01b5"+
-		"\5\4\3\2\u01b5\u01b6\5\6\4\2\u01b6\u01b7\5\b\5\2\u01b7\u01b8\5D#\2\u01b8"+
-		"\u01b9\5F$\2\u01b9\u01ba\5\n\6\2\u01ba\u01bb\5\f\7\2\u01bb\u01bc\5H%\2"+
-		"\u01bc\u01bd\5J&\2\u01bd\u01be\5L\'\2\u01be\u01bf\5N(\2\u01bf\u01c0\5"+
-		"P)\2\u01c0\u01c1\5R*\2\u01c1\u01c2\5T+\2\u01c2\u01c3\5V,\2\u01c3\u01c4"+
-		"\5X-\2\u01c4\u01c5\7e\2\2\u01c5?\3\2\2\2\u01c6\u01c7\5Z.\2\u01c7\u01c8"+
-		"\5\u0082B\2\u01c8A\3\2\2\2\u01c9\u01ca\7 \2\2\u01caC\3\2\2\2\u01cb\u01cc"+
-		"\7!\2\2\u01cc\u01cd\7h\2\2\u01cd\u01ce\7g\2\2\u01ce\u01cf\7.\2\2\u01cf"+
-		"\u01d0\7g\2\2\u01d0E\3\2\2\2\u01d1\u01d2\7\"\2\2\u01d2\u01d3\7h\2\2\u01d3"+
-		"\u01d4\7g\2\2\u01d4\u01d5\t\4\2\2\u01d5\u01d6\7g\2\2\u01d6G\3\2\2\2\u01d7"+
-		"\u01d8\7%\2\2\u01d8\u01d9\7h\2\2\u01d9\u01da\7g\2\2\u01da\u01db\t\5\2"+
-		"\2\u01db\u01dc\7g\2\2\u01dcI\3\2\2\2\u01dd\u01de\7&\2\2\u01de\u01df\7"+
-		"h\2\2\u01df\u01e0\7g\2\2\u01e0\u01e1\t\6\2\2\u01e1\u01e2\7g\2\2\u01e2"+
-		"K\3\2\2\2\u01e3\u01e4\7\'\2\2\u01e4\u01e5\7h\2\2\u01e5\u01e6\7g\2\2\u01e6"+
-		"\u01e7\7\u008a\2\2\u01e7\u01e8\7g\2\2\u01e8M\3\2\2\2\u01e9\u01ea\7(\2"+
-		"\2\u01ea\u01eb\7h\2\2\u01eb\u01ec\7g\2\2\u01ec\u01ed\t\7\2\2\u01ed\u01ee"+
-		"\7g\2\2\u01eeO\3\2\2\2\u01ef\u01f0\7)\2\2\u01f0\u01f1\7h\2\2\u01f1\u01f2"+
-		"\7g\2\2\u01f2\u01f3\t\7\2\2\u01f3\u01f4\7g\2\2\u01f4Q\3\2\2\2\u01f5\u01f6"+
-		"\7*\2\2\u01f6\u01f7\7h\2\2\u01f7\u01f8\7g\2\2\u01f8\u01f9\t\b\2\2\u01f9"+
-		"\u01fa\7g\2\2\u01faS\3\2\2\2\u01fb\u01fc\7+\2\2\u01fc\u01fd\7h\2\2\u01fd"+
-		"\u01fe\7g\2\2\u01fe\u01ff\t\7\2\2\u01ff\u0200\7g\2\2\u0200U\3\2\2\2\u0201"+
-		"\u0202\7,\2\2\u0202\u0203\7h\2\2\u0203\u0204\7g\2\2\u0204\u0205\t\7\2"+
-		"\2\u0205\u0206\7g\2\2\u0206W\3\2\2\2\u0207\u0208\7-\2\2\u0208\u0209\7"+
-		"h\2\2\u0209\u020a\7g\2\2\u020a\u020b\t\b\2\2\u020b\u020c\7g\2\2\u020c"+
-		"Y\3\2\2\2\u020d\u020e\7/\2\2\u020e\u020f\5\\/\2\u020f\u0210\5^\60\2\u0210"+
-		"\u0211\5`\61\2\u0211\u0212\5b\62\2\u0212\u0213\5d\63\2\u0213\u0214\5f"+
-		"\64\2\u0214\u0215\5h\65\2\u0215\u0216\5j\66\2\u0216\u0217\5l\67\2\u0217"+
-		"\u0218\5n8\2\u0218\u0219\5p9\2\u0219\u021a\5r:\2\u021a\u021b\5t;\2\u021b"+
-		"\u021c\5v<\2\u021c\u021d\5x=\2\u021d\u021e\5z>\2\u021e\u021f\5|?\2\u021f"+
-		"\u0220\5~@\2\u0220\u0221\5\u0080A\2\u0221\u0222\7f\2\2\u0222[\3\2\2\2"+
-		"\u0223\u0224\7\60\2\2\u0224\u0225\7h\2\2\u0225\u0226\7g\2\2\u0226\u0227"+
-		"\7l\2\2\u0227\u0228\7g\2\2\u0228]\3\2\2\2\u0229\u022a\7\61\2\2\u022a\u022b"+
-		"\7h\2\2\u022b\u022c\7g\2\2\u022c\u022d\7l\2\2\u022d\u022e\7g\2\2\u022e"+
-		"_\3\2\2\2\u022f\u0230\7\62\2\2\u0230\u0231\7h\2\2\u0231\u0232\7g\2\2\u0232"+
-		"\u0233\7l\2\2\u0233\u0234\7g\2\2\u0234a\3\2\2\2\u0235\u0236\7\63\2\2\u0236"+
-		"\u0237\7h\2\2\u0237\u0238\7g\2\2\u0238\u0239\7l\2\2\u0239\u023a\7g\2\2"+
-		"\u023ac\3\2\2\2\u023b\u023c\7\64\2\2\u023c\u023d\7h\2\2\u023d\u023e\7"+
-		"g\2\2\u023e\u023f\7l\2\2\u023f\u0240\7g\2\2\u0240e\3\2\2\2\u0241\u0242"+
-		"\7\65\2\2\u0242\u0243\7h\2\2\u0243\u0244\7g\2\2\u0244\u0245\7l\2\2\u0245"+
-		"\u0246\7g\2\2\u0246g\3\2\2\2\u0247\u0248\7\66\2\2\u0248\u0249\7h\2\2\u0249"+
-		"\u024a\7g\2\2\u024a\u024b\7l\2\2\u024b\u024c\7g\2\2\u024ci\3\2\2\2\u024d"+
-		"\u024e\78\2\2\u024e\u024f\7h\2\2\u024f\u0250\7g\2\2\u0250\u0251\7l\2\2"+
-		"\u0251\u0252\7g\2\2\u0252k\3\2\2\2\u0253\u0254\79\2\2\u0254\u0255\7h\2"+
-		"\2\u0255\u0256\7g\2\2\u0256\u0257\7l\2\2\u0257\u0258\7g\2\2\u0258m\3\2"+
-		"\2\2\u0259\u025a\7:\2\2\u025a\u025b\7h\2\2\u025b\u025c\7g\2\2\u025c\u025d"+
-		"\7l\2\2\u025d\u025e\7g\2\2\u025eo\3\2\2\2\u025f\u0260\7;\2\2\u0260\u0261"+
-		"\7h\2\2\u0261\u0262\7g\2\2\u0262\u0263\7l\2\2\u0263\u0264\7g\2\2\u0264"+
-		"q\3\2\2\2\u0265\u0266\7\30\2\2\u0266\u0267\7h\2\2\u0267\u0268\7g\2\2\u0268"+
-		"\u0269\7l\2\2\u0269\u026a\7g\2\2\u026as\3\2\2\2\u026b\u026c\7<\2\2\u026c"+
-		"\u026d\7h\2\2\u026d\u026e\7g\2\2\u026e\u026f\7l\2\2\u026f\u0270\7g\2\2"+
-		"\u0270u\3\2\2\2\u0271\u0272\7=\2\2\u0272\u0273\7h\2\2\u0273\u0274\7g\2"+
-		"\2\u0274\u0275\7l\2\2\u0275\u0276\7g\2\2\u0276w\3\2\2\2\u0277\u0278\7"+
-		">\2\2\u0278\u0279\7h\2\2\u0279\u027a\7g\2\2\u027a\u027b\7l\2\2\u027b\u027c"+
-		"\7g\2\2\u027cy\3\2\2\2\u027d\u027e\7?\2\2\u027e\u027f\7h\2\2\u027f\u0280"+
-		"\7g\2\2\u0280\u0281\7l\2\2\u0281\u0282\7g\2\2\u0282{\3\2\2\2\u0283\u0284"+
-		"\7@\2\2\u0284\u0285\7h\2\2\u0285\u0286\7g\2\2\u0286\u0287\7l\2\2\u0287"+
-		"\u0288\7g\2\2\u0288}\3\2\2\2\u0289\u028a\7A\2\2\u028a\u028b\7h\2\2\u028b"+
-		"\u028c\7g\2\2\u028c\u028d\7l\2\2\u028d\u028e\7g\2\2\u028e\177\3\2\2\2"+
-		"\u028f\u0290\7B\2\2\u0290\u0291\7h\2\2\u0291\u0292\7g\2\2\u0292\u0293"+
-		"\7l\2\2\u0293\u0294\7g\2\2\u0294\u0081\3\2\2\2\u0295\u0296\7C\2\2\u0296"+
-		"\u0297\5\u0084C\2\u0297\u0298\5\u0086D\2\u0298\u0299\5\u0088E\2\u0299"+
-		"\u029a\7f\2\2\u029a\u0083\3\2\2\2\u029b\u029c\7z\2\2\u029c\u029d\7h\2"+
-		"\2\u029d\u029e\7g\2\2\u029e\u029f\t\t\2\2\u029f\u02a0\7g\2\2\u02a0\u0085"+
-		"\3\2\2\2\u02a1\u02a2\7\67\2\2\u02a2\u02a3\7h\2\2\u02a3\u02a4\7g\2\2\u02a4"+
-		"\u02a5\t\t\2\2\u02a5\u02a6\7g\2\2\u02a6\u0087\3\2\2\2\u02a7\u02a8\7D\2"+
-		"\2\u02a8\u02a9\7h\2\2\u02a9\u02aa\7g\2\2\u02aa\u02ab\7l\2\2\u02ab\u02ac"+
-		"\7g\2\2\u02ac\u0089\3\2\2\2\u02ad\u02ae\7E\2\2\u02ae\u02af\5\4\3\2\u02af"+
+		"\33\3\2\2\2\u0154\u0155\7\20\2\2\u0155\u0156\7]\2\2\u0156\u0157\7\\\2"+
+		"\2\u0157\u0158\7q\2\2\u0158\u0159\7\\\2\2\u0159\35\3\2\2\2\u015a\u015b"+
+		"\7\21\2\2\u015b\u015c\7]\2\2\u015c\u015d\7\\\2\2\u015d\u015e\7q\2\2\u015e"+
+		"\u015f\7\\\2\2\u015f\37\3\2\2\2\u0160\u0161\7\22\2\2\u0161\u0162\7]\2"+
+		"\2\u0162\u0163\7\\\2\2\u0163\u0164\7q\2\2\u0164\u0165\7\\\2\2\u0165!\3"+
+		"\2\2\2\u0166\u0167\7\23\2\2\u0167\u0168\7]\2\2\u0168\u0169\7\\\2\2\u0169"+
+		"\u016a\7q\2\2\u016a\u016b\7\\\2\2\u016b#\3\2\2\2\u016c\u016d\7\24\2\2"+
+		"\u016d\u016e\7]\2\2\u016e\u016f\7\\\2\2\u016f\u0170\7q\2\2\u0170\u0171"+
+		"\7\\\2\2\u0171%\3\2\2\2\u0172\u0173\7\25\2\2\u0173\u0174\7]\2\2\u0174"+
+		"\u0175\7\\\2\2\u0175\u0176\7o\2\2\u0176\u0177\7\\\2\2\u0177\'\3\2\2\2"+
+		"\u0178\u0179\7\26\2\2\u0179\u017a\7]\2\2\u017a\u017b\7\\\2\2\u017b\u017c"+
+		"\7o\2\2\u017c\u017d\7\\\2\2\u017d)\3\2\2\2\u017e\u017f\7\27\2\2\u017f"+
+		"\u0180\7]\2\2\u0180\u0181\7\\\2\2\u0181\u0182\7p\2\2\u0182\u0183\7\\\2"+
+		"\2\u0183+\3\2\2\2\u0184\u0185\7\30\2\2\u0185\u0186\7]\2\2\u0186\u0187"+
+		"\7\\\2\2\u0187\u0188\7q\2\2\u0188\u0189\7\\\2\2\u0189-\3\2\2\2\u018a\u018b"+
+		"\5\60\31\2\u018b\u018c\5\62\32\2\u018c/\3\2\2\2\u018d\u018e\7\31\2\2\u018e"+
+		"\u018f\5\4\3\2\u018f\u0190\5\6\4\2\u0190\u0191\5\b\5\2\u0191\u0192\7Z"+
+		"\2\2\u0192\61\3\2\2\2\u0193\u0194\7\32\2\2\u0194\63\3\2\2\2\u0195\u0199"+
+		"\7\33\2\2\u0196\u0198\5\66\34\2\u0197\u0196\3\2\2\2\u0198\u019b\3\2\2"+
+		"\2\u0199\u0197\3\2\2\2\u0199\u019a\3\2\2\2\u019a\u019c\3\2\2\2\u019b\u0199"+
+		"\3\2\2\2\u019c\u019d\7\34\2\2\u019d\65\3\2\2\2\u019e\u019f\7\35\2\2\u019f"+
+		"\u01a0\58\35\2\u01a0\u01a1\5:\36\2\u01a1\u01a2\7[\2\2\u01a2\67\3\2\2\2"+
+		"\u01a3\u01a4\7e\2\2\u01a4\u01a5\7]\2\2\u01a5\u01a6\7\\\2\2\u01a6\u01a7"+
+		"\t\3\2\2\u01a7\u01a8\7\\\2\2\u01a89\3\2\2\2\u01a9\u01aa\7f\2\2\u01aa\u01ab"+
+		"\7]\2\2\u01ab\u01ac\7\\\2\2\u01ac\u01ad\t\4\2\2\u01ad\u01ae\7\\\2\2\u01ae"+
+		";\3\2\2\2\u01af\u01b0\5> \2\u01b0\u01b1\5@!\2\u01b1\u01b2\5B\"\2\u01b2"+
+		"=\3\2\2\2\u01b3\u01b4\7\36\2\2\u01b4\u01b5\5\4\3\2\u01b5\u01b6\5\6\4\2"+
+		"\u01b6\u01b7\5\b\5\2\u01b7\u01b8\5D#\2\u01b8\u01b9\5F$\2\u01b9\u01ba\5"+
+		"\n\6\2\u01ba\u01bb\5\f\7\2\u01bb\u01bc\5H%\2\u01bc\u01bd\5J&\2\u01bd\u01be"+
+		"\5L\'\2\u01be\u01bf\5N(\2\u01bf\u01c0\5P)\2\u01c0\u01c1\5R*\2\u01c1\u01c2"+
+		"\5T+\2\u01c2\u01c3\5V,\2\u01c3\u01c4\5X-\2\u01c4\u01c5\7Z\2\2\u01c5?\3"+
+		"\2\2\2\u01c6\u01c7\5Z.\2\u01c7\u01c8\5\u0082B\2\u01c8A\3\2\2\2\u01c9\u01ca"+
+		"\7\37\2\2\u01caC\3\2\2\2\u01cb\u01cc\7 \2\2\u01cc\u01cd\7]\2\2\u01cd\u01ce"+
+		"\7\\\2\2\u01ce\u01cf\7q\2\2\u01cf\u01d0\7\\\2\2\u01d0E\3\2\2\2\u01d1\u01d2"+
+		"\7!\2\2\u01d2\u01d3\7]\2\2\u01d3\u01d4\7\\\2\2\u01d4\u01d5\t\5\2\2\u01d5"+
+		"\u01d6\7\\\2\2\u01d6G\3\2\2\2\u01d7\u01d8\7$\2\2\u01d8\u01d9\7]\2\2\u01d9"+
+		"\u01da\7\\\2\2\u01da\u01db\t\3\2\2\u01db\u01dc\7\\\2\2\u01dcI\3\2\2\2"+
+		"\u01dd\u01de\7%\2\2\u01de\u01df\7]\2\2\u01df\u01e0\7\\\2\2\u01e0\u01e1"+
+		"\7q\2\2\u01e1\u01e2\7\\\2\2\u01e2K\3\2\2\2\u01e3\u01e4\7&\2\2\u01e4\u01e5"+
+		"\7]\2\2\u01e5\u01e6\7\\\2\2\u01e6\u01e7\7p\2\2\u01e7\u01e8\7\\\2\2\u01e8"+
+		"M\3\2\2\2\u01e9\u01ea\7\'\2\2\u01ea\u01eb\7]\2\2\u01eb\u01ec\7\\\2\2\u01ec"+
+		"\u01ed\7a\2\2\u01ed\u01ee\7\\\2\2\u01eeO\3\2\2\2\u01ef\u01f0\7(\2\2\u01f0"+
+		"\u01f1\7]\2\2\u01f1\u01f2\7\\\2\2\u01f2\u01f3\7a\2\2\u01f3\u01f4\7\\\2"+
+		"\2\u01f4Q\3\2\2\2\u01f5\u01f6\7)\2\2\u01f6\u01f7\7]\2\2\u01f7\u01f8\7"+
+		"\\\2\2\u01f8\u01f9\7q\2\2\u01f9\u01fa\7\\\2\2\u01faS\3\2\2\2\u01fb\u01fc"+
+		"\7*\2\2\u01fc\u01fd\7]\2\2\u01fd\u01fe\7\\\2\2\u01fe\u01ff\7a\2\2\u01ff"+
+		"\u0200\7\\\2\2\u0200U\3\2\2\2\u0201\u0202\7+\2\2\u0202\u0203\7]\2\2\u0203"+
+		"\u0204\7\\\2\2\u0204\u0205\7a\2\2\u0205\u0206\7\\\2\2\u0206W\3\2\2\2\u0207"+
+		"\u0208\7,\2\2\u0208\u0209\7]\2\2\u0209\u020a\7\\\2\2\u020a\u020b\7q\2"+
+		"\2\u020b\u020c\7\\\2\2\u020cY\3\2\2\2\u020d\u020e\7-\2\2\u020e\u020f\5"+
+		"\\/\2\u020f\u0210\5^\60\2\u0210\u0211\5`\61\2\u0211\u0212\5b\62\2\u0212"+
+		"\u0213\5d\63\2\u0213\u0214\5f\64\2\u0214\u0215\5h\65\2\u0215\u0216\5j"+
+		"\66\2\u0216\u0217\5l\67\2\u0217\u0218\5n8\2\u0218\u0219\5p9\2\u0219\u021a"+
+		"\5r:\2\u021a\u021b\5t;\2\u021b\u021c\5v<\2\u021c\u021d\5x=\2\u021d\u021e"+
+		"\5z>\2\u021e\u021f\5|?\2\u021f\u0220\5~@\2\u0220\u0221\5\u0080A\2\u0221"+
+		"\u0222\7[\2\2\u0222[\3\2\2\2\u0223\u0224\7.\2\2\u0224\u0225\7]\2\2\u0225"+
+		"\u0226\7\\\2\2\u0226\u0227\7a\2\2\u0227\u0228\7\\\2\2\u0228]\3\2\2\2\u0229"+
+		"\u022a\7/\2\2\u022a\u022b\7]\2\2\u022b\u022c\7\\\2\2\u022c\u022d\7a\2"+
+		"\2\u022d\u022e\7\\\2\2\u022e_\3\2\2\2\u022f\u0230\7\60\2\2\u0230\u0231"+
+		"\7]\2\2\u0231\u0232\7\\\2\2\u0232\u0233\7a\2\2\u0233\u0234\7\\\2\2\u0234"+
+		"a\3\2\2\2\u0235\u0236\7\61\2\2\u0236\u0237\7]\2\2\u0237\u0238\7\\\2\2"+
+		"\u0238\u0239\7a\2\2\u0239\u023a\7\\\2\2\u023ac\3\2\2\2\u023b\u023c\7\62"+
+		"\2\2\u023c\u023d\7]\2\2\u023d\u023e\7\\\2\2\u023e\u023f\7a\2\2\u023f\u0240"+
+		"\7\\\2\2\u0240e\3\2\2\2\u0241\u0242\7\63\2\2\u0242\u0243\7]\2\2\u0243"+
+		"\u0244\7\\\2\2\u0244\u0245\7a\2\2\u0245\u0246\7\\\2\2\u0246g\3\2\2\2\u0247"+
+		"\u0248\7\64\2\2\u0248\u0249\7]\2\2\u0249\u024a\7\\\2\2\u024a\u024b\7a"+
+		"\2\2\u024b\u024c\7\\\2\2\u024ci\3\2\2\2\u024d\u024e\7\66\2\2\u024e\u024f"+
+		"\7]\2\2\u024f\u0250\7\\\2\2\u0250\u0251\7a\2\2\u0251\u0252\7\\\2\2\u0252"+
+		"k\3\2\2\2\u0253\u0254\7\67\2\2\u0254\u0255\7]\2\2\u0255\u0256\7\\\2\2"+
+		"\u0256\u0257\7a\2\2\u0257\u0258\7\\\2\2\u0258m\3\2\2\2\u0259\u025a\78"+
+		"\2\2\u025a\u025b\7]\2\2\u025b\u025c\7\\\2\2\u025c\u025d\7a\2\2\u025d\u025e"+
+		"\7\\\2\2\u025eo\3\2\2\2\u025f\u0260\79\2\2\u0260\u0261\7]\2\2\u0261\u0262"+
+		"\7\\\2\2\u0262\u0263\7a\2\2\u0263\u0264\7\\\2\2\u0264q\3\2\2\2\u0265\u0266"+
+		"\7\30\2\2\u0266\u0267\7]\2\2\u0267\u0268\7\\\2\2\u0268\u0269\7a\2\2\u0269"+
+		"\u026a\7\\\2\2\u026as\3\2\2\2\u026b\u026c\7:\2\2\u026c\u026d\7]\2\2\u026d"+
+		"\u026e\7\\\2\2\u026e\u026f\7a\2\2\u026f\u0270\7\\\2\2\u0270u\3\2\2\2\u0271"+
+		"\u0272\7;\2\2\u0272\u0273\7]\2\2\u0273\u0274\7\\\2\2\u0274\u0275\7a\2"+
+		"\2\u0275\u0276\7\\\2\2\u0276w\3\2\2\2\u0277\u0278\7<\2\2\u0278\u0279\7"+
+		"]\2\2\u0279\u027a\7\\\2\2\u027a\u027b\7a\2\2\u027b\u027c\7\\\2\2\u027c"+
+		"y\3\2\2\2\u027d\u027e\7=\2\2\u027e\u027f\7]\2\2\u027f\u0280\7\\\2\2\u0280"+
+		"\u0281\7a\2\2\u0281\u0282\7\\\2\2\u0282{\3\2\2\2\u0283\u0284\7>\2\2\u0284"+
+		"\u0285\7]\2\2\u0285\u0286\7\\\2\2\u0286\u0287\7a\2\2\u0287\u0288\7\\\2"+
+		"\2\u0288}\3\2\2\2\u0289\u028a\7?\2\2\u028a\u028b\7]\2\2\u028b\u028c\7"+
+		"\\\2\2\u028c\u028d\7a\2\2\u028d\u028e\7\\\2\2\u028e\177\3\2\2\2\u028f"+
+		"\u0290\7@\2\2\u0290\u0291\7]\2\2\u0291\u0292\7\\\2\2\u0292\u0293\7a\2"+
+		"\2\u0293\u0294\7\\\2\2\u0294\u0081\3\2\2\2\u0295\u0296\7A\2\2\u0296\u0297"+
+		"\5\u0084C\2\u0297\u0298\5\u0086D\2\u0298\u0299\5\u0088E\2\u0299\u029a"+
+		"\7[\2\2\u029a\u0083\3\2\2\2\u029b\u029c\7i\2\2\u029c\u029d\7]\2\2\u029d"+
+		"\u029e\7\\\2\2\u029e\u029f\7q\2\2\u029f\u02a0\7\\\2\2\u02a0\u0085\3\2"+
+		"\2\2\u02a1\u02a2\7\65\2\2\u02a2\u02a3\7]\2\2\u02a3\u02a4\7\\\2\2\u02a4"+
+		"\u02a5\7q\2\2\u02a5\u02a6\7\\\2\2\u02a6\u0087\3\2\2\2\u02a7\u02a8\7B\2"+
+		"\2\u02a8\u02a9\7]\2\2\u02a9\u02aa\7\\\2\2\u02aa\u02ab\7a\2\2\u02ab\u02ac"+
+		"\7\\\2\2\u02ac\u0089\3\2\2\2\u02ad\u02ae\7C\2\2\u02ae\u02af\5\4\3\2\u02af"+
 		"\u02b0\5\6\4\2\u02b0\u02b1\5\b\5\2\u02b1\u02b2\5D#\2\u02b2\u02b3\5F$\2"+
 		"\u02b3\u02b4\5\n\6\2\u02b4\u02b5\5\f\7\2\u02b5\u02b7\5\u008cG\2\u02b6"+
 		"\u02b8\5\u008eH\2\u02b7\u02b6\3\2\2\2\u02b7\u02b8\3\2\2\2\u02b8\u02ba"+
 		"\3\2\2\2\u02b9\u02bb\5\u0090I\2\u02ba\u02b9\3\2\2\2\u02ba\u02bb\3\2\2"+
-		"\2\u02bb\u02bc\3\2\2\2\u02bc\u02bd\7f\2\2\u02bd\u008b\3\2\2\2\u02be\u02bf"+
-		"\7s\2\2\u02bf\u02c0\7h\2\2\u02c0\u02c1\7g\2\2\u02c1\u02c2\7F\2\2\u02c2"+
-		"\u02c3\7g\2\2\u02c3\u008d\3\2\2\2\u02c4\u02c5\7G\2\2\u02c5\u02c6\7h\2"+
-		"\2\u02c6\u02c7\7g\2\2\u02c7\u02c8\7l\2\2\u02c8\u02c9\7g\2\2\u02c9\u008f"+
-		"\3\2\2\2\u02ca\u02cb\7H\2\2\u02cb\u02cc\7h\2\2\u02cc\u02cd\7g\2\2\u02cd"+
-		"\u02ce\7l\2\2\u02ce\u02cf\7g\2\2\u02cf\u0091\3\2\2\2\u02d0\u02d1\7I\2"+
+		"\2\u02bb\u02bc\3\2\2\2\u02bc\u02bd\7[\2\2\u02bd\u008b\3\2\2\2\u02be\u02bf"+
+		"\7e\2\2\u02bf\u02c0\7]\2\2\u02c0\u02c1\7\\\2\2\u02c1\u02c2\7q\2\2\u02c2"+
+		"\u02c3\7\\\2\2\u02c3\u008d\3\2\2\2\u02c4\u02c5\7D\2\2\u02c5\u02c6\7]\2"+
+		"\2\u02c6\u02c7\7\\\2\2\u02c7\u02c8\7a\2\2\u02c8\u02c9\7\\\2\2\u02c9\u008f"+
+		"\3\2\2\2\u02ca\u02cb\7E\2\2\u02cb\u02cc\7]\2\2\u02cc\u02cd\7\\\2\2\u02cd"+
+		"\u02ce\7a\2\2\u02ce\u02cf\7\\\2\2\u02cf\u0091\3\2\2\2\u02d0\u02d1\7F\2"+
 		"\2\u02d1\u02d2\5\u0094K\2\u02d2\u02d3\5\u0096L\2\u02d3\u02d4\5\u0098M"+
-		"\2\u02d4\u02d5\7f\2\2\u02d5\u0093\3\2\2\2\u02d6\u02d7\7J\2\2\u02d7\u02d8"+
-		"\7h\2\2\u02d8\u02d9\7g\2\2\u02d9\u02da\7\u0087\2\2\u02da\u02db\7g\2\2"+
-		"\u02db\u0095\3\2\2\2\u02dc\u02dd\7s\2\2\u02dd\u02de\7h\2\2\u02de\u02df"+
-		"\7g\2\2\u02df\u02e0\7K\2\2\u02e0\u02e1\7g\2\2\u02e1\u0097\3\2\2\2\u02e2"+
-		"\u02e3\7\24\2\2\u02e3\u02e4\7h\2\2\u02e4\u02e5\7g\2\2\u02e5\u02e6\7\u008b"+
-		"\2\2\u02e6\u02e7\7g\2\2\u02e7\u0099\3\2\2\2\u02e8\u02e9\7L\2\2\u02e9\u02ea"+
-		"\5\16\b\2\u02ea\u02eb\5\u009cO\2\u02eb\u02ee\5\u009eP\2\u02ec\u02ef\5"+
-		"\4\3\2\u02ed\u02ef\5\20\t\2\u02ee\u02ec\3\2\2\2\u02ee\u02ed\3\2\2\2\u02ef"+
-		"\u02f2\3\2\2\2\u02f0\u02f3\5\6\4\2\u02f1\u02f3\5\22\n\2\u02f2\u02f0\3"+
-		"\2\2\2\u02f2\u02f1\3\2\2\2\u02f3\u02f4\3\2\2\2\u02f4\u02f5\7f\2\2\u02f5"+
-		"\u009b\3\2\2\2\u02f6\u02f7\7s\2\2\u02f7\u02f8\7h\2\2\u02f8\u02f9\7g\2"+
-		"\2\u02f9\u02fa\7M\2\2\u02fa\u02fb\7g\2\2\u02fb\u009d\3\2\2\2\u02fc\u02fd"+
-		"\7v\2\2\u02fd\u02fe\7h\2\2\u02fe\u02ff\7g\2\2\u02ff\u0300\t\n\2\2\u0300"+
-		"\u0301\7g\2\2\u0301\u009f\3\2\2\2\u0302\u0303\7N\2\2\u0303\u0306\5\16"+
-		"\b\2\u0304\u0307\5\4\3\2\u0305\u0307\5\20\t\2\u0306\u0304\3\2\2\2\u0306"+
-		"\u0305\3\2\2\2\u0307\u030a\3\2\2\2\u0308\u030b\5\6\4\2\u0309\u030b\5\22"+
-		"\n\2\u030a\u0308\3\2\2\2\u030a\u0309\3\2\2\2\u030b\u030c\3\2\2\2\u030c"+
-		"\u030d\5F$\2\u030d\u030e\5\u00a2R\2\u030e\u030f\5\u00a4S\2\u030f\u0310"+
-		"\5\u00a6T\2\u0310\u0311\5H%\2\u0311\u0312\5\u00a8U\2\u0312\u0313\7f\2"+
-		"\2\u0313\u00a1\3\2\2\2\u0314\u0315\7\u0082\2\2\u0315\u0316\7h\2\2\u0316"+
-		"\u0317\7g\2\2\u0317\u0318\7\u008a\2\2\u0318\u0319\7g\2\2\u0319\u00a3\3"+
-		"\2\2\2\u031a\u031b\7s\2\2\u031b\u031c\7h\2\2\u031c\u031d\7g\2\2\u031d"+
-		"\u031e\t\13\2\2\u031e\u031f\7g\2\2\u031f\u00a5\3\2\2\2\u0320\u0321\7\24"+
-		"\2\2\u0321\u0322\7h\2\2\u0322\u0323\7g\2\2\u0323\u0324\t\f\2\2\u0324\u0325"+
-		"\7g\2\2\u0325\u00a7\3\2\2\2\u0326\u0327\7Q\2\2\u0327\u0328\7h\2\2\u0328"+
-		"\u0329\7g\2\2\u0329\u032a\t\r\2\2\u032a\u032b\7g\2\2\u032b\u00a9\3\2\2"+
-		"\2\u032c\u032d\7S\2\2\u032d\u032e\5\16\b\2\u032e\u032f\5\u00acW\2\u032f"+
-		"\u0330\7f\2\2\u0330\u00ab\3\2\2\2\u0331\u0332\7\24\2\2\u0332\u0333\7h"+
-		"\2\2\u0333\u0335\7g\2\2\u0334\u0336\t\16\2\2\u0335\u0334\3\2\2\2\u0335"+
-		"\u0336\3\2\2\2\u0336\u0337\3\2\2\2\u0337\u0338\7g\2\2\u0338\u00ad\3\2"+
-		"\2\2\u0339\u033a\7T\2\2\u033a\u033b\5\u00b0Y\2\u033b\u033c\5\u00b2Z\2"+
-		"\u033c\u033d\5\u00b4[\2\u033d\u033e\5\f\7\2\u033e\u0340\5\u00b6\\\2\u033f"+
-		"\u0341\5\u00b8]\2\u0340\u033f\3\2\2\2\u0340\u0341\3\2\2\2\u0341\u0343"+
-		"\3\2\2\2\u0342\u0344\5\u00ba^\2\u0343\u0342\3\2\2\2\u0343\u0344\3\2\2"+
-		"\2\u0344\u0345\3\2\2\2\u0345\u0346\5D#\2\u0346\u0348\5\u00caf\2\u0347"+
-		"\u0349\5\u00bc_\2\u0348\u0347\3\2\2\2\u0348\u0349\3\2\2\2\u0349\u034b"+
-		"\3\2\2\2\u034a\u034c\5\u00be`\2\u034b\u034a\3\2\2\2\u034b\u034c\3\2\2"+
-		"\2\u034c\u034e\3\2\2\2\u034d\u034f\5\u00c0a\2\u034e\u034d\3\2\2\2\u034e"+
-		"\u034f\3\2\2\2\u034f\u0351\3\2\2\2\u0350\u0352\5\u00c2b\2\u0351\u0350"+
-		"\3\2\2\2\u0351\u0352\3\2\2\2\u0352\u0354\3\2\2\2\u0353\u0355\5\u00c4c"+
-		"\2\u0354\u0353\3\2\2\2\u0354\u0355\3\2\2\2\u0355\u0357\3\2\2\2\u0356\u0358"+
-		"\5\u00c6d\2\u0357\u0356\3\2\2\2\u0357\u0358\3\2\2\2\u0358\u035a\3\2\2"+
-		"\2\u0359\u035b\5\u00c8e\2\u035a\u0359\3\2\2\2\u035a\u035b\3\2\2\2\u035b"+
-		"\u035d\3\2\2\2\u035c\u035e\5J&\2\u035d\u035c\3\2\2\2\u035d\u035e\3\2\2"+
-		"\2\u035e\u035f\3\2\2\2\u035f\u0360\7f\2\2\u0360\u00af\3\2\2\2\u0361\u0362"+
-		"\7s\2\2\u0362\u0363\7h\2\2\u0363\u0364\7g\2\2\u0364\u0365\t\17\2\2\u0365"+
-		"\u0366\7g\2\2\u0366\u00b1\3\2\2\2\u0367\u0368\7V\2\2\u0368\u0369\7h\2"+
-		"\2\u0369\u036a\7g\2\2\u036a\u036b\7\u0085\2\2\u036b\u036c\7g\2\2\u036c"+
-		"\u00b3\3\2\2\2\u036d\u036e\7W\2\2\u036e\u036f\7h\2\2\u036f\u0370\7g\2"+
-		"\2\u0370\u0371\7\u0085\2\2\u0371\u0372\7g\2\2\u0372\u00b5\3\2\2\2\u0373"+
-		"\u0374\7X\2\2\u0374\u0375\7h\2\2\u0375\u0376\7g\2\2\u0376\u0377\t\20\2"+
-		"\2\u0377\u0378\7g\2\2\u0378\u00b7\3\2\2\2\u0379\u037a\7[\2\2\u037a\u037b"+
-		"\7h\2\2\u037b\u037c\7g\2\2\u037c\u037d\7l\2\2\u037d\u037e\7g\2\2\u037e"+
-		"\u00b9\3\2\2\2\u037f\u0380\7\\\2\2\u0380\u0381\7h\2\2\u0381\u0382\7g\2"+
-		"\2\u0382\u0383\7l\2\2\u0383\u0384\7g\2\2\u0384\u00bb\3\2\2\2\u0385\u0386"+
-		"\7]\2\2\u0386\u0387\7h\2\2\u0387\u0388\7g\2\2\u0388\u0389\7l\2\2\u0389"+
-		"\u038a\7g\2\2\u038a\u00bd\3\2\2\2\u038b\u038c\7^\2\2\u038c\u038d\7h\2"+
-		"\2\u038d\u038e\7g\2\2\u038e\u038f\7l\2\2\u038f\u0390\7g\2\2\u0390\u00bf"+
-		"\3\2\2\2\u0391\u0392\7`\2\2\u0392\u0393\7h\2\2\u0393\u0394\7g\2\2\u0394"+
-		"\u0395\t\21\2\2\u0395\u0396\7g\2\2\u0396\u00c1\3\2\2\2\u0397\u0398\7a"+
-		"\2\2\u0398\u0399\7h\2\2\u0399\u039a\7g\2\2\u039a\u039b\7l\2\2\u039b\u039c"+
-		"\7g\2\2\u039c\u00c3\3\2\2\2\u039d\u039e\7b\2\2\u039e\u039f\7h\2\2\u039f"+
-		"\u03a0\7g\2\2\u03a0\u03a1\t\21\2\2\u03a1\u03a2\7g\2\2\u03a2\u00c5\3\2"+
-		"\2\2\u03a3\u03a4\7c\2\2\u03a4\u03a5\7h\2\2\u03a5\u03a6\7g\2\2\u03a6\u03a7"+
-		"\7l\2\2\u03a7\u03a8\7g\2\2\u03a8\u00c7\3\2\2\2\u03a9\u03aa\7%\2\2\u03aa"+
-		"\u03ab\7h\2\2\u03ab\u03ac\7g\2\2\u03ac\u03ad\t\5\2\2\u03ad\u03ae\7g\2"+
-		"\2\u03ae\u00c9\3\2\2\2\u03af\u03b0\7\24\2\2\u03b0\u03b1\7h\2\2\u03b1\u03b2"+
-		"\7g\2\2\u03b2\u03b3\7\u0085\2\2\u03b3\u03b4\7g\2\2\u03b4\u00cb\3\2\2\2"+
-		"$\u00cf\u010a\u010d\u0110\u0113\u0116\u011c\u011f\u0122\u012c\u0131\u0137"+
-		"\u013d\u0143\u0149\u014f\u0199\u02b7\u02ba\u02ee\u02f2\u0306\u030a\u0335"+
-		"\u0340\u0343\u0348\u034b\u034e\u0351\u0354\u0357\u035a\u035d";
+		"\2\u02d4\u02d5\7[\2\2\u02d5\u0093\3\2\2\2\u02d6\u02d7\7G\2\2\u02d7\u02d8"+
+		"\7]\2\2\u02d8\u02d9\7\\\2\2\u02d9\u02da\7o\2\2\u02da\u02db\7\\\2\2\u02db"+
+		"\u0095\3\2\2\2\u02dc\u02dd\7e\2\2\u02dd\u02de\7]\2\2\u02de\u02df\7\\\2"+
+		"\2\u02df\u02e0\7q\2\2\u02e0\u02e1\7\\\2\2\u02e1\u0097\3\2\2\2\u02e2\u02e3"+
+		"\7\24\2\2\u02e3\u02e4\7]\2\2\u02e4\u02e5\7\\\2\2\u02e5\u02e6\7q\2\2\u02e6"+
+		"\u02e7\7\\\2\2\u02e7\u0099\3\2\2\2\u02e8\u02e9\7H\2\2\u02e9\u02ea\5\16"+
+		"\b\2\u02ea\u02eb\5\u009cO\2\u02eb\u02ee\5\u009eP\2\u02ec\u02ef\5\4\3\2"+
+		"\u02ed\u02ef\5\20\t\2\u02ee\u02ec\3\2\2\2\u02ee\u02ed\3\2\2\2\u02ef\u02f2"+
+		"\3\2\2\2\u02f0\u02f3\5\6\4\2\u02f1\u02f3\5\22\n\2\u02f2\u02f0\3\2\2\2"+
+		"\u02f2\u02f1\3\2\2\2\u02f3\u02f4\3\2\2\2\u02f4\u02f5\7[\2\2\u02f5\u009b"+
+		"\3\2\2\2\u02f6\u02f7\7e\2\2\u02f7\u02f8\7]\2\2\u02f8\u02f9\7\\\2\2\u02f9"+
+		"\u02fa\7q\2\2\u02fa\u02fb\7\\\2\2\u02fb\u009d\3\2\2\2\u02fc\u02fd\7h\2"+
+		"\2\u02fd\u02fe\7]\2\2\u02fe\u02ff\7\\\2\2\u02ff\u0300\7q\2\2\u0300\u0301"+
+		"\7\\\2\2\u0301\u009f\3\2\2\2\u0302\u0303\7I\2\2\u0303\u0306\5\16\b\2\u0304"+
+		"\u0307\5\4\3\2\u0305\u0307\5\20\t\2\u0306\u0304\3\2\2\2\u0306\u0305\3"+
+		"\2\2\2\u0307\u030a\3\2\2\2\u0308\u030b\5\6\4\2\u0309\u030b\5\22\n\2\u030a"+
+		"\u0308\3\2\2\2\u030a\u0309\3\2\2\2\u030b\u030c\3\2\2\2\u030c\u030d\5F"+
+		"$\2\u030d\u030e\5\u00a2R\2\u030e\u030f\5\u00a4S\2\u030f\u0310\5\u00a6"+
+		"T\2\u0310\u0311\5H%\2\u0311\u0312\5\u00a8U\2\u0312\u0313\7[\2\2\u0313"+
+		"\u00a1\3\2\2\2\u0314\u0315\7j\2\2\u0315\u0316\7]\2\2\u0316\u0317\7\\\2"+
+		"\2\u0317\u0318\7p\2\2\u0318\u0319\7\\\2\2\u0319\u00a3\3\2\2\2\u031a\u031b"+
+		"\7e\2\2\u031b\u031c\7]\2\2\u031c\u031d\7\\\2\2\u031d\u031e\7q\2\2\u031e"+
+		"\u031f\7\\\2\2\u031f\u00a5\3\2\2\2\u0320\u0321\7\24\2\2\u0321\u0322\7"+
+		"]\2\2\u0322\u0323\7\\\2\2\u0323\u0324\7q\2\2\u0324\u0325\7\\\2\2\u0325"+
+		"\u00a7\3\2\2\2\u0326\u0327\7J\2\2\u0327\u0328\7]\2\2\u0328\u0329\7\\\2"+
+		"\2\u0329\u032a\7q\2\2\u032a\u032b\7\\\2\2\u032b\u00a9\3\2\2\2\u032c\u032d"+
+		"\7K\2\2\u032d\u032e\5\16\b\2\u032e\u032f\5\u00acW\2\u032f\u0330\7[\2\2"+
+		"\u0330\u00ab\3\2\2\2\u0331\u0332\7\24\2\2\u0332\u0333\7]\2\2\u0333\u0335"+
+		"\7\\\2\2\u0334\u0336\t\3\2\2\u0335\u0334\3\2\2\2\u0335\u0336\3\2\2\2\u0336"+
+		"\u0337\3\2\2\2\u0337\u0338\7\\\2\2\u0338\u00ad\3\2\2\2\u0339\u033a\7L"+
+		"\2\2\u033a\u033b\5\u00b0Y\2\u033b\u033c\5\u00b2Z\2\u033c\u033d\5\u00b4"+
+		"[\2\u033d\u033e\5\f\7\2\u033e\u0340\5\u00b6\\\2\u033f\u0341\5\u00b8]\2"+
+		"\u0340\u033f\3\2\2\2\u0340\u0341\3\2\2\2\u0341\u0343\3\2\2\2\u0342\u0344"+
+		"\5\u00ba^\2\u0343\u0342\3\2\2\2\u0343\u0344\3\2\2\2\u0344\u0345\3\2\2"+
+		"\2\u0345\u0346\5D#\2\u0346\u0348\5\u00caf\2\u0347\u0349\5\u00bc_\2\u0348"+
+		"\u0347\3\2\2\2\u0348\u0349\3\2\2\2\u0349\u034b\3\2\2\2\u034a\u034c\5\u00be"+
+		"`\2\u034b\u034a\3\2\2\2\u034b\u034c\3\2\2\2\u034c\u034e\3\2\2\2\u034d"+
+		"\u034f\5\u00c0a\2\u034e\u034d\3\2\2\2\u034e\u034f\3\2\2\2\u034f\u0351"+
+		"\3\2\2\2\u0350\u0352\5\u00c2b\2\u0351\u0350\3\2\2\2\u0351\u0352\3\2\2"+
+		"\2\u0352\u0354\3\2\2\2\u0353\u0355\5\u00c4c\2\u0354\u0353\3\2\2\2\u0354"+
+		"\u0355\3\2\2\2\u0355\u0357\3\2\2\2\u0356\u0358\5\u00c6d\2\u0357\u0356"+
+		"\3\2\2\2\u0357\u0358\3\2\2\2\u0358\u035a\3\2\2\2\u0359\u035b\5\u00c8e"+
+		"\2\u035a\u0359\3\2\2\2\u035a\u035b\3\2\2\2\u035b\u035d\3\2\2\2\u035c\u035e"+
+		"\5J&\2\u035d\u035c\3\2\2\2\u035d\u035e\3\2\2\2\u035e\u035f\3\2\2\2\u035f"+
+		"\u0360\7[\2\2\u0360\u00af\3\2\2\2\u0361\u0362\7e\2\2\u0362\u0363\7]\2"+
+		"\2\u0363\u0364\7\\\2\2\u0364\u0365\7q\2\2\u0365\u0366\7\\\2\2\u0366\u00b1"+
+		"\3\2\2\2\u0367\u0368\7M\2\2\u0368\u0369\7]\2\2\u0369\u036a\7\\\2\2\u036a"+
+		"\u036b\7m\2\2\u036b\u036c\7\\\2\2\u036c\u00b3\3\2\2\2\u036d\u036e\7N\2"+
+		"\2\u036e\u036f\7]\2\2\u036f\u0370\7\\\2\2\u0370\u0371\7m\2\2\u0371\u0372"+
+		"\7\\\2\2\u0372\u00b5\3\2\2\2\u0373\u0374\7O\2\2\u0374\u0375\7]\2\2\u0375"+
+		"\u0376\7\\\2\2\u0376\u0377\t\5\2\2\u0377\u0378\7\\\2\2\u0378\u00b7\3\2"+
+		"\2\2\u0379\u037a\7Q\2\2\u037a\u037b\7]\2\2\u037b\u037c\7\\\2\2\u037c\u037d"+
+		"\7a\2\2\u037d\u037e\7\\\2\2\u037e\u00b9\3\2\2\2\u037f\u0380\7R\2\2\u0380"+
+		"\u0381\7]\2\2\u0381\u0382\7\\\2\2\u0382\u0383\7a\2\2\u0383\u0384\7\\\2"+
+		"\2\u0384\u00bb\3\2\2\2\u0385\u0386\7S\2\2\u0386\u0387\7]\2\2\u0387\u0388"+
+		"\7\\\2\2\u0388\u0389\7a\2\2\u0389\u038a\7\\\2\2\u038a\u00bd\3\2\2\2\u038b"+
+		"\u038c\7T\2\2\u038c\u038d\7]\2\2\u038d\u038e\7\\\2\2\u038e\u038f\7a\2"+
+		"\2\u038f\u0390\7\\\2\2\u0390\u00bf\3\2\2\2\u0391\u0392\7U\2\2\u0392\u0393"+
+		"\7]\2\2\u0393\u0394\7\\\2\2\u0394\u0395\7q\2\2\u0395\u0396\7\\\2\2\u0396"+
+		"\u00c1\3\2\2\2\u0397\u0398\7V\2\2\u0398\u0399\7]\2\2\u0399\u039a\7\\\2"+
+		"\2\u039a\u039b\7a\2\2\u039b\u039c\7\\\2\2\u039c\u00c3\3\2\2\2\u039d\u039e"+
+		"\7W\2\2\u039e\u039f\7]\2\2\u039f\u03a0\7\\\2\2\u03a0\u03a1\7q\2\2\u03a1"+
+		"\u03a2\7\\\2\2\u03a2\u00c5\3\2\2\2\u03a3\u03a4\7X\2\2\u03a4\u03a5\7]\2"+
+		"\2\u03a5\u03a6\7\\\2\2\u03a6\u03a7\7a\2\2\u03a7\u03a8\7\\\2\2\u03a8\u00c7"+
+		"\3\2\2\2\u03a9\u03aa\7$\2\2\u03aa\u03ab\7]\2\2\u03ab\u03ac\7\\\2\2\u03ac"+
+		"\u03ad\t\3\2\2\u03ad\u03ae\7\\\2\2\u03ae\u00c9\3\2\2\2\u03af\u03b0\7\24"+
+		"\2\2\u03b0\u03b1\7]\2\2\u03b1\u03b2\7\\\2\2\u03b2\u03b3\7m\2\2\u03b3\u03b4"+
+		"\7\\\2\2\u03b4\u00cb\3\2\2\2$\u00cf\u010a\u010d\u0110\u0113\u0116\u011c"+
+		"\u011f\u0122\u012c\u0131\u0137\u013d\u0143\u0149\u014f\u0199\u02b7\u02ba"+
+		"\u02ee\u02f2\u0306\u030a\u0335\u0340\u0343\u0348\u034b\u034e\u0351\u0354"+
+		"\u0357\u035a\u035d";
 	public static final ATN _ATN =
 		new ATNDeserializer().deserialize(_serializedATN.toCharArray());
 	static {
