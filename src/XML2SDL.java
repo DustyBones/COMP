@@ -10,6 +10,7 @@ public class XML2SDL {
         if (args.length != 1) {
             System.out.println("Wrong number of arguments. Expected XML2SDL <path to xml file>");
         } else {
+            SDLWriter sdl = new SDLWriter(args[0]);
             try {
                 Grammar g = Grammar.load("Comp.g4");
                 LexerInterpreter lexer = g.createLexerInterpreter(new ANTLRFileStream(args[0]));
