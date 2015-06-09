@@ -7,20 +7,21 @@ import org.antlr.v4.tool.Grammar;
 
 public class XML2SDL {
     public static void main(String[] args) {
-        if(args.length!=1){
+        if (args.length != 1) {
             System.out.println("Wrong number of arguments. Expected XML2SDL <path to xml file>");
-        }
-        try {
-            Grammar g = Grammar.load("Comp.g4");
-            LexerInterpreter lexer = g.createLexerInterpreter(new ANTLRFileStream(args[0]));
-            CommonTokenStream tokens = new CommonTokenStream(lexer);
-            CompParser parser = new CompParser(tokens);
-            ParseTree t = parser.start();
-            ParseTreeWalker walker = new ParseTreeWalker();
-            Listener listener = new Listener();
-            walker.walk(listener, t);
-        } catch (Exception e) {
-            e.printStackTrace();
+        } else {
+            try {
+                Grammar g = Grammar.load("Comp.g4");
+                LexerInterpreter lexer = g.createLexerInterpreter(new ANTLRFileStream(args[0]));
+                CommonTokenStream tokens = new CommonTokenStream(lexer);
+                CompParser parser = new CompParser(tokens);
+                ParseTree t = parser.start();
+                ParseTreeWalker walker = new ParseTreeWalker();
+                Listener listener = new Listener();
+                walker.walk(listener, t);
+            } catch (Exception e) {
+                e.printStackTrace();
+            }
         }
     }
 }

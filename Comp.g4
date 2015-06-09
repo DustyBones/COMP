@@ -120,7 +120,7 @@ CLOSEBARA : '/>';
 QUOTE : '"' ;
 EQUAL : '=' ;
 PLUS : '+';
-MINUS : '-';
+//MINUS : '-';
 DOT : '.' ;
 BOOLEAN : 'TRUE' | 'YES' | 'FALSE' |  'NO';
 LATITUDE : 'lat';
@@ -136,10 +136,9 @@ BIASX : 'biasX';
 BIASZ : 'biasZ';
 
 INT  : ('0'..'9')+ ;
-TIME : '-'?('1'('0'..'7')|('1'..'9'))?('0'..'9')'-'('0'..'5')?('0'..'9')'-'('0'..'5')?('0'..'9')'.'('0'..'9')+;
-FLOAT : '-'? ('0'..'9')+ '.' ('0'..'9')+;
+FLOAT : '-'?('0'..'9')+ '.' ('0'..'9')+;
 DIST : (INT | FLOAT) ('M'|'F')?;
-STRING : ('a'..'z'|'A'..'Z'|'0'..'9')(('a'..'z'|'A'..'Z'|'0'..'9'|' '|'_')*('a'..'z'|'A'
+STRING : ('a'..'z'|'A'..'Z'|'0'..'9'|'-')(('a'..'z'|'A'..'Z'|'0'..'9'|' '|'_'|'-')*('a'..'z'|'A'
 ..'Z'|'0'..'9'))? ;
 
 
@@ -153,10 +152,10 @@ start
 
 /****Generic****/
 latitude
-    : LATITUDE  EQUAL QUOTE (FLOAT | TIME) QUOTE
+    : LATITUDE  EQUAL QUOTE (FLOAT | STRING) QUOTE
     ;
 longitude
-    : LONGITUDE  EQUAL QUOTE (FLOAT | TIME) QUOTE
+    : LONGITUDE  EQUAL QUOTE (FLOAT | STRING) QUOTE
     ;
 altitude
     : ALTITUDE  EQUAL QUOTE DIST QUOTE
@@ -171,10 +170,10 @@ index
     : INDEX EQUAL QUOTE INT QUOTE
     ;
 biasX
-    : BIASX EQUAL QUOTE FLOAT QUOTE
+    : BIASX EQUAL QUOTE DIST QUOTE
     ;
 biasZ
-    : BIASZ EQUAL QUOTE FLOAT QUOTE
+    : BIASZ EQUAL QUOTE DIST QUOTE
     ;
 
 /******Airport******/
@@ -249,8 +248,8 @@ runway
     : runwayBegin runwayChildren runwayEnd
     ;
 runwayBegin
-    : RUNWAY_OPEN latitude longitude altitude surface heading length width number designator patternAlt
-      primaryTakeoff primaryLanding primaryPattern secondaryTakeoff secondaryLanding secondaryPattern CLOSEA
+    : RUNWAY_OPEN latitude longitude altitude surface heading length width number designator patternAlt?
+      primaryTakeoff? primaryLanding? primaryPattern? secondaryTakeoff? secondaryLanding? secondaryPattern? CLOSEA
     ;
 runwayChildren
     : markings lights
@@ -414,9 +413,10 @@ comType
 comName
     : NAME  EQUAL QUOTE STRING QUOTE
     ;
+
 /****taxywayPoint****/
 taxiwayPoint
-    : TAXIWAY_POINT_OPEN index taxiwayPointerType orientation ( latitude | biasX ) ( longitude | biasZ ) CLOSEBARA
+    : TAXIWAY_POINT_OPEN index taxiwayPointerType orientation? ( latitude longitude | biasX  biasZ ) CLOSEBARA
     ;
 taxiwayPointerType
     : TYPE EQUAL QUOTE STRING QUOTE
@@ -427,7 +427,7 @@ orientation
 
 /****taxiwayParking****/
 taxiwayParking
-    : TAXIWAY_PARKING_OPEN index ( latitude | biasX ) ( longitude | biasZ ) heading radius taxiwayParkingType name
+    : TAXIWAY_PARKING_OPEN index ( latitude longitude | biasX  biasZ ) heading radius taxiwayParkingType name
     number pushBack CLOSEBARA
     ;
 radius
