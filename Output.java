@@ -90,7 +90,7 @@ private static Element addairport() {
 	  airport.addContent(new Element("iata").addContent("iata"));  //TODO ?
 	  airport.addContent(addrunways());
 	  airport.addContent(addtaxiways());
-	  airport.addContent(new Element("parking").addContent("XXX parking XXX"));
+	  airport.addContent(addparkingspaces());
 	  return airport;
 }
 
@@ -106,6 +106,11 @@ private static Element addtaxiways() {
 	return taxiways;
 }
 
+private static Element addparkingspaces() {
+	Element parkingspaces = new Element("parkingspaces");
+	parkingspaces.addContent(addparking());
+	return parkingspaces;
+}
 
 private static Element addrunway() {
 	Element runway = new Element("runway").setAttribute("id","id do cenas");
@@ -181,6 +186,21 @@ private static Element addpath() {
 	return path;
 }
 
+private static Element addparking() {
+	Element parking = new Element("parking").setAttribute("parkingType","tipo do parque").setAttribute("id","id do cenas");
+	parking.addContent(new Element("designation").addContent("taxiway X"));
+	parking.addContent(new Element("description").addContent("descriçao"));
+	parking.addContent(new Element ("airlines"));
+	parking.addContent(addcoordinates());
+	parking.addContent(new Element("radius").setAttribute("lengthUnit","foot").addContent("numero"));
+	parking.addContent(addconnectstotaxiway());
+	return parking;
+}
 
+private static Element addconnectstotaxiway() {
+	Element connectstotaxiway = new Element("connectsToTaxiway");
+	connectstotaxiway.addContent(addcoordinates());
+	return connectstotaxiway;
+}
 
 }
