@@ -1,41 +1,38 @@
-import java.io.FileWriter;
-import java.io.IOException;
-
 import org.jdom2.Document;
 import org.jdom2.Element;
 import org.jdom2.Namespace;
 import org.jdom2.output.Format;
 import org.jdom2.output.XMLOutputter;
 
-/**
- * Created by Bernardo on 09-06-2015.
- */
-public class SDLWriter {
+import java.io.FileWriter;
+import java.io.IOException;
 
+public class SDLWriter {
+    private Listener listener;
     private Document doc = null;
     private String filepath;
     private Namespace dcs = Namespace.getNamespace("dcs:scenario");
 
-
-    public SDLWriter(String filepath) {
+    public SDLWriter(String filepath, Listener listener) {
         this.filepath = filepath;
+        this.listener = listener;
+    }
+
+    public void generate() {
         addScenario();
         writeSDL();
-
-
     }
 
-
-    private void addScenario(){
+    private void addScenario() {
         Element scenario = new Element("scenario", dcs);
-        scenario.addNamespaceDeclaration(Namespace.getNamespace("xsi", "http://www.w3.org/2001/XMLSchema-instance"));
+        scenario.addNamespaceDeclaration(Namespace.getNamespace("dcs:scenario"));
         scenario.addNamespaceDeclaration(Namespace.getNamespace("xsd", "http://www.w3.org/2001/XMLSchema"));
+        scenario.addNamespaceDeclaration(Namespace.getNamespace("xsi", "http://www.w3.org/2001/XMLSchema-instance"));
         doc = new Document(scenario);
         addScenarioChildren();
-
     }
 
-    private void addScenarioChildren(){
+    private void addScenarioChildren() {
         Element scenario = doc.getRootElement();
         Element bases = addBases();
         Element controllers = new Element("controllers", dcs);
@@ -47,99 +44,202 @@ public class SDLWriter {
         scenario.addContent(noFlyAreas);
     }
 
-    private Element addBases(){
+    private Element addBases() {
         Element bases = new Element("bases", dcs);
-
-
-        Element baseOfOperations = new Element("baseOfOperations").setAttribute("id","bX");  //TODO: X com o ciclo que ve quantas bases criar
-
-        baseOfOperations.addContent(new Element ("nome").addContent("inserir nome do aeroporto"));  //TODO
-        baseOfOperations.addContent(new Element ("mobility").setAttribute("water","true").setAttribute("underwater","false").setAttribute("land","true").setAttribute("air","true"));
-        baseOfOperations.addContent(new Element ("description").addContent("XXX Description XXX"));
-        baseOfOperations.addContent(new Element ("history").addContent("XXX history"));
-        baseOfOperations.addContent(addContactPerson());
-        baseOfOperations.addContent(addLocation());
-        baseOfOperations.addContent(new Element ("availability").setAttribute("available","always"));
-        baseOfOperations.addContent(addAirport());
-
-        bases.addContent(baseOfOperations);
+        for (int i = 0; i < listener.getAirport().size(); i++) {
+            Element baseOfOperations = new Element("baseOfOperations", dcs).setAttribute("id", "b" + (i + 1));
+            baseOfOperations.addContent(new Element("name", dcs).addContent(listener.getAirport().get("airport_" +
+                    i).get("name") + " base"));
+            baseOfOperations.addContent(new Element("mobility", dcs).setAttribute("water", "true").setAttribute("underwater",
+                    "false").setAttribute("land", "true").setAttribute("air", "true"));
+            baseOfOperations.addContent(new Element("description", dcs).addContent("XXX Description XXX"));
+            baseOfOperations.addContent(new Element("history", dcs).addContent("XXX history"));
+            baseOfOperations.addContent(addContactPerson());
+            baseOfOperations.addContent(addLocation(i));
+            baseOfOperations.addContent(new Element("availability", dcs).setAttribute("available", "always"));
+            baseOfOperations.addContent(addAirport(i));
+            bases.addContent(baseOfOperations);
+        }
         return bases;
     }
 
-
-
     private Element addContactPerson() {
-        Element contactPerson = new Element("contactPerson");
-        contactPerson.addContent(new Element("name").addContent("XXX Name XXX"));
-        contactPerson.addContent(new Element("title").addContent("XXX Title XXX"));
-        contactPerson.addContent(new Element("instituition").addContent("XxX Instituition XXX"));
-        contactPerson.addContent(new Element("position").addContent("XXX Position XXX"));
-        contactPerson.addContent(new Element("address").addContent("XXX Address XXX"));
-        contactPerson.addContent(new Element("zipCode").addContent("XXX ZipCode XXX"));
-        contactPerson.addContent(new Element("city").addContent("XXX City XXX"));
-        contactPerson.addContent(new Element("stateDistrictRegion").addContent("XXX State XXX"));
-        contactPerson.addContent(new Element("country").addContent("XXX Country XXX"));
-        contactPerson.addContent(new Element("telephone").addContent("XXX Telephone XXX"));
-        contactPerson.addContent(new Element("cellphone").addContent("XXX Cellphone XXX"));
-        contactPerson.addContent(new Element("fax").addContent("XXX Fax XXX"));
-        contactPerson.addContent(new Element("email").addContent("XXX email XXX"));
+        Element contactPerson = new Element("contactPerson", dcs);
+        contactPerson.addContent(new Element("name", dcs).addContent("XXX Name XXX"));
+        contactPerson.addContent(new Element("title", dcs).addContent("XXX Title XXX"));
+        contactPerson.addContent(new Element("instituition", dcs).addContent("XxX Instituition XXX"));
+        contactPerson.addContent(new Element("position", dcs).addContent("XXX Position XXX"));
+        contactPerson.addContent(new Element("address", dcs).addContent("XXX Address XXX"));
+        contactPerson.addContent(new Element("zipCode", dcs).addContent("XXX ZipCode XXX"));
+        contactPerson.addContent(new Element("city", dcs).addContent("XXX City XXX"));
+        contactPerson.addContent(new Element("stateDistrictRegion", dcs).addContent("XXX State XXX"));
+        contactPerson.addContent(new Element("country", dcs).addContent("XXX Country XXX"));
+        contactPerson.addContent(new Element("telephone", dcs).addContent("XXX Telephone XXX"));
+        contactPerson.addContent(new Element("cellphone", dcs).addContent("XXX Cellphone XXX"));
+        contactPerson.addContent(new Element("fax", dcs).addContent("XXX Fax XXX"));
+        contactPerson.addContent(new Element("email", dcs).addContent("XXX email XXX"));
 
         return contactPerson;
     }
 
-    private Element addLocation() {
-        Element location = new Element("location");
-        location.addContent(new Element("address").addContent("xxxxxxxxxxxxx"));
-        location.addContent(new Element("zipCode").addContent("xxxxxxxxxxxxx"));
-        location.addContent(new Element("city").addContent("nome da cidade"));  //TODO
-        location.addContent(new Element("stateDistrictRegion").addContent("nome estdo"));  //TODO
-        location.addContent(new Element("country").addContent("nome do pais"));  //TODO
-        location.addContent(addCoordinates());
+    private Element addLocation(int i) {
+        Element location = new Element("location", dcs);
+        location.addContent(new Element("address", dcs).addContent("xxxxxxxxxxxxx"));
+        location.addContent(new Element("zipCode", dcs).addContent("xxxxxxxxxxxxx"));
+        location.addContent(new Element("city", dcs).addContent(listener.getAirport().get("airport_" + i).get("city")));
+        location.addContent(new Element("stateDistrictRegion", dcs).addContent(listener.getAirport().get
+                ("airport_" + i).get("state")));
+        location.addContent(new Element("country", dcs).addContent(listener.getAirport().get("airport_" + i).get("country")));
+        location.addContent(addAirportCoordinates(i));
         return location;
     }
 
-    private Element addCoordinates() {
-        Element coordinates = new Element("coordinates");
-        coordinates.addContent(new Element("latitude").addContent("latitude"));   //TODO
-        coordinates.addContent(new Element("longitude").addContent("longitude"));  //TODO
-        coordinates.addContent(new Element("altitude").addContent("altitude"));  //TODO
+    private Element addAirportCoordinates(int i) {
+        Element coordinates = new Element("coordinates", dcs);
+        coordinates.addContent(new Element("latitude", dcs).addContent(parseCoord(listener.getAirport().get("airport_" + i).get
+                ("latitude"), "lat")));
+        coordinates.addContent(new Element("longitude", dcs).addContent(parseCoord(listener.getAirport().get("airport_" + i)
+                .get("longitude"), "lon")));
+        coordinates.addContent(new Element("altitude", dcs).setAttribute("measured", "amsl").addContent(
+                listener.getAirport().get("airport_" + i).get("altitude")));
         return coordinates;
     }
 
-    private Element addAirport() {
-
-        Element airport = new Element("aeroporto");
-        airport.addContent(new Element ("name").addContent("inserir nome do aeroporto"));  //TODO
-        airport.addContent(new Element("altitude").addContent("XXX Description XXX"));
+    private Element addAirport(int i) {
+        Element airport = new Element("aeroporto", dcs);
+        airport.addContent(new Element("name", dcs).addContent(listener.getAirport().get("airport_" +
+                i).get("name")));
+        airport.addContent(addAirportCoordinates(i));
         airport.addContent(addContactPerson());
-        airport.addContent(addLocation());
-        airport.addContent(new Element("icao").addContent("icao"));  //TODO ?
-        airport.addContent(new Element("iata").addContent("iata"));  //TODO ?
-        airport.addContent(new Element("runways").addContent("XXX runways XXX"));
-        airport.addContent(new Element("taxiways").addContent("XXX taxiways XXX"));
-        airport.addContent(new Element("parking").addContent("XXX parking XXX"));
+        airport.addContent(addLocation(i));
+        airport.addContent(new Element("icao", dcs).addContent(listener.getAirport().get("airport_" +
+                i).get("ICAO")));
+        airport.addContent(new Element("iata", dcs).addContent(listener.getAirport().get("airport_" +
+                i).get("IATA")));
+        airport.addContent(new Element("magVar", dcs).addContent(listener.getAirport().get("airport_" +
+                i).get("magVar")));
+        airport.addContent(new Element("runways", dcs).addContent("XXX runways XXX"));
+        airport.addContent(addHelipad(i));
+        airport.addContent(new Element("taxiways", dcs).addContent("XXX taxiways XXX"));
+        airport.addContent(new Element("parkingSpaces", dcs).addContent("XXX parking XXX"));
+        airport.addContent(addUtil(i));
         return airport;
+    }/*
+    private Element addRunway(int i){
+
+    }*/
+
+    private Element addHelipad(int i) {
+        Element helipads = new Element("helipads", dcs);
+        for (int j = 0; j < listener.getHelipad().size(); j++) {
+            if (listener.getHelipad().get(i + "_helipad_" + j) != null) {
+                Element helipad = new Element("helipad", dcs);
+                helipad.setAttribute("id", "h" + ((j + 1) < 10 ? "0" : "") + (j + 1));
+                helipad.addContent(new Element("designator", dcs).addContent("Helipad"));
+                helipad.addContent(new Element("surface", dcs).addContent(listener.getHelipad().get(i + "_helipad_" + j)
+                        .get("surface")));
+                Element coords = new Element("coordinates", dcs);
+                coords.addContent(new Element("latitude", dcs).addContent(parseCoord(
+                        listener.getHelipad().get(i + "_helipad_" + j).get("latitude"), "lat")));
+                coords.addContent(new Element("longitude", dcs).addContent(parseCoord(
+                        listener.getHelipad().get(i + "_helipad_" + j).get("longitude"), "lon")));
+                coords.addContent(new Element("altitude", dcs).setAttribute("measured", "amsl").addContent(
+                        listener.getHelipad().get(i + "_helipad_" + j).get("altitude")));
+                helipad.addContent(new Element("radius", dcs).setAttribute("lengthUnit", "Meter").addContent(
+                        listener.getHelipad().get(i + "_helipad_" + j).get("radius")));
+            }
+        }
+        return helipads;
+    }
+    /*
+    private Element addTaxiway(int i){
+
+    }
+    private Element addParking(int i){
+
+    }*/
+
+    private Element addUtil(int i) {
+        Element utilities = new Element("utilities", dcs);
+        for (int j = 0; j < listener.getTower().size(); j++) {
+            if (listener.getTower().get(i + "_tower_" + j) != null) {
+                utilities.addContent(addTower(i, j));
+            }
+        }
+        for (int j = 0; j < listener.getTower().size(); j++) {
+            if (listener.getFuel().get(i + "_fuel_" + j) != null) {
+                utilities.addContent(addFuel(i, j));
+            }
+        }
+        return utilities;
     }
 
+    private Element addTower(int i, int j) {
+        Element tower = new Element("tower", dcs).setAttribute("id", "t" + ((j + 1) < 10 ? "0" : "") + (j + 1));
+        tower.addContent(new Element("designation", dcs).addContent("Tower"));
+        Element coord = new Element("coordinates", dcs);
+        tower.addContent(coord);
+        coord.addContent(new Element("latitude", dcs).addContent(parseCoord(listener.getTower
+                ().get(i + "_tower_" + j).get("latitude"), "lat")));
+        coord.addContent(new Element("longitude", dcs).addContent(parseCoord(listener.getTower
+                ().get(i + "_tower_" + j).get("longitude"), "lon")));
+        coord.addContent(new Element("altitude", dcs).setAttribute("measured", "amsl").addContent(
+                listener.getTower().get(i + "_tower_" + j).get("altitude")));
+        tower.addContent(new Element("radius", dcs).setAttribute("lengthUnit", "Meter").addContent(
+                listener.getTower().get(i + "_tower_" + j).get("radius")));
+        tower.addContent(new Element("height", dcs).setAttribute("lengthUnit", "Meter").addContent(
+                listener.getTower().get(i + "_tower_" + j).get("height")));
+        return tower;
+    }
 
+    private Element addFuel(int i, int j) {
+        Element fuel = new Element("fuel", dcs).setAttribute("id", "f" + ((j + 1) < 10 ? "0" : "") + (j + 1));
+        fuel.addContent(new Element("designation", dcs).addContent("Fuel"));
+        Element coord = new Element("coordinates", dcs);
+        fuel.addContent(coord);
+        coord.addContent(new Element("latitude", dcs).addContent(parseCoord(listener.getTower
+                ().get(i + "_tower_" + j).get("latitude"), "lat")));
+        coord.addContent(new Element("longitude", dcs).addContent(parseCoord(listener.getTower
+                ().get(i + "_tower_" + j).get("longitude"), "lon")));
+        coord.addContent(new Element("altitude", dcs).setAttribute("measured", "amsl").addContent(
+                listener.getTower().get(i + "_tower_" + j).get("altitude")));
+        fuel.addContent(new Element("radius", dcs).setAttribute("lengthUnit", "Meter").addContent(
+                listener.getFuel().get(i + "_fuel_" + j).get("radius")));
+        fuel.addContent(new Element("type", dcs).addContent(
+                listener.getFuel().get(i + "_fuel_" + j).get("type")));
+        fuel.addContent(new Element("available", dcs).addContent(
+                listener.getFuel().get(i + "_fuel_" + j).get("availability")));
+        return fuel;
+    }
 
+    private String parseCoord(String s, String c) {
+        String parse;
+        String[] tokens;
+        try {
+            Double.parseDouble(s);
+            return s;
+        } catch (Exception ignore) {
+        }
+        tokens = s.split("-");
+        if (tokens[0].length() == 0) {
+            parse = tokens[1] + "º " + tokens[2] + "' " + tokens[3] + "'' " + (c.equals("lat") ? "S" : "W");
+        } else {
+            parse = tokens[0] + "º " + tokens[1] + "' " + tokens[2] + "'' " + (c.equals("lat") ? "N" : "E");
 
-    private void writeSDL(){
+        }
+        return parse;
+    }
 
+    private void writeSDL() {
         try {
             XMLOutputter xmlOutput = new XMLOutputter();
-
-
             xmlOutput.setFormat(Format.getPrettyFormat());
-            //xmlOutput.setFormat(xmlOutput.getFormat().setExpandEmptyElements(true));
+            xmlOutput.setFormat(xmlOutput.getFormat().setExpandEmptyElements(true));
             xmlOutput.output(doc, new FileWriter(filepath));
         } catch (IOException e) {
             e.printStackTrace();
         }
-
     }
-
-
 
 
 }

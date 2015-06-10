@@ -146,7 +146,7 @@ STRING : ('a'..'z'|'A'..'Z'|'0'..'9'|'-')(('a'..'z'|'A'..'Z'|'0'..'9'|' '|'_'|'-
 *********************parser********************
 **********************************************/
 
-start
+startParser
     : airport* EOF
     ;
 
@@ -248,7 +248,7 @@ runway
     : runwayBegin runwayChildren runwayEnd
     ;
 runwayBegin
-    : RUNWAY_OPEN latitude longitude altitude surface heading length width number designator patternAlt?
+    : RUNWAY_OPEN latitude longitude altitude surface heading length width number designator? patternAlt?
       primaryTakeoff? primaryLanding? primaryPattern? secondaryTakeoff? secondaryLanding? secondaryPattern? CLOSEA
     ;
 runwayChildren
@@ -385,6 +385,8 @@ lightsEdge
  lightsRed
     : CENTER_RED EQUAL QUOTE BOOLEAN QUOTE
     ;
+
+/****start****/
 
 /****helipad****/
 helipad

@@ -5,32 +5,33 @@ import java.util.Map;
 
 public class Listener extends CompBaseListener {
 
-    boolean valid;
-    int error;
-    int warning;
+    private boolean valid;
+    private int error;
+    private int warning;
 
-    int airportCount;
-    int towerCount;
-    int fuelCount;
-    int runwayCount;
-    int helipadCount;
-    int taxiwayPointCount;
-    int taxiwayParkingCount;
-    int taxiwayPathCount;
+    private int airportCount;
+    private int towerCount;
+    private int fuelCount;
+    private int runwayCount;
+    private int helipadCount;
+    private int taxiwayPointCount;
+    private int taxiwayParkingCount;
+    private int taxiwayPathCount;
 
-    Map<String, Map<String, String>> airport = new HashMap<>();
-    Map<String, Map<String, String>> tower = new HashMap<>();
-    Map<String, Map<String, String>> fuel = new HashMap<>();
-    Map<String, Map<String, String>> runway = new HashMap<>();
-    Map<String, Map<String, String>> helipad = new HashMap<>();
-    Map<String, Map<String, String>> taxywayPoint = new HashMap<>();
-    Map<String, Map<String, String>> taxywayParking = new HashMap<>();
-    Map<String, Map<String, String>> taxiwayPath = new HashMap<>();
-    Map<String, String> atribute = new HashMap<>();
+    private Map<String, String> attribute;
+    private Map<String, Map<String, String>> airport = new HashMap<>();
+    private Map<String, Map<String, String>> tower = new HashMap<>();
+
+    private Map<String, Map<String, String>> fuel = new HashMap<>();
+    private Map<String, Map<String, String>> runway = new HashMap<>();
+    private Map<String, Map<String, String>> helipad = new HashMap<>();
+    private Map<String, Map<String, String>> taxiwayPoint = new HashMap<>();
+    private Map<String, Map<String, String>> taxiwayParking = new HashMap<>();
+    private Map<String, Map<String, String>> taxiwayPath = new HashMap<>();
 
     @Override
-    public void enterStart(@NotNull CompParser.StartContext ctx) {
-        super.enterStart(ctx);
+    public void enterStartParser(@NotNull CompParser.StartParserContext ctx) {
+        super.enterStartParser(ctx);
 
         valid = true;
         error = 0;
@@ -47,8 +48,17 @@ public class Listener extends CompBaseListener {
     }
 
     @Override
-    public void exitStart(@NotNull CompParser.StartContext ctx) {
-        super.exitStart(ctx);
+    public void exitStartParser(@NotNull CompParser.StartParserContext ctx) {
+        super.exitStartParser(ctx);
+        if (error == 0 && warning == 0) {
+            System.out.println("No problems found. Generating files.");
+        } else if (error > 0 && warning == 0) {
+            System.out.println(error + " Error(s). Failed to generate files.");
+        } else if (error > 0 && warning > 0) {
+            System.out.println(error + " Error(s) and " + warning + " Warning(s). Failed to generate files.");
+        } else if (error == 0 && warning > 0) {
+            System.out.println(warning + " Warnings(s). Generating files.");
+        }
     }
 
     @Override
@@ -62,50 +72,56 @@ public class Listener extends CompBaseListener {
         try {
             String val = ctx.getText().split("\"")[1];
             double dVal;
-            if (val.split("-").length <= 2) { //angle
+            if (val.split("-").length <= 2) {
                 dVal = Double.parseDouble(val);
                 if (dVal >= 90 || dVal <= -90) {
-                    System.out.println("Line " + ctx.getStart().getLine() + ": Expected " +
+                    System.out.println("Error at " + ctx.getStart().getLine() + ": Expected " +
                             "value between -90 and 90, got " + dVal);
                     valid = false;
+                    error++;
                 }
-            } else {//time
+            } else {
                 String[] vals = val.split("-");
                 int i;
                 if (vals[0].length() == 0) {
                     dVal = 0 - Double.parseDouble(vals[1]);
                     if (dVal >= 90 || dVal <= -90) {
-                        System.out.println("Line " + ctx.getStart().getLine() + ": Expected angle " +
+                        System.out.println("Error at " + ctx.getStart().getLine() + ": Expected angle " +
                                 "value between -90 and 90, got " + dVal);
                         valid = false;
+                        error++;
                     }
                     i = 2;
                 } else {
                     dVal = Double.parseDouble(vals[0]);
                     if (dVal >= 90 || dVal <= -90) {
-                        System.out.println("Line " + ctx.getStart().getLine() + ": Expected angle " +
+                        System.out.println("Error at " + ctx.getStart().getLine() + ": Expected angle " +
                                 "value between -90 and 90, got " + dVal);
                         valid = false;
+                        error++;
                     }
                     i = 1;
                 }
 
                 dVal = Double.parseDouble(val.split("-")[i++]);
                 if (dVal >= 60 || dVal < 0) {
-                    System.out.println("Line " + ctx.getStart().getLine() + ": Expected minutes " +
+                    System.out.println("Error at " + ctx.getStart().getLine() + ": Expected minutes " +
                             "value between 0 and 60, got " + dVal);
                     valid = false;
+                    error++;
                 }
                 dVal = Double.parseDouble(val.split("-")[i]);
                 if (dVal >= 60 || dVal < 0) {
-                    System.out.println("Line " + ctx.getStart().getLine() + ": Expected seconds " +
+                    System.out.println("Error at " + ctx.getStart().getLine() + ": Expected seconds " +
                             "value between 0 and 60, got " + dVal);
                     valid = false;
+                    error++;
                 }
             }
         } catch (Exception e) {
-            System.out.println("Line " + ctx.getStart().getLine() + ": Expected numeric value");
+            System.out.println("Error at " + ctx.getStart().getLine() + ": Expected numeric value");
             valid = false;
+            error++;
         }
     }
 
@@ -120,50 +136,56 @@ public class Listener extends CompBaseListener {
         try {
             String val = ctx.getText().split("\"")[1];
             double dVal;
-            if (val.split("-").length <= 2) { //angle
+            if (val.split("-").length <= 2) {
                 dVal = Double.parseDouble(val);
                 if (dVal >= 180 || dVal <= -180) {
-                    System.out.println("Line " + ctx.getStart().getLine() + ": Expected " +
+                    System.out.println("Error at " + ctx.getStart().getLine() + ": Expected " +
                             "value between -180 and 180, got " + dVal);
                     valid = false;
+                    error++;
                 }
-            } else {//time
+            } else {
                 String[] vals = val.split("-");
                 int i;
                 if (vals[0].length() == 0) {
                     dVal = 0 - Double.parseDouble(vals[1]);
                     if (dVal >= 180 || dVal <= -180) {
-                        System.out.println("Line " + ctx.getStart().getLine() + ": Expected angle " +
+                        System.out.println("Error at " + ctx.getStart().getLine() + ": Expected angle " +
                                 "value between -180 and 180, got " + dVal);
                         valid = false;
+                        error++;
                     }
                     i = 2;
                 } else {
                     dVal = Double.parseDouble(vals[0]);
                     if (dVal >= 180 || dVal <= -180) {
-                        System.out.println("Line " + ctx.getStart().getLine() + ": Expected angle " +
+                        System.out.println("Error at " + ctx.getStart().getLine() + ": Expected angle " +
                                 "value between -180 and 180, got " + dVal);
                         valid = false;
+                        error++;
                     }
                     i = 1;
                 }
 
                 dVal = Double.parseDouble(val.split("-")[i++]);
                 if (dVal >= 60 || dVal < 0) {
-                    System.out.println("Line " + ctx.getStart().getLine() + ": Expected minutes " +
+                    System.out.println("Error at " + ctx.getStart().getLine() + ": Expected minutes " +
                             "value between 0 and 60, got " + dVal);
                     valid = false;
+                    error++;
                 }
                 dVal = Double.parseDouble(val.split("-")[i]);
                 if (dVal >= 60 || dVal < 0) {
-                    System.out.println("Line " + ctx.getStart().getLine() + ": Expected seconds " +
+                    System.out.println("Error at " + ctx.getStart().getLine() + ": Expected seconds " +
                             "value between 0 and 60, got " + dVal);
                     valid = false;
+                    error++;
                 }
             }
         } catch (Exception e) {
-            System.out.println("Line " + ctx.getStart().getLine() + ": Expected numeric value");
+            System.out.println("Error at " + ctx.getStart().getLine() + ": Expected numeric value");
             valid = false;
+            error++;
         }
     }
 
@@ -184,8 +206,9 @@ public class Listener extends CompBaseListener {
                 Double.parseDouble(val);
             }
         } catch (Exception e) {
-            System.out.println("Line " + ctx.getStart().getLine() + ": Expected numeric value");
+            System.out.println("Error at " + ctx.getStart().getLine() + ": Expected numeric value");
             valid = false;
+            error++;
         }
     }
 
@@ -206,8 +229,9 @@ public class Listener extends CompBaseListener {
                 Double.parseDouble(val);
             }
         } catch (Exception e) {
-            System.out.println("Line " + ctx.getStart().getLine() + ": Expected numeric value");
+            System.out.println("Error at " + ctx.getStart().getLine() + ": Expected numeric value");
             valid = false;
+            error++;
         }
     }
 
@@ -228,8 +252,9 @@ public class Listener extends CompBaseListener {
                 Double.parseDouble(val);
             }
         } catch (Exception e) {
-            System.out.println("Line " + ctx.getStart().getLine() + ": Expected numeric value");
+            System.out.println("Error at " + ctx.getStart().getLine() + ": Expected numeric value");
             valid = false;
+            error++;
         }
     }
 
@@ -245,13 +270,15 @@ public class Listener extends CompBaseListener {
             String val = ctx.getText().split("\"")[1];
             int iVal = Integer.parseInt(val);
             if (iVal < 0 || iVal > 3999) {
-                System.out.println("Line " + ctx.getStart().getLine() + ": Expected " +
+                System.out.println("Error at " + ctx.getStart().getLine() + ": Expected " +
                         "value between 0 and 3999, got " + iVal);
                 valid = false;
+                error++;
             }
         } catch (Exception e) {
-            System.out.println("Line " + ctx.getStart().getLine() + ": Expected numeric value");
+            System.out.println("Error at " + ctx.getStart().getLine() + ": Expected numeric value");
             valid = false;
+            error++;
         }
     }
 
@@ -278,11 +305,57 @@ public class Listener extends CompBaseListener {
     @Override
     public void enterAirport(@NotNull CompParser.AirportContext ctx) {
         super.enterAirport(ctx);
+        airportCount++;
     }
 
     @Override
     public void exitAirport(@NotNull CompParser.AirportContext ctx) {
         super.exitAirport(ctx);
+        attribute = new HashMap<>();
+        if (valid) {
+            attribute.put("id", "airport_" + airportCount);
+            attribute.put("IATA", ctx.airportBegin().airportIdent().STRING().getText().substring(1));
+            attribute.put("ICAO", ctx.airportBegin().airportIdent().STRING().getText());
+            if (ctx.airportBegin().airportName() != null) {
+                attribute.put("name", ctx.airportBegin().airportName().STRING().getText());
+            } else {
+                attribute.put("name", "not set");
+            }
+            if (ctx.airportBegin().airportCountry() != null) {
+                attribute.put("country", ctx.airportBegin().airportCountry().STRING().getText());
+            } else {
+                attribute.put("country", "not set");
+            }
+            if (ctx.airportBegin().airportRegion() != null) {
+                attribute.put("region", ctx.airportBegin().airportRegion().STRING().getText());
+            } else {
+                attribute.put("region", "not set");
+            }
+            if (ctx.airportBegin().airportState() != null) {
+                attribute.put("state", ctx.airportBegin().airportState().STRING().getText());
+            } else {
+                attribute.put("state", "not set");
+            }
+            if (ctx.airportBegin().airportCity() != null) {
+                attribute.put("city", ctx.airportBegin().airportCity().STRING().getText());
+            } else {
+                attribute.put("city", "not set");
+            }
+            if (ctx.airportBegin().latitude().STRING() != null) {
+                attribute.put("latitude", ctx.airportBegin().latitude().STRING().getText());
+                attribute.put("longitude", ctx.airportBegin().longitude().STRING().getText());
+            } else {
+                attribute.put("latitude", ctx.airportBegin().latitude().FLOAT().getText());
+                attribute.put("longitude", ctx.airportBegin().longitude().FLOAT().getText());
+            }
+            attribute.put("altitude", ctx.airportBegin().altitude().DIST().getText());
+            if (ctx.airportBegin().airportMagvar() != null) {
+                attribute.put("magVar", ctx.airportBegin().airportMagvar().FLOAT().getText());
+            } else {
+                attribute.put("magVar", "not set");
+            }
+            airport.put("airport_" + airportCount, attribute);
+        }
     }
 
     @Override
@@ -293,6 +366,19 @@ public class Listener extends CompBaseListener {
     @Override
     public void exitAirportBegin(@NotNull CompParser.AirportBeginContext ctx) {
         super.exitAirportBegin(ctx);
+        try {
+            if ((ctx.latitude().STRING() == null && ctx.longitude().FLOAT() == null) ||
+                    (ctx.latitude().FLOAT() == null && ctx.longitude().STRING() == null)) {
+                System.out.println("Error at " + ctx.longitude().getStart().getLine() + ": Expected " +
+                        " same format for both latitude and longitude");
+                valid = false;
+                error++;
+            }
+        } catch (Exception e) {
+            System.out.println("Error at " + ctx.getStart().getLine() + ": Expected same format");
+            valid = false;
+            error++;
+        }
     }
 
     @Override
@@ -326,13 +412,15 @@ public class Listener extends CompBaseListener {
         try {
             String val = ctx.getText().split("\"")[1];
             if (val.length() > 48) {
-                System.out.println("Line " + ctx.getStart().getLine() + ": Expected " +
+                System.out.println("Error at " + ctx.getStart().getLine() + ": Expected " +
                         " maximum token length 48, got " + val.length());
                 valid = false;
+                error++;
             }
         } catch (Exception e) {
-            System.out.println("Line " + ctx.getStart().getLine() + ": Expected string");
+            System.out.println("Error at " + ctx.getStart().getLine() + ": Expected string");
             valid = false;
+            error++;
         }
     }
 
@@ -347,13 +435,15 @@ public class Listener extends CompBaseListener {
         try {
             String val = ctx.getText().split("\"")[1];
             if (val.length() > 48) {
-                System.out.println("Line " + ctx.getStart().getLine() + ": Expected " +
+                System.out.println("Error at " + ctx.getStart().getLine() + ": Expected " +
                         " maximum token length 48, got " + val.length());
                 valid = false;
+                error++;
             }
         } catch (Exception e) {
-            System.out.println("Line " + ctx.getStart().getLine() + ": Expected string");
+            System.out.println("Error at " + ctx.getStart().getLine() + ": Expected string");
             valid = false;
+            error++;
         }
     }
 
@@ -368,13 +458,15 @@ public class Listener extends CompBaseListener {
         try {
             String val = ctx.getText().split("\"")[1];
             if (val.length() > 48) {
-                System.out.println("Line " + ctx.getStart().getLine() + ": Expected " +
+                System.out.println("Error at " + ctx.getStart().getLine() + ": Expected " +
                         " maximum token length 48, got " + val.length());
                 valid = false;
+                error++;
             }
         } catch (Exception e) {
-            System.out.println("Line " + ctx.getStart().getLine() + ": Expected string");
+            System.out.println("Error at " + ctx.getStart().getLine() + ": Expected string");
             valid = false;
+            error++;
         }
     }
 
@@ -389,13 +481,15 @@ public class Listener extends CompBaseListener {
         try {
             String val = ctx.getText().split("\"")[1];
             if (val.length() > 48) {
-                System.out.println("Line " + ctx.getStart().getLine() + ": Expected " +
+                System.out.println("Error at " + ctx.getStart().getLine() + ": Expected " +
                         " maximum token length 48, got " + val.length());
                 valid = false;
+                error++;
             }
         } catch (Exception e) {
-            System.out.println("Line " + ctx.getStart().getLine() + ": Expected string");
+            System.out.println("Error at " + ctx.getStart().getLine() + ": Expected string");
             valid = false;
+            error++;
         }
     }
 
@@ -410,13 +504,15 @@ public class Listener extends CompBaseListener {
         try {
             String val = ctx.getText().split("\"")[1];
             if (val.length() > 48) {
-                System.out.println("Line " + ctx.getStart().getLine() + ": Expected " +
+                System.out.println("Error at " + ctx.getStart().getLine() + ": Expected " +
                         " maximum token length 48, got " + val.length());
                 valid = false;
+                error++;
             }
         } catch (Exception e) {
-            System.out.println("Line " + ctx.getStart().getLine() + ": Expected string");
+            System.out.println("Error at " + ctx.getStart().getLine() + ": Expected string");
             valid = false;
+            error++;
         }
     }
 
@@ -432,13 +528,15 @@ public class Listener extends CompBaseListener {
             String val = ctx.getText().split("\"")[1];
             double dVal = Double.parseDouble(val);
             if (dVal <= -360 || dVal >= 360) {
-                System.out.println("Line " + ctx.getStart().getLine() + ": Expected " +
+                System.out.println("Error at " + ctx.getStart().getLine() + ": Expected " +
                         "value between -360 and 360, got " + dVal);
                 valid = false;
+                error++;
             }
         } catch (Exception e) {
-            System.out.println("Line " + ctx.getStart().getLine() + ": Expected numeric value");
+            System.out.println("Error at " + ctx.getStart().getLine() + ": Expected numeric value");
             valid = false;
+            error++;
         }
     }
 
@@ -454,13 +552,15 @@ public class Listener extends CompBaseListener {
             String val = ctx.getText().split("\"")[1];
             double dVal = Double.parseDouble(val);
             if (dVal < 0.01 || dVal > 1.0) {
-                System.out.println("Line " + ctx.getStart().getLine() + ": Expected " +
+                System.out.println("Error at " + ctx.getStart().getLine() + ": Expected " +
                         "value between 0.01 and 1.0, got " + dVal);
                 valid = false;
+                error++;
             }
         } catch (Exception e) {
-            System.out.println("Line " + ctx.getStart().getLine() + ": Expected numeric value");
+            System.out.println("Error at " + ctx.getStart().getLine() + ": Expected numeric value");
             valid = false;
+            error++;
         }
     }
 
@@ -472,6 +572,17 @@ public class Listener extends CompBaseListener {
     @Override
     public void exitAirportTestRadius(@NotNull CompParser.AirportTestRadiusContext ctx) {
         super.exitAirportTestRadius(ctx);
+        try {
+            String val = ctx.DIST().getText();
+            if (val.split("-").length == 2) {
+                System.out.println("Warning at " + ctx.getStart().getLine() + ": Expected " +
+                        "positive value, got " + val);
+                warning++;
+            }
+        } catch (Exception e) {
+            System.out.println("Warning at " + ctx.getStart().getLine() + ": Expected numeric value");
+            warning++;
+        }
     }
 
     @Override
@@ -485,24 +596,43 @@ public class Listener extends CompBaseListener {
         try {
             String val = ctx.getText().split("\"")[1];
             if (val.length() != 4) {
-                System.out.println("Line " + ctx.getStart().getLine() + ": Expected " +
+                System.out.println("Error at " + ctx.getStart().getLine() + ": Expected " +
                         "token length 4, got " + val.length());
                 valid = false;
+                error++;
             }
         } catch (Exception e) {
-            System.out.println("Line " + ctx.getStart().getLine() + ": Expected string");
+            System.out.println("Error at " + ctx.getStart().getLine() + ": Expected string");
             valid = false;
+            error++;
         }
     }
 
     @Override
     public void enterTower(@NotNull CompParser.TowerContext ctx) {
         super.enterTower(ctx);
+        towerCount++;
     }
 
     @Override
     public void exitTower(@NotNull CompParser.TowerContext ctx) {
         super.exitTower(ctx);
+        attribute = new HashMap<>();
+        if (valid) {
+            attribute.put("id", "tower_" + towerCount);
+            attribute.put("designation", "Tower");
+            attribute.put("altitude", ctx.towerBegin().altitude().DIST().getText());
+            if (ctx.towerBegin().latitude().STRING() != null) {
+                attribute.put("latitude", ctx.towerBegin().latitude().STRING().getText());
+                attribute.put("longitude", ctx.towerBegin().longitude().STRING().getText());
+            } else {
+                attribute.put("latitude", ctx.towerBegin().latitude().FLOAT().getText());
+                attribute.put("longitude", ctx.towerBegin().longitude().FLOAT().getText());
+            }
+            attribute.put("radius", "not set");
+            attribute.put("height", "not set");
+            tower.put(airportCount + "_tower_" + towerCount, attribute);
+        }
     }
 
     @Override
@@ -538,11 +668,31 @@ public class Listener extends CompBaseListener {
     @Override
     public void enterFuel(@NotNull CompParser.FuelContext ctx) {
         super.enterFuel(ctx);
+        fuelCount++;
     }
 
     @Override
     public void exitFuel(@NotNull CompParser.FuelContext ctx) {
         super.exitFuel(ctx);
+        attribute = new HashMap<>();
+        if (valid) {
+            attribute.put("id", "fuel_" + fuelCount);
+            attribute.put("designation", "Fuel");
+            attribute.put("latitude", "not set");
+            attribute.put("longitude", "not set");
+            attribute.put("radius", "not set");
+            if (ctx.fuelType().STRING() != null) {
+                attribute.put("type", ctx.fuelType().STRING().getText());
+            } else {
+                attribute.put("type", ctx.fuelType().INT().getText());
+            }
+            if (ctx.fuelAvailability().STRING() != null) {
+                attribute.put("availability", ctx.fuelAvailability().STRING().getText());
+            } else {
+                attribute.put("availability", ctx.fuelAvailability().BOOLEAN().getText());
+            }
+            fuel.put(airportCount + "_fuel_" + fuelCount, attribute);
+        }
 
     }
 
@@ -560,13 +710,15 @@ public class Listener extends CompBaseListener {
                     && !val.equals("145") && !val.equals("MOGAS") && !val.equals("JET") && !val.equals("JETA")
                     && !val.equals("JETA1") && !val.equals("JETAP") && !val.equals("JETB") && !val.equals("JET4")
                     && !val.equals("JET5") && !val.equals("UNKNOWN")) {
-                System.out.println("Line " + ctx.getStart().getLine() + ": Expected " +
+                System.out.println("Error at " + ctx.getStart().getLine() + ": Expected " +
                         "valid fuel type, got " + val);
                 valid = false;
+                error++;
             }
         } catch (Exception e) {
-            System.out.println("Line " + ctx.getStart().getLine() + ": Expected string");
+            System.out.println("Error at " + ctx.getStart().getLine() + ": Expected string");
             valid = false;
+            error++;
         }
     }
 
@@ -581,24 +733,43 @@ public class Listener extends CompBaseListener {
         try {
             String val = ctx.getText().split("\"")[1];
             if (!val.equals("YES") && !val.equals("NO") && !val.equals("UNKOWN") && !val.equals("PRIOR_REQUEST")) {
-                System.out.println("Line " + ctx.getStart().getLine() + ": Expected " +
+                System.out.println("Error at " + ctx.getStart().getLine() + ": Expected " +
                         "availability, got " + val);
                 valid = false;
+                error++;
             }
         } catch (Exception e) {
-            System.out.println("Line " + ctx.getStart().getLine() + ": Expected string");
+            System.out.println("Error at " + ctx.getStart().getLine() + ": Expected string");
             valid = false;
+            error++;
         }
     }
 
     @Override
     public void enterRunway(@NotNull CompParser.RunwayContext ctx) {
         super.enterRunway(ctx);
+        runwayCount++;
     }
 
     @Override
     public void exitRunway(@NotNull CompParser.RunwayContext ctx) {
         super.exitRunway(ctx);
+        attribute = new HashMap<>();
+        if (valid) {
+            attribute.put("id", "runway_" + runwayCount);
+            attribute.put("altitude", ctx.runwayBegin().altitude().DIST().getText());
+            attribute.put("length", ctx.runwayBegin().length().DIST().getText());
+            attribute.put("width", ctx.runwayBegin().width().DIST().getText());
+            if (ctx.runwayBegin().latitude().STRING() != null) {
+                attribute.put("latitude", ctx.runwayBegin().latitude().STRING().getText());
+                attribute.put("longitude", ctx.runwayBegin().longitude().STRING().getText());
+            } else {
+                attribute.put("latitude", ctx.runwayBegin().latitude().FLOAT().getText());
+                attribute.put("longitude", ctx.runwayBegin().longitude().FLOAT().getText());
+            }
+            attribute.put("surface", ctx.runwayBegin().surface().STRING().getText());
+            runway.put(airportCount + "_runway_" + runwayCount, attribute);
+        }
     }
 
     @Override
@@ -647,13 +818,15 @@ public class Listener extends CompBaseListener {
                     !val.equals("OIL_TREATED") && !val.equals("PLANKS") && !val.equals("SAND") && !val.equals("SHALE") &&
                     !val.equals("SNOW") && !val.equals("STEEL_MATS") && !val.equals("TARMAC") && !val.equals("UNKNOWN") &&
                     !val.equals("WATER")) {
-                System.out.println("Line " + ctx.getStart().getLine() + ": Expected " +
+                System.out.println("Error at " + ctx.getStart().getLine() + ": Expected " +
                         "valid surface, got " + val);
                 valid = false;
+                error++;
             }
         } catch (Exception e) {
-            System.out.println("Line " + ctx.getStart().getLine() + ": Expected string");
+            System.out.println("Error at " + ctx.getStart().getLine() + ": Expected string");
             valid = false;
+            error++;
         }
     }
 
@@ -669,13 +842,15 @@ public class Listener extends CompBaseListener {
             String val = ctx.getText().split("\"")[1];
             double dVal = Double.parseDouble(val);
             if (dVal < 0 || dVal >= 360) {
-                System.out.println("Line " + ctx.getStart().getLine() + ": Expected " +
+                System.out.println("Error at " + ctx.getStart().getLine() + ": Expected " +
                         "value between 0 and 360, got " + dVal);
                 valid = false;
+                error++;
             }
         } catch (Exception e) {
-            System.out.println("Line " + ctx.getStart().getLine() + ": Expected numeric value");
+            System.out.println("Error at " + ctx.getStart().getLine() + ": Expected numeric value");
             valid = false;
+            error++;
         }
     }
 
@@ -693,21 +868,24 @@ public class Listener extends CompBaseListener {
                 if (!val.equals("EAST") && !val.equals("NORTH") && !val.equals("NORTHEAST") &&
                         !val.equals("NORTHWEST") && !val.equals("SOUTH") && !val.equals("SOUTHEAST") &&
                         !val.equals("SOUTHWEST") && !val.equals("WEST") && !val.equals("EAST")) {
-                    System.out.println("Line " + ctx.getStart().getLine() + ": Expected " +
+                    System.out.println("Error at " + ctx.getStart().getLine() + ": Expected " +
                             "valid number, got " + val);
                     valid = false;
+                    error++;
                 }
             } else {
                 int iVal = Integer.parseInt(val);
                 if (iVal < 0 || iVal > 36) {
-                    System.out.println("Line " + ctx.getStart().getLine() + ": Expected " +
+                    System.out.println("Error at " + ctx.getStart().getLine() + ": Expected " +
                             "value between 0 and 36, got " + iVal);
                     valid = false;
+                    error++;
                 }
             }
         } catch (Exception e) {
-            System.out.println("Line " + ctx.getStart().getLine() + ": Expected int or string");
+            System.out.println("Error at " + ctx.getStart().getLine() + ": Expected int or string");
             valid = false;
+            error++;
         }
     }
 
@@ -724,13 +902,15 @@ public class Listener extends CompBaseListener {
             if (!val.equals("NONE") && !val.equals("C") && !val.equals("CENTER") && !val.equals("L") &&
                     !val.equals("LEFT") && !val.equals("R") && !val.equals("RIGHT") && !val.equals("W") &&
                     !val.equals("WATER") && !val.equals("A") && !val.equals("B")) {
-                System.out.println("Line " + ctx.getStart().getLine() + ": Expected " +
+                System.out.println("Error at " + ctx.getStart().getLine() + ": Expected " +
                         "valid value, got " + val);
                 valid = false;
+                error++;
             }
         } catch (Exception e) {
-            System.out.println("Line " + ctx.getStart().getLine() + ": Expected string");
+            System.out.println("Error at " + ctx.getStart().getLine() + ": Expected string");
             valid = false;
+            error++;
         }
     }
 
@@ -1047,11 +1227,27 @@ public class Listener extends CompBaseListener {
     @Override
     public void enterHelipad(@NotNull CompParser.HelipadContext ctx) {
         super.enterHelipad(ctx);
+        helipadCount++;
     }
 
     @Override
     public void exitHelipad(@NotNull CompParser.HelipadContext ctx) {
         super.exitHelipad(ctx);
+        attribute = new HashMap<>();
+        if (valid) {
+            attribute.put("id", "helipad_" + helipadCount);
+            attribute.put("altitude", ctx.altitude().DIST().getText());
+            attribute.put("radius", "not set");
+            if (ctx.latitude().STRING() != null) {
+                attribute.put("latitude", ctx.latitude().STRING().getText());
+                attribute.put("longitude", ctx.longitude().STRING().getText());
+            } else {
+                attribute.put("latitude", ctx.latitude().FLOAT().getText());
+                attribute.put("longitude", ctx.longitude().FLOAT().getText());
+            }
+            attribute.put("surface", ctx.surface().STRING().getText());
+            helipad.put(airportCount + "_helipad_" + helipadCount, attribute);
+        }
     }
 
     @Override
@@ -1066,13 +1262,15 @@ public class Listener extends CompBaseListener {
             String val = ctx.getText().split("\"")[1];
             if (!val.equals("NONE") && !val.equals("CIRCLE") && !val.equals("H") && !val.equals("MEDICAL") &&
                     !val.equals("SQUARE")) {
-                System.out.println("Line " + ctx.getStart().getLine() + ": Expected " +
+                System.out.println("Error at " + ctx.getStart().getLine() + ": Expected " +
                         "valid type, got " + val);
                 valid = false;
+                error++;
             }
         } catch (Exception e) {
-            System.out.println("Line " + ctx.getStart().getLine() + ": Expected string");
+            System.out.println("Error at " + ctx.getStart().getLine() + ": Expected string");
             valid = false;
+            error++;
         }
     }
 
@@ -1139,11 +1337,29 @@ public class Listener extends CompBaseListener {
     @Override
     public void enterTaxiwayPoint(@NotNull CompParser.TaxiwayPointContext ctx) {
         super.enterTaxiwayPoint(ctx);
+        taxiwayPointCount++;
     }
 
     @Override
     public void exitTaxiwayPoint(@NotNull CompParser.TaxiwayPointContext ctx) {
         super.exitTaxiwayPoint(ctx);
+        attribute = new HashMap<>();
+        if (valid) {
+            attribute.put("id", "taxiwayPoint_" + taxiwayPointCount);
+            attribute.put("index", ctx.index().INT().getText());
+            attribute.put("altitude", "not set");
+            if (ctx.latitude().STRING() != null) {
+                attribute.put("latitude", ctx.latitude().STRING().getText());
+                attribute.put("longitude", ctx.longitude().STRING().getText());
+            } else if (ctx.latitude().FLOAT() != null) {
+                attribute.put("latitude", ctx.latitude().FLOAT().getText());
+                attribute.put("longitude", ctx.longitude().FLOAT().getText());
+            } else {
+                attribute.put("latitude", ctx.biasX().DIST().getText());
+                attribute.put("longitude", ctx.biasZ().DIST().getText());
+            }
+            taxiwayPoint.put(airportCount + "_taxiwayPoint_" + taxiwayPointCount, attribute);
+        }
     }
 
     @Override
@@ -1158,13 +1374,15 @@ public class Listener extends CompBaseListener {
             String val = ctx.getText().split("\"")[1];
             if (!val.equals("NORMAL") && !val.equals("HOLD_SHORT") && !val.equals("ILS_HOLD_SHORT") &&
                     !val.equals("HOLD_SHORT_NO_DRAW") && !val.equals("ILS_HOLD_SHORT_NO_DRAW")) {
-                System.out.println("Line " + ctx.getStart().getLine() + ": Expected " +
+                System.out.println("Error at " + ctx.getStart().getLine() + ": Expected " +
                         "valid type, got " + val);
                 valid = false;
+                error++;
             }
         } catch (Exception e) {
-            System.out.println("Line " + ctx.getStart().getLine() + ": Expected string");
+            System.out.println("Error at " + ctx.getStart().getLine() + ": Expected string");
             valid = false;
+            error++;
         }
     }
 
@@ -1181,11 +1399,36 @@ public class Listener extends CompBaseListener {
     @Override
     public void enterTaxiwayParking(@NotNull CompParser.TaxiwayParkingContext ctx) {
         super.enterTaxiwayParking(ctx);
+        taxiwayParkingCount++;
     }
 
     @Override
     public void exitTaxiwayParking(@NotNull CompParser.TaxiwayParkingContext ctx) {
         super.exitTaxiwayParking(ctx);
+        attribute = new HashMap<>();
+        if (valid) {
+            attribute.put("id", "taxiwayParking_" + taxiwayParkingCount);
+            attribute.put("index", ctx.index().INT().getText());
+            attribute.put("altitude", "not set");
+            if (ctx.latitude().STRING() != null) {
+                attribute.put("latitude", ctx.latitude().STRING().getText());
+                attribute.put("longitude", ctx.longitude().STRING().getText());
+            } else if (ctx.latitude().FLOAT() != null) {
+                attribute.put("latitude", ctx.latitude().FLOAT().getText());
+                attribute.put("longitude", ctx.longitude().FLOAT().getText());
+            } else {
+                attribute.put("latitude", ctx.biasX().DIST().getText());
+                attribute.put("longitude", ctx.biasZ().DIST().getText());
+            }
+            attribute.put("type", ctx.taxiwayParkingType().STRING().getText());
+            attribute.put("name", ctx.name().STRING().getText());
+            if (ctx.number().INT() != null) {
+                attribute.put("number", ctx.number().INT().getText());
+            } else {
+                attribute.put("number", ctx.number().STRING().getText());
+            }
+            taxiwayParking.put(airportCount + "_taxiwayParking_" + taxiwayParkingCount, attribute);
+        }
     }
 
     @Override
@@ -1213,13 +1456,15 @@ public class Listener extends CompBaseListener {
                     !val.equals("RAMP_GA") && !val.equals("RAMP_GA_LARGE") && !val.equals("RAMP_GA_MEDIUM") &&
                     !val.equals("RAMP_GA_SMALL") && !val.equals("RAMP_MIL_CARGO") && !val.equals("RAMP_MIL_COMBAT") &&
                     !val.equals("VEHICLE")) {
-                System.out.println("Line " + ctx.getStart().getLine() + ": Expected " +
+                System.out.println("Error at " + ctx.getStart().getLine() + ": Expected " +
                         "valid type, got " + val);
                 valid = false;
+                error++;
             }
         } catch (Exception e) {
-            System.out.println("Line " + ctx.getStart().getLine() + ": Expected string");
+            System.out.println("Error at " + ctx.getStart().getLine() + ": Expected string");
             valid = false;
+            error++;
         }
     }
 
@@ -1235,21 +1480,24 @@ public class Listener extends CompBaseListener {
             String val = ctx.getText().split("\"")[1];
             if (val.startsWith("GATE_") && val.length() == 6) {
                 if (val.charAt(5) < 65 || val.charAt(5) > 90) {
-                    System.out.println("Line " + ctx.getStart().getLine() + ": Expected " +
+                    System.out.println("Error at " + ctx.getStart().getLine() + ": Expected " +
                             "valid type, got " + val);
                     valid = false;
+                    error++;
                 }
             } else if (!val.equals("PARKING") && !val.equals("DOCK") && !val.equals("GATE") &&
                     !val.equals("NONE") && !val.equals("N_PARKING") && !val.equals("NE_PARKING") &&
                     !val.equals("NW_PARKING") && !val.equals("SE_PARKING") && !val.equals("S_PARKING") &&
                     !val.equals("SW_PARKING") && !val.equals("W_PARKING") && !val.equals("E_PARKING")) {
-                System.out.println("Line " + ctx.getStart().getLine() + ": Expected " +
+                System.out.println("Error at " + ctx.getStart().getLine() + ": Expected " +
                         "valid type, got " + val);
                 valid = false;
+                error++;
             }
         } catch (Exception e) {
-            System.out.println("Line " + ctx.getStart().getLine() + ": Expected string");
+            System.out.println("Error at " + ctx.getStart().getLine() + ": Expected string");
             valid = false;
+            error++;
         }
     }
 
@@ -1286,11 +1534,21 @@ public class Listener extends CompBaseListener {
     @Override
     public void enterTaxiPath(@NotNull CompParser.TaxiPathContext ctx) {
         super.enterTaxiPath(ctx);
+        taxiwayPathCount++;
     }
 
     @Override
     public void exitTaxiPath(@NotNull CompParser.TaxiPathContext ctx) {
         super.exitTaxiPath(ctx);
+        attribute = new HashMap<>();
+        if (valid) {
+            attribute.put("id", "taxiwayPath_" + taxiwayPathCount);
+            attribute.put("start", ctx.taxiPathStart().INT().getText());
+            attribute.put("end", ctx.taxiPathEnd().INT().getText());
+            attribute.put("width", ctx.width().DIST().getText());
+            attribute.put("surface", ctx.surface().STRING().getText());
+            taxiwayPath.put(airportCount + "_taxiwayParking_" + taxiwayPathCount, attribute);
+        }
     }
 
     @Override
@@ -1305,13 +1563,15 @@ public class Listener extends CompBaseListener {
             String val = ctx.getText().split("\"")[1];
             if (!val.equals("RUNWAY") && !val.equals("PARKING") && !val.equals("TAXI") && !val.equals("PATH") &&
                     !val.equals("CLOSED") && !val.equals("VEHICLE")) {
-                System.out.println("Line " + ctx.getStart().getLine() + ": Expected " +
+                System.out.println("Error at " + ctx.getStart().getLine() + ": Expected " +
                         "valid type, got " + val);
                 valid = false;
+                error++;
             }
         } catch (Exception e) {
-            System.out.println("Line " + ctx.getStart().getLine() + ": Expected string");
+            System.out.println("Error at " + ctx.getStart().getLine() + ": Expected string");
             valid = false;
+            error++;
         }
     }
 
@@ -1443,5 +1703,41 @@ public class Listener extends CompBaseListener {
     @Override
     public void exitTaxiPathName(@NotNull CompParser.TaxiPathNameContext ctx) {
         super.exitTaxiPathName(ctx);
+    }
+
+    public boolean isValid() {
+        return valid;
+    }
+
+    public Map<String, Map<String, String>> getAirport() {
+        return airport;
+    }
+
+    public Map<String, Map<String, String>> getTower() {
+        return tower;
+    }
+
+    public Map<String, Map<String, String>> getFuel() {
+        return fuel;
+    }
+
+    public Map<String, Map<String, String>> getRunway() {
+        return runway;
+    }
+
+    public Map<String, Map<String, String>> getHelipad() {
+        return helipad;
+    }
+
+    public Map<String, Map<String, String>> gettaxiwayPoint() {
+        return taxiwayPoint;
+    }
+
+    public Map<String, Map<String, String>> gettaxiwayParking() {
+        return taxiwayParking;
+    }
+
+    public Map<String, Map<String, String>> getTaxiwayPath() {
+        return taxiwayPath;
     }
 }

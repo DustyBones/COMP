@@ -16,13 +16,13 @@ public class CompBaseListener implements CompListener {
 	 *
 	 * <p>The default implementation does nothing.</p>
 	 */
-	@Override public void enterStart(@NotNull CompParser.StartContext ctx) { }
+	@Override public void enterStartParser(@NotNull CompParser.StartParserContext ctx) { }
 	/**
 	 * {@inheritDoc}
 	 *
 	 * <p>The default implementation does nothing.</p>
 	 */
-	@Override public void exitStart(@NotNull CompParser.StartContext ctx) { }
+	@Override public void exitStartParser(@NotNull CompParser.StartParserContext ctx) { }
 	/**
 	 * {@inheritDoc}
 	 *

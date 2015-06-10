@@ -8,15 +8,15 @@ import org.antlr.v4.runtime.tree.ParseTreeListener;
  */
 public interface CompListener extends ParseTreeListener {
 	/**
-	 * Enter a parse tree produced by {@link CompParser#start}.
+	 * Enter a parse tree produced by {@link CompParser#startParser}.
 	 * @param ctx the parse tree
 	 */
-	void enterStart(@NotNull CompParser.StartContext ctx);
+	void enterStartParser(@NotNull CompParser.StartParserContext ctx);
 	/**
-	 * Exit a parse tree produced by {@link CompParser#start}.
+	 * Exit a parse tree produced by {@link CompParser#startParser}.
 	 * @param ctx the parse tree
 	 */
-	void exitStart(@NotNull CompParser.StartContext ctx);
+	void exitStartParser(@NotNull CompParser.StartParserContext ctx);
 	/**
 	 * Enter a parse tree produced by {@link CompParser#latitude}.
 	 * @param ctx the parse tree
