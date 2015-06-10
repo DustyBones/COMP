@@ -1012,6 +1012,18 @@ public class CompBaseListener implements CompListener {
 	 *
 	 * <p>The default implementation does nothing.</p>
 	 */
+	@Override public void enterAirline(@NotNull CompParser.AirlineContext ctx) { }
+	/**
+	 * {@inheritDoc}
+	 *
+	 * <p>The default implementation does nothing.</p>
+	 */
+	@Override public void exitAirline(@NotNull CompParser.AirlineContext ctx) { }
+	/**
+	 * {@inheritDoc}
+	 *
+	 * <p>The default implementation does nothing.</p>
+	 */
 	@Override public void enterPushBack(@NotNull CompParser.PushBackContext ctx) { }
 	/**
 	 * {@inheritDoc}

@@ -120,23 +120,37 @@ public class SDLWriter {
                 i).get("magVar")));
         airport.addContent(addRunway(i));
         airport.addContent(addHelipad(i));
-        airport.addContent(new Element("taxiways", dcs).addContent("XXX taxiways XXX"));
-        airport.addContent(new Element("parkingSpaces", dcs).addContent("XXX parking XXX"));
+        airport.addContent(addPath(i));
+        airport.addContent(addParking(i));
+        airport.addContent(new Element("hangars", dcs));
         airport.addContent(addUtil(i));
         return airport;
     }
 
-    private Element addRunway(int i){
+    private Element addRunway(int i) {
         Element runways = new Element("runways", dcs);
-        for(int j=0; j<listener.getRunway().size();j++){
+        for (int j = 0; j < listener.getRunway().size(); j++) {
             if (listener.getRunway().get(i + "_runway_" + j) != null) {
                 Element runway = new Element("runway", dcs);
-                runway.setAttribute("id", "r"+ ((j + 1) < 10 ? "0" : "") + (j + 1));
-
-
+                runways.addContent(runway);
+                runway.setAttribute("id", "r" + ((j + 1) < 10 ? "0" : "") + (j + 1));
+                Element coords = new Element("coordinates", dcs);
+                runway.addContent(coords);
+                coords.addContent(new Element("latitude", dcs).addContent(parseCoord(
+                        listener.getRunway().get(i + "_runway_" + j).get("latitude"), "lat")));
+                coords.addContent(new Element("longitude", dcs).addContent(parseCoord(
+                        listener.getRunway().get(i + "_runway_" + j).get("longitude"), "lon")));
+                coords.addContent(new Element("altitude", dcs).setAttribute("measured", "amsl").addContent(
+                        listener.getRunway().get(i + "_runway_" + j).get("altitude")));
+                runway.addContent(new Element("length", dcs).setAttribute("lengthUnit", "Meter").addContent(
+                        listener.getRunway().get(i + "_runway_" + j).get("length")));
+                runway.addContent(new Element("width", dcs).setAttribute("lengthUnit", "Meter").addContent(
+                        listener.getRunway().get(i + "_runway_" + j).get("width")));
+                runway.addContent(new Element("surface", dcs).addContent(listener.getRunway().get(i + "_runway_" + j)
+                        .get("surface")));
+                //TODO: generate filler?
             }
         }
-
         return runways;
     }
 
@@ -145,11 +159,13 @@ public class SDLWriter {
         for (int j = 0; j < listener.getHelipad().size(); j++) {
             if (listener.getHelipad().get(i + "_helipad_" + j) != null) {
                 Element helipad = new Element("helipad", dcs);
+                helipads.addContent(helipad);
                 helipad.setAttribute("id", "h" + ((j + 1) < 10 ? "0" : "") + (j + 1));
                 helipad.addContent(new Element("designator", dcs).addContent("Helipad"));
                 helipad.addContent(new Element("surface", dcs).addContent(listener.getHelipad().get(i + "_helipad_" + j)
                         .get("surface")));
                 Element coords = new Element("coordinates", dcs);
+                helipad.addContent(coords);
                 coords.addContent(new Element("latitude", dcs).addContent(parseCoord(
                         listener.getHelipad().get(i + "_helipad_" + j).get("latitude"), "lat")));
                 coords.addContent(new Element("longitude", dcs).addContent(parseCoord(
@@ -162,13 +178,44 @@ public class SDLWriter {
         }
         return helipads;
     }
-    /*
-    private Element addTaxiway(int i){
 
+
+    private Element addPath(int i) {
+        Element taxiways = new Element("taxiways", dcs);
+
+        return taxiways;
     }
-    private Element addParking(int i){
 
-    }*/
+    private Element addParking(int i) {
+        Element parking = new Element("parkingSpaces", dcs);
+        for (int j = 0; j < listener.gettaxiwayParking().size(); j++) {
+            if (listener.gettaxiwayParking().get(i + "_taxiwayParking_" + j) != null) {
+                Element park = new Element("parking", dcs);
+                parking.addContent(park);
+                park.setAttribute("parkingType", listener.gettaxiwayParking().get(i + "_taxiwayParking_" +
+                        j).get("type"));
+                park.setAttribute("id", "p"+ ((j + 1) < 10 ? "0" : "") + (j + 1));
+                park.addContent(new Element("designation", dcs).addContent("Parking " + j));
+                park.addContent(new Element("description", dcs).addContent("XXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXX"));
+                park.addContent(new Element("airlines", dcs).addContent(listener.gettaxiwayParking().get
+                        (i+"_taxiwayParking_"+j).get("airline")));
+                Element coords = new Element("coordinates", dcs);
+                park.addContent(coords);
+                coords.addContent(new Element("latitude", dcs).addContent(parseCoord(
+                        listener.gettaxiwayParking().get(i + "_taxiwayParking_" + j).get("latitude"), "lat")));
+                coords.addContent(new Element("longitude", dcs).addContent(parseCoord(
+                        listener.gettaxiwayParking().get(i + "_taxiwayParking_" + j).get("longitude"), "lon")));
+                coords.addContent(new Element("altitude", dcs).setAttribute("measured", "amsl").addContent(
+                        listener.gettaxiwayParking().get(i + "_taxiwayParking_" + j).get("altitude")));
+                park.addContent(new Element("radius", dcs).addContent(
+                        listener.gettaxiwayParking().get(i+"_taxiwayParking_"+j).get("radius")));
+
+
+
+            }
+        }
+        return parking;
+    }
 
     private Element addUtil(int i) {
         Element utilities = new Element("utilities", dcs);
@@ -187,7 +234,7 @@ public class SDLWriter {
 
     private Element addTower(int i, int j) {
         Element tower = new Element("tower", dcs).setAttribute("id", "t" + ((j + 1) < 10 ? "0" : "") + (j + 1));
-        tower.addContent(new Element("designation", dcs).addContent("Tower"));
+        tower.addContent(new Element("designation", dcs).addContent("Tower "+j));
         Element coord = new Element("coordinates", dcs);
         tower.addContent(coord);
         coord.addContent(new Element("latitude", dcs).addContent(parseCoord(listener.getTower
@@ -205,7 +252,7 @@ public class SDLWriter {
 
     private Element addFuel(int i, int j) {
         Element fuel = new Element("fuel", dcs).setAttribute("id", "f" + ((j + 1) < 10 ? "0" : "") + (j + 1));
-        fuel.addContent(new Element("designation", dcs).addContent("Fuel"));
+        fuel.addContent(new Element("designation", dcs).addContent("Fuel "+j));
         Element coord = new Element("coordinates", dcs);
         fuel.addContent(coord);
         coord.addContent(new Element("latitude", dcs).addContent(parseCoord(listener.getTower

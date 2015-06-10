@@ -838,6 +838,16 @@ public interface CompListener extends ParseTreeListener {
 	 */
 	void exitName(@NotNull CompParser.NameContext ctx);
 	/**
+	 * Enter a parse tree produced by {@link CompParser#airline}.
+	 * @param ctx the parse tree
+	 */
+	void enterAirline(@NotNull CompParser.AirlineContext ctx);
+	/**
+	 * Exit a parse tree produced by {@link CompParser#airline}.
+	 * @param ctx the parse tree
+	 */
+	void exitAirline(@NotNull CompParser.AirlineContext ctx);
+	/**
 	 * Enter a parse tree produced by {@link CompParser#pushBack}.
 	 * @param ctx the parse tree
 	 */

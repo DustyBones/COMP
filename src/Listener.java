@@ -1427,6 +1427,9 @@ public class Listener extends CompBaseListener {
             } else {
                 attribute.put("number", ctx.number().STRING().getText());
             }
+            if (ctx.airline() != null) {
+                attribute.put("airline", ctx.airline().STRING().getText());
+            }
             taxiwayParking.put(airportCount + "_taxiwayParking_" + taxiwayParkingCount, attribute);
         }
     }
@@ -1529,6 +1532,16 @@ public class Listener extends CompBaseListener {
     @Override
     public void exitTaxiNameName(@NotNull CompParser.TaxiNameNameContext ctx) {
         super.exitTaxiNameName(ctx);
+    }
+
+    @Override
+    public void exitAirline(@NotNull CompParser.AirlineContext ctx) {
+        super.exitAirline(ctx);
+    }
+
+    @Override
+    public void enterAirline(@NotNull CompParser.AirlineContext ctx) {
+        super.enterAirline(ctx);
     }
 
     @Override

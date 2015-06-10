@@ -95,6 +95,7 @@ TAXIWAY_POINT_OPEN : '<TaxiwayPoint';
 
 /****TaxywayParking****/
 TAXIWAY_PARKING_OPEN : '<TaxiwayParking';
+AIRLINE : 'airlineCodes';
 PUSHBACK : 'pushBack';
 TAXI_NAME_OPEN : '<TaxiName' ;
 
@@ -138,7 +139,7 @@ BIASZ : 'biasZ';
 INT  : ('0'..'9')+ ;
 FLOAT : '-'?('0'..'9')+ '.' ('0'..'9')+;
 DIST : (INT | FLOAT) ('M'|'F')?;
-STRING : ('a'..'z'|'A'..'Z'|'0'..'9'|'-')(('a'..'z'|'A'..'Z'|'0'..'9'|' '|'_'|'-')*('a'..'z'|'A'
+STRING : ('a'..'z'|'A'..'Z'|'0'..'9'|'-')(('a'..'z'|'A'..'Z'|'0'..'9'|' '|'_'|'-'|',')*('a'..'z'|'A'
 ..'Z'|'0'..'9'))? ;
 
 
@@ -386,8 +387,6 @@ lightsEdge
     : CENTER_RED EQUAL QUOTE BOOLEAN QUOTE
     ;
 
-/****start****/
-
 /****helipad****/
 helipad
     : HELIPAD_OPEN latitude longitude altitude surface heading length width helipadType closed? transparent? CLOSEBARA
@@ -430,7 +429,7 @@ orientation
 /****taxiwayParking****/
 taxiwayParking
     : TAXIWAY_PARKING_OPEN index ( latitude longitude | biasX  biasZ ) heading radius taxiwayParkingType name
-    number pushBack CLOSEBARA
+    number airline? pushBack CLOSEBARA
     ;
 radius
     : RADIUS EQUAL QUOTE DIST QUOTE
@@ -440,6 +439,9 @@ taxiwayParkingType
     ;
 name
     : NAME EQUAL QUOTE STRING QUOTE
+    ;
+airline
+    : AIRLINE EQUAL QUOTE STRING QUOTE
     ;
 pushBack
     : PUSHBACK EQUAL QUOTE STRING QUOTE
