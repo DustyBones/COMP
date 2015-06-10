@@ -118,12 +118,26 @@ public class SDLWriter {
                 i).get("IATA")));
         airport.addContent(new Element("magVar", dcs).addContent(listener.getAirport().get("airport_" +
                 i).get("magVar")));
-        airport.addContent(addRunways());
+        airport.addContent(addRunway(i));
         airport.addContent(addHelipad(i));
         airport.addContent(new Element("taxiways", dcs).addContent("XXX taxiways XXX"));
         airport.addContent(new Element("parkingSpaces", dcs).addContent("XXX parking XXX"));
         airport.addContent(addUtil(i));
         return airport;
+    }
+
+    private Element addRunway(int i){
+        Element runways = new Element("runways", dcs);
+        for(int j=0; j<listener.getRunway().size();j++){
+            if (listener.getRunway().get(i + "_runway_" + j) != null) {
+                Element runway = new Element("runway", dcs);
+                runway.setAttribute("id", "r"+ ((j + 1) < 10 ? "0" : "") + (j + 1));
+
+
+            }
+        }
+
+        return runways;
     }
 
     private Element addHelipad(int i) {
@@ -148,64 +162,13 @@ public class SDLWriter {
         }
         return helipads;
     }
+    /*
+    private Element addTaxiway(int i){
 
-    private Element addRunways() {
-        Element runways = new Element("runways");
-        runways.addContent(addRunway());
-        return runways;
     }
+    private Element addParking(int i){
 
-    private Element addRunway() {
-        Element runway = new Element("runway").setAttribute("id","id do cenas");
-        runway.addContent(addCoordinates());
-        runway.addContent(new Element ("length").setAttribute("lengthUnit","meter").addContent("numero"));
-        runway.addContent(new Element ("width").setAttribute("lengthUnit","meter").addContent("numero"));
-        runway.addContent(new Element ("surface").addContent("Concrete"));
-        runway.addContent(addBaseEnd());
-        runway.addContent(addReciprocalEnd());
-        return runway;
-    }
-
-    private Element addBaseEnd() {
-        Element baseEnd = new Element("baseEnd");
-        baseEnd.addContent(addStartPoint());
-        baseEnd.addContent(new Element ("heading").setAttribute("headingType","true/false").addContent("numero"));
-        baseEnd.addContent(addEndPoint());
-        return baseEnd;
-    }
-
-    private Element addReciprocalEnd() {
-        Element reciprocalEnd = new Element("reciprocalEnd");
-        reciprocalEnd.addContent(new Element ("designation").addContent("number"));
-        reciprocalEnd.addContent(addStartPoint());
-        reciprocalEnd.addContent(new Element ("heading").setAttribute("headingType","true/false").addContent("numero"));
-        reciprocalEnd.addContent(addEndPoint());
-        return reciprocalEnd;
-    }
-
-    private Element addStartPoint() {
-        Element startpoint = new Element("startpoint");
-        startpoint.addContent(addCoordinates());
-        startpoint.addContent(addConnectsTo());
-        return startpoint;
-    }
-
-    private Element addEndPoint() {
-        Element endpoint = new Element("endpoint");
-        endpoint.addContent(addCoordinates());
-        endpoint.addContent(addConnectsTo());
-        return endpoint;
-    }
-
-    private Element addConnectsTo() {
-        Element connectsTo = new Element("connectsTo");
-        connectsTo.addContent(new Element("xway").setAttribute("idr","numero"));
-
-        return connectsTo;
-    }
-
-
-
+    }*/
 
     private Element addUtil(int i) {
         Element utilities = new Element("utilities", dcs);
@@ -270,9 +233,9 @@ public class SDLWriter {
         }
         tokens = s.split("-");
         if (tokens[0].length() == 0) {
-            parse = tokens[1] + "บ " + tokens[2] + "' " + tokens[3] + "'' " + (c.equals("lat") ? "S" : "W");
+            parse = tokens[1] + "ยบ " + tokens[2] + "' " + tokens[3] + "'' " + (c.equals("lat") ? "S" : "W");
         } else {
-            parse = tokens[0] + "บ " + tokens[1] + "' " + tokens[2] + "'' " + (c.equals("lat") ? "N" : "E");
+            parse = tokens[0] + "ยบ " + tokens[1] + "' " + tokens[2] + "'' " + (c.equals("lat") ? "N" : "E");
 
         }
         return parse;
