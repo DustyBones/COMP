@@ -150,56 +150,64 @@ public class SDLWriter {
     }
 
     private Element addRunways() {
-        Element runways = new Element("runways");
+        Element runways = new Element("runways", dcs);
         runways.addContent(addRunway());
         return runways;
     }
 
     private Element addRunway() {
-        Element runway = new Element("runway").setAttribute("id","id do cenas");
+        Element runway = new Element("runway", dcs).setAttribute("id","id do cenas");
         runway.addContent(addCoordinates());
-        runway.addContent(new Element ("length").setAttribute("lengthUnit","meter").addContent("numero"));
-        runway.addContent(new Element ("width").setAttribute("lengthUnit","meter").addContent("numero"));
-        runway.addContent(new Element ("surface").addContent("Concrete"));
+        runway.addContent(new Element ("length", dcs).setAttribute("lengthUnit","meter").addContent("numero"));
+        runway.addContent(new Element ("width", dcs).setAttribute("lengthUnit","meter").addContent("numero"));
+        runway.addContent(new Element ("surface", dcs).addContent("Concrete"));
         runway.addContent(addBaseEnd());
         runway.addContent(addReciprocalEnd());
         return runway;
     }
 
+    private Element addCoordinates() {
+        Element coordinates = new Element("coordinates", dcs);
+        coordinates.addContent(new Element("latitude", dcs).addContent("latitude"));   //TODO
+        coordinates.addContent(new Element("longitude", dcs).addContent("longitude"));  //TODO
+        coordinates.addContent(new Element("altitude", dcs).setAttribute("measured","amsl").addContent("altitude"));  //TODO
+        return coordinates;
+    }
+
     private Element addBaseEnd() {
-        Element baseEnd = new Element("baseEnd");
+        Element baseEnd = new Element("baseEnd", dcs);
         baseEnd.addContent(addStartPoint());
-        baseEnd.addContent(new Element ("heading").setAttribute("headingType","true/false").addContent("numero"));
+        baseEnd.addContent(new Element ("heading", dcs).setAttribute("headingType","true").addContent("numero"));
         baseEnd.addContent(addEndPoint());
         return baseEnd;
     }
 
     private Element addReciprocalEnd() {
-        Element reciprocalEnd = new Element("reciprocalEnd");
-        reciprocalEnd.addContent(new Element ("designation").addContent("number"));
+        Element reciprocalEnd = new Element("reciprocalEnd", dcs);
+        reciprocalEnd.addContent(new Element ("designation", dcs).addContent("number"));
         reciprocalEnd.addContent(addStartPoint());
-        reciprocalEnd.addContent(new Element ("heading").setAttribute("headingType","true/false").addContent("numero"));
+        reciprocalEnd.addContent(new Element ("heading", dcs).setAttribute("headingType","true/false").addContent("numero"));
         reciprocalEnd.addContent(addEndPoint());
         return reciprocalEnd;
     }
 
     private Element addStartPoint() {
-        Element startpoint = new Element("startpoint");
+        Element startpoint = new Element("startpoint", dcs);
         startpoint.addContent(addCoordinates());
         startpoint.addContent(addConnectsTo());
         return startpoint;
     }
 
     private Element addEndPoint() {
-        Element endpoint = new Element("endpoint");
+        Element endpoint = new Element("endpoint", dcs);
         endpoint.addContent(addCoordinates());
         endpoint.addContent(addConnectsTo());
         return endpoint;
     }
 
     private Element addConnectsTo() {
-        Element connectsTo = new Element("connectsTo");
-        connectsTo.addContent(new Element("xway").setAttribute("idr","numero"));
+        Element connectsTo = new Element("connectsTo", dcs);
+        connectsTo.addContent(new Element("xway", dcs).setAttribute("idr","numero"));
 
         return connectsTo;
     }
